@@ -1,0 +1,66 @@
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.g.cs
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.cache
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.lref
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.exe.config
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.exe
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.pdb
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignColors.dll
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.g.cs
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.baml
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.baml
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.g.resources
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.Properties.Resources.resources
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.GenerateResource.cache
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CopyComplete
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.exe.config
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.exe
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.pdb
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignColors.dll
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignColors.pdb
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.cache
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.lref
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.baml
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.baml
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.g.resources
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.Properties.Resources.resources
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.GenerateResource.cache
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CoreCompileInputs.cache
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CopyComplete
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.exe.config
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.exe
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.pdb
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignColors.dll
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignColors.pdb
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.cache
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.lref
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.g.resources
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.Properties.Resources.resources
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.GenerateResource.cache
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CoreCompileInputs.cache
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CopyComplete
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
+D:\Minh\This Week\Window\Project1\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
