@@ -24,5 +24,17 @@ namespace FoodRecipeApp
         {
             InitializeComponent();
         }
-    }
+
+		private void BtnOpenMenu_Click(object sender, RoutedEventArgs e)
+		{
+            btnCloseMenu.Visibility = Visibility.Visible;
+            btnOpenMenu.Visibility = Visibility.Hidden;
+        }
+
+		private void BtnCloseMenu_Click(object sender, RoutedEventArgs e)
+		{
+            btnOpenMenu.Visibility = Visibility.Visible;
+            btnCloseMenu.Visibility = Visibility.Hidden;
+		}
+	}
 }
