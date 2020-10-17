@@ -38,7 +38,7 @@
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="App recipe" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White">
                 </TextBlock>
-                <materialDesign:PopupBox PlacementMode="BottomAndAlignLeftEdges"
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignLeftEdges" PopupMode="Click"
                                      Margin="10px" StaysOpen="False" Foreground="White">
                     <StackPanel Width="150">
                         <Button Content="History"/>
@@ -49,7 +49,7 @@
                 </materialDesign:PopupBox>
             </StackPanel>
         </Grid>
-        <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#FF040485">
+        <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#FF000062">
             <StackPanel>
                 <Grid Height="100" Background="White">
                     <Button x:Name="btnCloseMenu"
