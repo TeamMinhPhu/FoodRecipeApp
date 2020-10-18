@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 ////////////
 using System.Data;
@@ -29,18 +30,22 @@ namespace FoodRecipeApp
         {
             InitializeComponent();
         }
+        bool StateClosed = true;
+        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (StateClosed)
+            {
+                Storyboard sb = this.FindResource("OpenMenu") as Storyboard;
+                sb.Begin();
+            }
+            else
+            {
+                Storyboard sb = this.FindResource("CloseMenu") as Storyboard;
+                sb.Begin();
+            }
 
-		private void BtnOpenMenu_Click(object sender, RoutedEventArgs e)
-		{
-            btnCloseMenu.Visibility = Visibility.Visible;
-            btnOpenMenu.Visibility = Visibility.Hidden;
+            StateClosed = !StateClosed;
         }
-
-		private void BtnCloseMenu_Click(object sender, RoutedEventArgs e)
-		{
-            btnOpenMenu.Visibility = Visibility.Visible;
-            btnCloseMenu.Visibility = Visibility.Hidden;
-		}
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -57,5 +62,10 @@ namespace FoodRecipeApp
 
             SQL_DB.closeConnection();
         }
-    }
+
+		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+		{
+            this.Close();
+		}
+	}
 }
