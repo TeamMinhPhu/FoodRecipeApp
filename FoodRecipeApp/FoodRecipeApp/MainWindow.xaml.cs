@@ -13,11 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using System.ComponentModel;
 
 ////////////
 using System.Data;
 using System.Data.SqlClient;
 using FoodRecipeApp.Classes;
+using System.Runtime.CompilerServices;
 
 namespace FoodRecipeApp
 {
@@ -30,6 +32,7 @@ namespace FoodRecipeApp
         {
             InitializeComponent();
             MouseDown += Window_MouseDown;
+            
         }
 
         //drag window
@@ -79,6 +82,24 @@ namespace FoodRecipeApp
             this.Close();
 		}
 
-
-    }
+		private void SelectedTab(object sender, MouseButtonEventArgs e)
+		{
+            var item = (sender as ListView).SelectedIndex;
+            switch (item)
+			{
+                case 0:
+                    this.Background = Brushes.White;
+                    break;
+                case 1:
+                    this.Background = Brushes.Blue;
+                    break;
+                case 2:
+                    this.Background = Brushes.Green;
+                    break;
+                case 3:
+                    this.Background = Brushes.Red;
+                    break;
+			}
+		}
+	}
 }

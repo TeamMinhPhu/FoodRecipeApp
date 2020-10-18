@@ -192,7 +192,7 @@
                 </Button.Background>
             </Button>
         </Grid>
-
+    
         <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="70" Background="#ff9100">
             <StackPanel>
                 <Grid Height="150" Background="#ffb600">
@@ -224,16 +224,10 @@
                         </Grid>
                     </Button>
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20"
-                          Background="Transparent" BorderThickness="0" Margin="0" Padding="0">
-                    <ListViewItem Height="60" Style="{DynamicResource ListMenuStyle}">
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20" SelectedIndex="0"
+                          Background="Transparent" BorderThickness="0" Margin="0" Padding="0" PreviewMouseLeftButtonUp="SelectedTab">
+                    <ListViewItem Name="HomePage" Height="60" Style="{DynamicResource ListMenuStyle}">
                         <StackPanel Orientation="Horizontal">
-                            <StackPanel.RenderTransform>
-                                <TransformGroup>
-                                    <TranslateTransform></TranslateTransform>
-                                </TransformGroup>
-                            </StackPanel.RenderTransform>
-
                             <Image Source="Resources/Icons/home.png" Margin="10" VerticalAlignment="top" Stretch="None"/>
                             <TextBlock Text="Home" VerticalAlignment="Center" Margin="10"/>
                         </StackPanel>
@@ -258,4 +252,5 @@
             </StackPanel>
         </Grid>
     </Grid>
+    
 </Window>
