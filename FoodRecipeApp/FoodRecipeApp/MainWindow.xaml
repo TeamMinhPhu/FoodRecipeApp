@@ -13,7 +13,7 @@
         ResizeMode="CanResizeWithGrip">
     <Window.Resources>
         <local:AbsoluteConverter x:Key="converter"/>
-
+        <!--menu animation-->
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rectangle">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -29,7 +29,7 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
@@ -47,13 +47,14 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
 
-        <ImageBrush x:Key="CloseBtn_MouseOver" ImageSource="Resources/Icons/power_hover.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <!--Close button - turnoff button style-->
+        <ImageBrush x:Key="CloseButton_MouseOver" ImageSource="Resources/Icons/power_hover.png" RenderOptions.BitmapScalingMode="HighQuality"/>
 
-        <Style x:Key="Close_btn" TargetType="{x:Type Button}">
+        <Style x:Key="CloseButton" TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -65,9 +66,107 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver"
                                      Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
                                 <Setter Property="Background"
                                         TargetName="button"
-                                        Value="{StaticResource CloseBtn_MouseOver}"/>
+                                        Value="{StaticResource CloseButton_MouseOver}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--Menu style-->
+
+        <Style x:Key="MenuStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Background" TargetName="border" Value="{x:Null}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!-- ListMenuStyle-->
+        <Style x:Key="ListMenuStyle" TargetType="{x:Type ListViewItem}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Padding" Value="4,1"/>
+            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="5 0 0 0" Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="#FFAA00"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#FFE299"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="#3DDADADA"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#fff"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="#3DFFF6E8"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="#fff"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -86,91 +185,77 @@
                     Margin="10"
                     Height="32" Width="32"
                     BorderThickness="0"
-                    Style="{StaticResource Close_btn}" Click="CloseBtn_Click">
+                    Style="{StaticResource CloseButton}" Click="CloseButton_Click">
                 <Button.Background>
-                    <ImageBrush ImageSource="Resources/Icons/power.png" RenderOptions.BitmapScalingMode="NearestNeighbor" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="Resources/Icons/power.png" RenderOptions.BitmapScalingMode="HighQuality"
+                                Stretch="Uniform"/>
                 </Button.Background>
             </Button>
         </Grid>
 
         <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="70" Background="#ff9100">
             <StackPanel>
-                <Grid Height="150" Background="#ffb600"/>
-            </StackPanel>
-            <Button x:Name="ButtonMenu" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="70" Height="70" Click="ButtonMenu_Click">
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Rectangle x:Name="rectangle" Width="30" Height="5" Margin="0 0 0 0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5">
-                        <Rectangle.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Rectangle.RenderTransform>
-                    </Rectangle>
-                    <Rectangle x:Name="rectangle1" Width="30" Height="5" Margin="0 20 0 0 " Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5">
-                        <Rectangle.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Rectangle.RenderTransform>
-                    </Rectangle>
-                    <Rectangle x:Name="rectangle2" Width="30" Height="5" Margin="0 10 0 0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                </Grid>
-            </Button>
-        </Grid>
-        <!--<Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#FF000062">
-            <StackPanel>
-                <Grid Height="100" Background="White">
-                    <Button x:Name="btnCloseMenu"
-                            Width="50" Height="50" Background="Transparent" BorderBrush="{x:Null}"
-                            VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed"
-                            Click="BtnCloseMenu_Click">
-                        <materialDesign:PackIcon Kind="ArrowLeft" Foreground="#FF040485" Width="25" Height="25" HorizontalAlignment="Center">
-                        </materialDesign:PackIcon>
-                    </Button>
-                    <Button x:Name="btnOpenMenu"
-                            Width="50" Height="50" Background="Transparent" BorderBrush="{x:Null}"
-                            VerticalAlignment="Top" HorizontalAlignment="Right"
-                            Click="BtnOpenMenu_Click">
-
-                        <materialDesign:PackIcon Kind="Menu" Foreground="#FF040485" Width="25" Height="25" HorizontalAlignment="Center">
-                        </materialDesign:PackIcon>
+                <Grid Height="150" Background="#ffb600">
+                    <Button x:Name="MenuButton" HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Background="{x:Null}" BorderBrush="{x:Null}" Width="70" Height="70"
+                    Click="MenuButton_Click" Style="{StaticResource MenuStyle}">
+                        <Grid HorizontalAlignment="Center" Height="35" Width="40" VerticalAlignment="Center" Background="Transparent">
+                            <Rectangle x:Name="rectangle" Width="30" Height="5" Margin="0 5 0 0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <Rectangle x:Name="rectangle1" Width="30" Height="5" Margin="0 25 0 0 " Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <Rectangle x:Name="rectangle2" Width="30" Height="5" Margin="0 15 0 0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        </Grid>
                     </Button>
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF005CA8">
-                    <ListViewItem Height="60">
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20"
+                          Background="Transparent" BorderThickness="0" Margin="0" Padding="0">
+                    <ListViewItem Height="60" Style="{DynamicResource ListMenuStyle}">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ViewDashboard" Margin="5" Width="25" Height="25" VerticalAlignment="Center"/>
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform></TranslateTransform>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+
+                            <Image Source="Resources/Icons/home.png" Margin="10" VerticalAlignment="top" Stretch="None"/>
                             <TextBlock Text="Home" VerticalAlignment="Center" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Style="{DynamicResource ListMenuStyle}">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="History" Width="25" Margin="5" Height="25" VerticalAlignment="Center"/>
+                            <Image Source="Resources/Icons/history.png" Margin="10" VerticalAlignment="top" Stretch="None"/>
                             <TextBlock Text="History" VerticalAlignment="Center" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Style="{DynamicResource ListMenuStyle}">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Food" Width="25" Margin="5" Height="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="What's today" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Name="search"  Text="What's today" VerticalAlignment="Center" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" Style="{DynamicResource ListMenuStyle}">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Settings" Width="25" Margin="5" Height="25" VerticalAlignment="Center"/>
                             <TextBlock Text="Settings" VerticalAlignment="Center" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
             </StackPanel>
         </Grid>
-        <DataGrid Name ="SQL_Demo" Margin="132,123,47.6,68">
-        </DataGrid>-->
     </Grid>
 </Window>

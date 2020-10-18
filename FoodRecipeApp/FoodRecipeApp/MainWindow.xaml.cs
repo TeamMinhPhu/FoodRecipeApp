@@ -29,9 +29,19 @@ namespace FoodRecipeApp
         public MainWindow()
         {
             InitializeComponent();
+            MouseDown += Window_MouseDown;
         }
+
+        //drag window
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
+
+        //Menu Open - Collapse
         bool StateClosed = true;
-        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
             if (StateClosed)
             {
@@ -51,21 +61,24 @@ namespace FoodRecipeApp
         {
             SQL_DB.openConnection();
 
-            /*SQL_DB.sql = "SELECT [ID], [Data], [Image] FROM RecipeInfo";
-            SQL_DB.cmd.CommandType = CommandType.Text;
-            SQL_DB.cmd.CommandText = SQL_DB.sql;
-            SQL_DB.da = new SqlDataAdapter(SQL_DB.cmd);
-            SQL_DB.dt = new DataTable();
-            SQL_DB.da.Fill(SQL_DB.dt);
+			/*SQL_DB.sql = "SELECT [ID], [Data], [Image] FROM RecipeInfo";
+			SQL_DB.cmd.CommandType = CommandType.Text;
+			SQL_DB.cmd.CommandText = SQL_DB.sql;
+			SQL_DB.da = new SqlDataAdapter(SQL_DB.cmd);
+			SQL_DB.dt = new DataTable();
+			SQL_DB.da.Fill(SQL_DB.dt);
 
-            SQL_Demo.ItemsSource = SQL_DB.dt.DefaultView;*/
+			SQL_Demo.ItemsSource = SQL_DB.dt.DefaultView;*/
 
-            SQL_DB.closeConnection();
+			SQL_DB.closeConnection();
         }
 
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        //Close button (exit window)
+		private void CloseButton_Click(object sender, RoutedEventArgs e)
 		{
             this.Close();
 		}
-	}
+
+
+    }
 }

@@ -14,3 +14,4 @@ C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\
 C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
 C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
