@@ -193,8 +193,8 @@
             </Button>
         </Grid>
     
-        <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="70" Background="#ff9100">
-            <StackPanel>
+        <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="70">
+            <StackPanel Background="#ff9100">
                 <Grid Height="150" Background="#ffb600">
                     <Button x:Name="MenuButton" HorizontalAlignment="Right" VerticalAlignment="Top"
                     Background="{x:Null}" BorderBrush="{x:Null}" Width="70" Height="70"
@@ -230,7 +230,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding Icon, Converter={StaticResource converter} }" Margin="10" VerticalAlignment="top" Stretch="None"/>
+                                <Image Source="{Binding Icon, Converter={StaticResource converter} }" Margin="10" VerticalAlignment="top" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
                                 <TextBlock Text="{Binding Content}" VerticalAlignment="Center" Margin="10"/>
                             </StackPanel>
                         </DataTemplate>
