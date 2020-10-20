@@ -29,7 +29,7 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="250"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="CloseMenu">
@@ -46,11 +46,11 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-
+        
         <!--Close button - turnoff button style-->
         <ImageBrush x:Key="CloseButton_MouseOver" ImageSource="Resources/Icons/power_hover.png" RenderOptions.BitmapScalingMode="HighQuality"/>
 
@@ -224,7 +224,19 @@
                         </Grid>
                     </Button>
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20" SelectedIndex="0"
+                <ListView Name="menuList" ItemContainerStyle="{DynamicResource ListMenuStyle}" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20" SelectedIndex="0"
+                          Background="Transparent" BorderThickness="0" Margin="0" Padding="0" PreviewMouseLeftButtonUp="SelectedTab">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Icon, Converter={StaticResource converter} }" Margin="10" VerticalAlignment="top" Stretch="None"/>
+                                <TextBlock Text="{Binding Content}" VerticalAlignment="Center" Margin="10"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!--<ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20" SelectedIndex="0"
                           Background="Transparent" BorderThickness="0" Margin="0" Padding="0" PreviewMouseLeftButtonUp="SelectedTab">
                     <ListViewItem Name="HomePage" Height="60" Style="{DynamicResource ListMenuStyle}">
                         <StackPanel Orientation="Horizontal">
@@ -248,7 +260,7 @@
                             <TextBlock Text="Settings" VerticalAlignment="Center" Margin="10"/>
                         </StackPanel>
                     </ListViewItem>
-                </ListView>
+                </ListView>-->
             </StackPanel>
         </Grid>
     </Grid>

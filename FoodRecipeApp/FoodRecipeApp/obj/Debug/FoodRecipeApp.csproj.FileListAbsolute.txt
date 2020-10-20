@@ -15,3 +15,7 @@ C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\
 C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
 C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
 C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\home.png
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\history.png
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\search.png
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\settings.png
