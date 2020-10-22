@@ -19,3 +19,7 @@ C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\history.png
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\search.png
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\settings.png
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.g.cs
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.baml
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.g.cs
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.baml

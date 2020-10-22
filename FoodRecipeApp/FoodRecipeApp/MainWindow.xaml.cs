@@ -54,7 +54,6 @@ namespace FoodRecipeApp
                     new Menu() { Content = "Settings", Icon = "Resources/Icons/settings.png" },
                 };
                 return list;
-
             }
         }
         
@@ -82,9 +81,13 @@ namespace FoodRecipeApp
 
             StateClosed = !StateClosed;
         }
+
+
         private BindingList<Menu> _list_menu;
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        {   
+            this.Background = Brushes.Bisque;
+            menuPage.Content = new HomePage();
             _list_menu = MenuDao.GetAll();
             menuList.ItemsSource = _list_menu;
             SQL_DB.openConnection();
@@ -113,16 +116,14 @@ namespace FoodRecipeApp
             switch (item)
 			{
                 case 0:
-                    this.Background = Brushes.White;
+                    menuPage.Content = new HomePage();
                     break;
                 case 1:
-                    this.Background = Brushes.Blue;
+                    menuPage.Content = new SearchingPage();
                     break;
                 case 2:
-                    this.Background = Brushes.Green;
                     break;
                 case 3:
-                    this.Background = Brushes.Red;
                     break;
 			}
 		}

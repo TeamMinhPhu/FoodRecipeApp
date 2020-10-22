@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\App.xaml
-11151548125
+3-581596753
 
-8982358947
+10-1110309467
 141066371409
-MainWindow.xaml;
+HomePage.xaml;MainWindow.xaml;SearchingPage.xaml;
 
-False
+True
 
