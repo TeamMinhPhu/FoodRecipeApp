@@ -4,12 +4,20 @@
 winexe
 C#
 .cs
+<<<<<<< Updated upstream
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\
+=======
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\
+>>>>>>> Stashed changes
 FoodRecipeApp
 none
 false
 DEBUG;TRACE
+<<<<<<< Updated upstream
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\App.xaml
+=======
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\App.xaml
+>>>>>>> Stashed changes
 11151548125
 
 71824718314
