@@ -212,7 +212,7 @@
                             </Grid>
                         </Button>
                     </Grid>
-                    <ListView Name="menuList" ItemContainerStyle="{DynamicResource ListMenuStyle}" 
+                    <ListView Name="menuList" ItemContainerStyle="{DynamicResource ListMenuStyle}" SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20" SelectedIndex="0"
                           Background="Transparent" BorderThickness="0" Margin="0" Padding="0" PreviewMouseLeftButtonUp="SelectedTab">
                         <ListView.ItemTemplate>

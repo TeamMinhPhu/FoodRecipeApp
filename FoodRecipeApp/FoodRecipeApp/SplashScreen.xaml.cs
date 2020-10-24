@@ -79,6 +79,10 @@ namespace FoodRecipeApp
                 ConfigurationUserLevel.None);
             config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
             config.Save(ConfigurationSaveMode.Minimal);
+            var screen = new MainWindow();
+            screen.Show();
+
+            this.Close();
         }
     }
 }
