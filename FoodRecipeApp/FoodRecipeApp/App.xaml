@@ -4,8 +4,6 @@
              xmlns:local="clr-namespace:FoodRecipeApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-
-        </ResourceDictionary>
+        <local:AbsoluteConverter x:Key="converter"/>
     </Application.Resources>
 </Application>

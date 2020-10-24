@@ -24,78 +24,86 @@ namespace FoodRecipeApp
 		public HomePage()
 		{
 			InitializeComponent();
-	
+			foodPage.Content = _content;
 		}
-
-		BindingList<Dish> _dishes_list;
+		FoodPage _content = new FoodPage(0,1);
+		int _current_page = 0;
+		//BindingList<Dish> _dishes_list;
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			_dishes_list = DishDao.GetAll();
-			dishesView.ItemsSource = _dishes_list;
-		}
-		class Dish
-		{
-			public string Name { get; set; }
-			public string Source { get; set; }
+			//_dishes_list = DishDao.GetAll();
+			//dishesView.ItemsSource = _dishes_list;
+			//foodPage.Content = new FoodPage();
+
+			_content = new FoodPage(_current_page, itemsPerPage());
+			foodPage.Content = _content;
 		}
 
-		class DishDao
+		private int itemsPerPage()
 		{
-			public static BindingList<Dish> GetAll()
+			int result, row, column;
+			column = (int)(_content.ActualWidth) / 160;
+			row = (int)(_content.ActualHeight) / 150;
+			result =  row * column;
+			return result;
+		}
+
+		const int _database_length = 30; //test database
+		private int getTotalPages()
+		{
+			int items = itemsPerPage();
+			int result;
+			result = _database_length / items;
+			if (result * items == _database_length && result > 0)
 			{
-				var result = new BindingList<Dish>()
-				{
-					new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
-					new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
-				};
-				return result;
+				result--;
 			}
+			return result;
 		}
 
 
-		//class Student // DTO = Data transfer object - Entity
+		private void DEMONEXT_Click(object sender, RoutedEventArgs e)
+		{
+	
+			if (_current_page < getTotalPages())
+			{
+
+				_current_page++;
+			}
+			else
+			{
+				_current_page = 0;
+			}
+			_content = new FoodPage(_current_page, itemsPerPage());
+			foodPage.Content = _content;
+		}
+		//class Dish
 		//{
-		//    public string Fullname { get; set; }
-		//    public string Avatar { get; set; }
+		//	public string Name { get; set; }
+		//	public string Source { get; set; }
 		//}
 
-		//// DAO - Data access object
-
-		//class StudentDao
+		//class DishDao
 		//{
-		//    public static BindingList<Student> GetAll()
-		//    {
-		//        var result = new BindingList<Student>()
-		//        {
-		//            new Student() { Fullname="Chu Tùng Nhân", Avatar="/Images/avatar01.jpg" },
-		//            new Student() { Fullname="Nguyen Ánh Du", Avatar="/Images/avatar02.jpg" },
-		//            new Student() { Fullname="Lều Bách Khánh", Avatar="/Images/avatar03.jpg" },
-		//            new Student() { Fullname="Thiều Duy Hành", Avatar="/Images/avatar04.jpg" },
-		//            new Student() { Fullname="Nhiệm Băng Đoan", Avatar="/Images/avatar05.jpg" },
-		//            new Student() { Fullname="Mang Đình Từ", Avatar="/Images/avatar06.jpg" },
-		//            new Student() { Fullname="Bùi Tuyền", Avatar="/Images/avatar07.jpg" },
-		//            new Student() { Fullname="Triệu Triều Hải", Avatar="/Images/avatar08.jpg" },
-		//            new Student() { Fullname="Tạ Đoan Huệ", Avatar="/Images/avatar09.jpg" },
-		//            new Student() { Fullname="Đào Sương Thư", Avatar="/Images/avatar10.jpg" }
-		//        };
-
-		//        return result;
-		//    }
+		//	public static BindingList<Dish> GetAll()
+		//	{
+		//		var result = new BindingList<Dish>()
+		//		{
+		//			new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 1", Source = "Resources/Images/Sora.png"},
+		//			new Dish() {Name = "Dish 2", Source = "Resources/Images/Sora.png"},
+		//		};
+		//		return result;
+		//	}
 		//}
-
-		//BindingList<Student> _list = new BindingList<Student>();
-
-
-
 	}
 }

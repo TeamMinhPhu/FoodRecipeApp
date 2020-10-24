@@ -65,10 +65,10 @@ namespace FoodRecipeApp
         }
 
         //Menu Open - Collapse
-        bool StateClosed = true;
+        bool _menu_state_closed = true;
         private void menuButton_Click(object sender, RoutedEventArgs e)
         {
-            if (StateClosed)
+            if (_menu_state_closed)
             {
                 Storyboard sb = this.FindResource("openMenu") as Storyboard;
                 sb.Begin();
@@ -79,7 +79,7 @@ namespace FoodRecipeApp
                 sb.Begin();
             }
 
-            StateClosed = !StateClosed;
+            _menu_state_closed = !_menu_state_closed;
         }
 
 
@@ -131,21 +131,32 @@ namespace FoodRecipeApp
 			}
 		}
 
-        private void loadConfig()
+		private void loadConfig()
 		{
-            var configWidth = ConfigurationManager.AppSettings["Width"];
-            this.Width = double.Parse(configWidth);
-            var configHeight = ConfigurationManager.AppSettings["Height"];
-            this.Height = double.Parse(configHeight);
-        }
+			var configWidth = ConfigurationManager.AppSettings["Width"];
+			this.Width = double.Parse(configWidth);
+			var configHeight = ConfigurationManager.AppSettings["Height"];
+			this.Height = double.Parse(configHeight);
 
-        private void saveConfig()
+			var configMenu = ConfigurationManager.AppSettings["HiddenMenu"];
+			_menu_state_closed = bool.Parse(configMenu);
+			if (_menu_state_closed)
+			{
+				gridMenu.Width = 60;
+			}
+			else
+			{
+				gridMenu.Width = 250;
+			}
+		}
+
+		private void saveConfig()
 		{
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.AppSettings.Settings["Width"].Value = this.Width.ToString();
-            config.AppSettings.Settings["Height"].Value = this.Height.ToString();
-            config.Save(ConfigurationSaveMode.Minimal);
-        }
-
+			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			config.AppSettings.Settings["Width"].Value = this.Width.ToString();
+			config.AppSettings.Settings["Height"].Value = this.Height.ToString();
+			config.AppSettings.Settings["HiddenMenu"].Value = _menu_state_closed.ToString();
+			config.Save(ConfigurationSaveMode.Minimal);
+		}
 	}
 }
