@@ -20,6 +20,7 @@ using System.Data;
 using System.Data.SqlClient;
 using FoodRecipeApp.Classes;
 using System.Runtime.CompilerServices;
+using System.Configuration;
 
 namespace FoodRecipeApp
 {
@@ -32,7 +33,6 @@ namespace FoodRecipeApp
         {
             InitializeComponent();
             MouseDown += Window_MouseDown;
-            
         }
 
         class Menu : INotifyPropertyChanged
@@ -66,16 +66,16 @@ namespace FoodRecipeApp
 
         //Menu Open - Collapse
         bool StateClosed = true;
-        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        private void menuButton_Click(object sender, RoutedEventArgs e)
         {
             if (StateClosed)
             {
-                Storyboard sb = this.FindResource("OpenMenu") as Storyboard;
+                Storyboard sb = this.FindResource("openMenu") as Storyboard;
                 sb.Begin();
             }
             else
             {
-                Storyboard sb = this.FindResource("CloseMenu") as Storyboard;
+                Storyboard sb = this.FindResource("closeMenu") as Storyboard;
                 sb.Begin();
             }
 
@@ -85,7 +85,9 @@ namespace FoodRecipeApp
 
         private BindingList<Menu> _list_menu;
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {   
+        {
+            loadConfig();
+
             this.Background = Brushes.Bisque;
             menuPage.Content = new HomePage();
             _list_menu = MenuDao.GetAll();
@@ -105,12 +107,13 @@ namespace FoodRecipeApp
         }
 
         //Close button (exit window)
-		private void CloseButton_Click(object sender, RoutedEventArgs e)
+		private void closeProgramButton_Click(object sender, RoutedEventArgs e)
 		{
+            saveConfig();
             this.Close();
 		}
 
-		private void SelectedTab(object sender, MouseButtonEventArgs e)
+		private void selectedTab(object sender, MouseButtonEventArgs e)
 		{
             var item = (sender as ListView).SelectedIndex;
             switch (item)
@@ -127,5 +130,22 @@ namespace FoodRecipeApp
                     break;
 			}
 		}
+
+        private void loadConfig()
+		{
+            var configWidth = ConfigurationManager.AppSettings["Width"];
+            this.Width = double.Parse(configWidth);
+            var configHeight = ConfigurationManager.AppSettings["Height"];
+            this.Height = double.Parse(configHeight);
+        }
+
+        private void saveConfig()
+		{
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["Width"].Value = this.Width.ToString();
+            config.AppSettings.Settings["Height"].Value = this.Height.ToString();
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
+
 	}
 }

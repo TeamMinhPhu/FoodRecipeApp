@@ -30,7 +30,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListViewItem}">
-                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="5 0 0 0" Background="{TemplateBinding Background}"
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0 0 0 5" Background="{TemplateBinding Background}"
                                 Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
@@ -39,15 +39,27 @@
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsMouseOver" Value="True"/>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="#FFAA00"/>
-                                <Setter Property="BorderBrush" TargetName="Bd" Value="#FFE299"/>
+                                <Setter Property="Background" TargetName="Bd">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="White" Opacity="0.3"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="Bd">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="White" Opacity="0.7"/>
+                                    </Setter.Value>
+                                </Setter>
                             </MultiTrigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="Selector.IsSelectionActive" Value="False"/>
                                     <Condition Property="IsSelected" Value="True"/>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="#3DDADADA"/>
+                                <Setter Property="Background" TargetName="Bd">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="White" Opacity="0.1"/>
+                                    </Setter.Value>
+                                </Setter>
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="#fff"/>
                             </MultiTrigger>
                             <MultiTrigger>
@@ -55,7 +67,11 @@
                                     <Condition Property="Selector.IsSelectionActive" Value="True"/>
                                     <Condition Property="IsSelected" Value="True"/>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="#3DFFF6E8"/>
+                                <Setter Property="Background" TargetName="Bd">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="White" Opacity="0.2"/>
+                                    </Setter.Value>
+                                </Setter>
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="#fff"/>
                             </MultiTrigger>
                             <Trigger Property="IsEnabled" Value="False">
