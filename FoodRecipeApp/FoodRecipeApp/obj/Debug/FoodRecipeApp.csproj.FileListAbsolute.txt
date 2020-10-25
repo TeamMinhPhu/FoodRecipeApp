@@ -19,3 +19,40 @@ C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\history.png
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\search.png
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\settings.png
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.g.cs
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.baml
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.g.cs
+C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.baml
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SplashScreen.g.cs
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SplashScreen.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\SplashScreen.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\UploadNewDishScreen.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.cache
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.lref
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\history.png
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\home.png
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\search.png
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\settings.png
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.exe.config
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.exe
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\bin\Debug\FoodRecipeApp.pdb
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\bin\Debug\System.Drawing.Common.dll
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\SplashScreen.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\UploadNewDishScreen.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.g.resources
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.Properties.Resources.resources
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.GenerateResource.cache
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CoreCompileInputs.cache
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CopyComplete

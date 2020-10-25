@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/icons/search.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/icons/settings.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/sora.(kingdom.hearts).full.2574009.png")]
 
 

@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:FoodRecipeApp"
         mc:Ignorable="d" 
         Title="MainWindow" Height="500" Width="900"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" 
         Loaded="Window_Loaded" WindowStyle="None"
         AllowsTransparency="True"
         ResizeMode="CanResizeWithGrip">
@@ -52,7 +52,7 @@
         </Storyboard>
         
         <!--Close button - turnoff button style-->
-        <ImageBrush x:Key="CloseButton_MouseOver" ImageSource="Resources/Icons/power_hover.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+        <ImageBrush x:Key="CloseButton_MouseOver" ImageSource="Resources\Icons\power_hover.png" RenderOptions.BitmapScalingMode="HighQuality"/>
 
         <Style x:Key="CloseButton" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -178,65 +178,53 @@
 
     <Grid>
         <!--Title bar-->
-        <Grid Name="Title" Height="55" VerticalAlignment="Top">
-            <Button x:Name="CloseBtn"
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Right"
-                    Margin="10"
-                    Height="32" Width="32"
-                    BorderThickness="0"
-                    Style="{StaticResource CloseButton}" Click="CloseButton_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="Resources/Icons/power.png" RenderOptions.BitmapScalingMode="HighQuality"
-                                Stretch="Uniform"/>
-                </Button.Background>
-            </Button>
-        </Grid>
     
-        <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="70">
-            <StackPanel Background="#ff9100">
-                <Grid Height="150" Background="#ffb600">
-                    <Button x:Name="MenuButton" HorizontalAlignment="Right" VerticalAlignment="Top"
+
+        <DockPanel>
+            <Grid x:Name="GridMenu" HorizontalAlignment="Left" Width="70" DockPanel.Dock="Left">
+                <StackPanel Background="#ff9100">
+                    <Grid Height="150" Background="#ffb600">
+                        <Button x:Name="MenuButton" HorizontalAlignment="Right" VerticalAlignment="Top"
                     Background="{x:Null}" BorderBrush="{x:Null}" Width="70" Height="70"
                     Click="MenuButton_Click" Style="{StaticResource MenuStyle}">
-                        <Grid HorizontalAlignment="Center" Height="35" Width="40" VerticalAlignment="Center" Background="Transparent">
-                            <Rectangle x:Name="rectangle" Width="30" Height="5" Margin="0 5 0 0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5">
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
-                            </Rectangle>
-                            <Rectangle x:Name="rectangle1" Width="30" Height="5" Margin="0 25 0 0 " Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5">
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
-                            </Rectangle>
-                            <Rectangle x:Name="rectangle2" Width="30" Height="5" Margin="0 15 0 0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-                        </Grid>
-                    </Button>
-                </Grid>
-                <ListView Name="menuList" ItemContainerStyle="{DynamicResource ListMenuStyle}" 
+                            <Grid HorizontalAlignment="Center" Height="35" Width="40" VerticalAlignment="Center" Background="Transparent">
+                                <Rectangle x:Name="rectangle" Width="30" Height="5" Margin="0 5 0 0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5">
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                                <Rectangle x:Name="rectangle1" Width="30" Height="5" Margin="0 25 0 0 " Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5">
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                                <Rectangle x:Name="rectangle2" Width="30" Height="5" Margin="0 15 0 0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            </Grid>
+                        </Button>
+                    </Grid>
+                    <ListView Name="menuList" ItemContainerStyle="{DynamicResource ListMenuStyle}" SelectionMode="Single"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20" SelectedIndex="0"
                           Background="Transparent" BorderThickness="0" Margin="0" Padding="0" PreviewMouseLeftButtonUp="SelectedTab">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding Icon, Converter={StaticResource converter} }" Margin="10" VerticalAlignment="top" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
-                                <TextBlock Text="{Binding Content}" VerticalAlignment="Center" Margin="10"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <!--<ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20" SelectedIndex="0"
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding Icon, Converter={StaticResource converter} }" Margin="10" VerticalAlignment="top" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                    <TextBlock Text="{Binding Content}" VerticalAlignment="Center" Margin="10"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <!--<ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#fff" FontSize="20" SelectedIndex="0"
                           Background="Transparent" BorderThickness="0" Margin="0" Padding="0" PreviewMouseLeftButtonUp="SelectedTab">
                     <ListViewItem Name="HomePage" Height="60" Style="{DynamicResource ListMenuStyle}">
                         <StackPanel Orientation="Horizontal">
@@ -261,8 +249,29 @@
                         </StackPanel>
                     </ListViewItem>
                 </ListView>-->
-            </StackPanel>
-        </Grid>
+                </StackPanel>
+            </Grid>
+
+            <Grid Name="Title" Height="50" VerticalAlignment="Top" DockPanel.Dock="Top">
+                <Button x:Name="CloseBtn"
+                    Panel.ZIndex="10"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right"
+                    Margin="10"
+                    Height="24" Width="24"
+                    BorderThickness="0"
+                    Style="{StaticResource CloseButton}" Click="CloseButton_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/Icons/power.png" RenderOptions.BitmapScalingMode="HighQuality"
+                                Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+
+            <Frame Name="menuPage" NavigationUIVisibility="Hidden">
+                
+            </Frame>
+        </DockPanel>
     </Grid>
     
 </Window>

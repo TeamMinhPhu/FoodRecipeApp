@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="FoodRecipeDB">
+  <DataContextMoniker Name="/FoodRecipeDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="095a91b6-79e6-452e-9539-45877852be1b" absoluteBounds="3.75, 0.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/FoodRecipeDBDataContext/DISH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b7c9d5a8-a2eb-4ab7-b2de-16d245168245" absoluteBounds="3.7649999999999997, 1.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e40b57f0-87e2-4bd2-82ac-567a281f8d83" absoluteBounds="6.875, 1.375, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/FoodRecipeDBDataContext/DISH_TYPE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="854aac07-edca-4c27-a030-32df57b33a9d" absoluteBounds="6.89, 1.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.75 : 1.97199625651042); (6.875 : 1.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodRecipeDBDataContext/DISH/DISH_DISH_TYPE" />
+      <nodes>
+        <classShapeMoniker Id="095a91b6-79e6-452e-9539-45877852be1b" />
+        <classShapeMoniker Id="e40b57f0-87e2-4bd2-82ac-567a281f8d83" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7c82357e-88ec-4ddf-8702-1124fc3a4295" absoluteBounds="1, 2.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/FoodRecipeDBDataContext/IMAGE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67d997bc-6df1-41ec-a4a9-102901dc5989" absoluteBounds="1.0149999999999997, 3.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="899895be-042a-4851-be71-3064e1855559" absoluteBounds="4.25, 3.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/FoodRecipeDBDataContext/RECIPE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a9b99465-1343-49f9-ab9b-6a40a21a1f50" absoluteBounds="4.265, 4.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 3.94314697265625); (3 : 3.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodRecipeDBDataContext/RECIPE/RECIPE_IMAGE" />
+      <nodes>
+        <classShapeMoniker Id="899895be-042a-4851-be71-3064e1855559" />
+        <classShapeMoniker Id="7c82357e-88ec-4ddf-8702-1124fc3a4295" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5 : 2.78049967447917); (5 : 3.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodRecipeDBDataContext/DISH/DISH_RECIPE" />
+      <nodes>
+        <classShapeMoniker Id="095a91b6-79e6-452e-9539-45877852be1b" />
+        <classShapeMoniker Id="899895be-042a-4851-be71-3064e1855559" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="116d6441-eb50-4f21-9912-d930dfc4c244" absoluteBounds="0.875, 0.75, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/FoodRecipeDBDataContext/SEARCH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1104a207-fb6e-4e44-b159-ce1c2eca7796" absoluteBounds="0.88999999999999968, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.75 : 1.34699625651042); (2.875 : 1.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodRecipeDBDataContext/DISH/DISH_SEARCH" />
+      <nodes>
+        <classShapeMoniker Id="095a91b6-79e6-452e-9539-45877852be1b" />
+        <classShapeMoniker Id="116d6441-eb50-4f21-9912-d930dfc4c244" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="96e0150f-4b91-418b-ad9f-1470b23690c2" absoluteBounds="7, 3.25, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/FoodRecipeDBDataContext/TYPEDB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f7de342d-8654-4d12-835b-1466bb127066" absoluteBounds="7.0150000000000006, 3.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.9375 : 3.25); (7.9375 : 2.56899251302083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FoodRecipeDBDataContext/TYPEDB/TYPEDB_DISH_TYPE" />
+      <nodes>
+        <classShapeMoniker Id="96e0150f-4b91-418b-ad9f-1470b23690c2" />
+        <classShapeMoniker Id="e40b57f0-87e2-4bd2-82ac-567a281f8d83" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
