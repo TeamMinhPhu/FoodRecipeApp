@@ -23,6 +23,7 @@ namespace FoodRecipeApp
 	{
 		static int _page_number;
 		static int _items_per_page;
+		string[] _data;
 		public FoodPage(int pageNumber, int itemsPerPage)
 		{
 			InitializeComponent();
@@ -32,15 +33,9 @@ namespace FoodRecipeApp
 		BindingList<Dish> _dishes_list;
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
+			_data = GenerateData();
 			_dishes_list = DishDao.GetAll();
 			dishesView.ItemsSource = _dishes_list;
-			var txtPage = new TextBlock();
-			txtPage.FontSize = 30;
-			txtPage.Background = Brushes.White;
-			txtPage.Width = 150;
-			txtPage.Height = 40;
-			txtPage.Text = "PAGE " + (_page_number + 1).ToString();
-			grid.Children.Add(txtPage);
 		}
 
 		class Dish
@@ -82,9 +77,16 @@ namespace FoodRecipeApp
 				return result;
 			}
 		}
-		static string mySource = "Resources/Images/Sora.png";
+		static string mySource = "Resources/Images/Sora.jpg";
 
-		private static string[] GenerateData()
+		public void setdata(int pageNumber, int itemsPerPage)
+		{
+			_page_number = pageNumber;
+			_items_per_page = itemsPerPage;
+			_dishes_list = DishDao.GetAll();
+			dishesView.ItemsSource = _dishes_list;
+		}
+		public static string[] GenerateData()
 		{
 			string[] Name = new string[] {
 				"Dish 1",
@@ -117,9 +119,14 @@ namespace FoodRecipeApp
 				"Dish 28",
 				"Dish 29",
 				"Dish 30",
-
 			};
 			return Name;
+		}
+
+		private void dishes_View_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			var item = (sender as ListView).SelectedIndex;
+			MessageBox.Show("You choose: " + _data[_page_number * _items_per_page + item].ToString());
 		}
 	}
 }

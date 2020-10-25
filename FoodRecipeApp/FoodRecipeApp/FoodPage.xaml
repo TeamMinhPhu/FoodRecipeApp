@@ -9,7 +9,7 @@
       Title="HomePage"
       Loaded="Window_Loaded">
     <Page.Resources>
-        <Style x:Key="FocusVisual">
+        <!--<Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate>
@@ -81,12 +81,12 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>-->
     </Page.Resources>
 
     <Grid Name="grid" Background="#fff">
         <ListView HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                  ItemContainerStyle="{DynamicResource ListMenuStyle}" Name="dishesView">
+                  Name="dishesView" PreviewMouseLeftButtonUp="dishes_View_PreviewMouseLeftButtonUp">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>

@@ -120,6 +120,7 @@ namespace FoodRecipeApp
 			{
                 case 0:
                     menuPage.Content = new HomePage();
+                    
                     break;
                 case 1:
                     menuPage.Content = new SearchingPage();
