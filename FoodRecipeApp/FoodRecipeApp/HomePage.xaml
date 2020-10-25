@@ -5,7 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FoodRecipeApp"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      
+      Width="auto"
+      Height="auto"
       Title="HomePage"
       Loaded="Window_Loaded">
     <Grid Background="White">

@@ -37,14 +37,22 @@ namespace FoodRecipeApp
 
 			_content = new FoodPage(_current_page, itemsPerPage());
 			foodPage.Content = _content;
+			this.SizeChanged += _size;
+		}
+
+		private void _size(object sender, SizeChangedEventArgs e)
+		{
+			_content = new FoodPage(_current_page, itemsPerPage());
+			foodPage.Content = _content;
 		}
 
 		private int itemsPerPage()
 		{
 			int result, row, column;
-			column = (int)(_content.ActualWidth) / 160;
-			row = (int)(_content.ActualHeight) / 150;
+			column = (int)_content.ActualWidth / 150;
+			row = (int)_content.ActualHeight / 140;
 			result =  row * column;
+			//MessageBox.Show(row.ToString() +" " +column.ToString());
 			return result;
 		}
 
@@ -67,7 +75,6 @@ namespace FoodRecipeApp
 	
 			if (_current_page < getTotalPages())
 			{
-
 				_current_page++;
 			}
 			else
