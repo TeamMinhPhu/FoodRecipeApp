@@ -89,15 +89,25 @@
                   Name="dishesView" PreviewMouseLeftButtonUp="dishes_View_PreviewMouseLeftButtonUp">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center"/>
+                    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel MinWidth ="140" MinHeight="150">
-                        <Image Width="120" Height="120" Source="{Binding Source, Converter={StaticResource converter}}"/>
-                        <TextBlock Height="30" Text="{Binding Name}"/>
-                    </StackPanel>
+                    <Grid>
+                        <!--<Label Content="asd" Background="red" Panel.ZIndex="20" Height="20" Width="20"/>-->
+                        <Grid Background="{x:Null}" Cursor="Hand" VerticalAlignment="Top" HorizontalAlignment="Right" Width="32" Height="32" Panel.ZIndex="2">
+                            <Image Source="Resources/Icons/heart_unclicked.png" Stretch="Fill"/>
+                        </Grid>
+                        <Grid Background="{x:Null}" Cursor="Hand" VerticalAlignment="Top" HorizontalAlignment="Right" Width="32" Height="32" Panel.ZIndex="5">
+                            <Image Name="heart" Source="Resources/Icons/heart.png" Visibility="{Binding Fav, Converter={StaticResource BooleanToVisibilityConverter}}" Stretch="None"/>
+                        </Grid>
+                        <Grid PreviewMouseLeftButtonUp="StackPanel_PreviewMouseLeftButtonUp" Cursor="Hand">
+                            <Label HorizontalContentAlignment="Center" Height="30" Content="{Binding Name}" Panel.ZIndex="1"
+                               Background="White" Opacity="0.8" FontSize="18" VerticalAlignment="Bottom"/>
+                            <Image Width="250" Height="170" Stretch="Fill" Source="{Binding Source, Converter={StaticResource converter}}"/>
+                        </Grid>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

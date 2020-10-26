@@ -34,14 +34,18 @@ namespace FoodRecipeApp
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			_data = GenerateData();
+	
 			_dishes_list = DishDao.GetAll();
 			dishesView.ItemsSource = _dishes_list;
 		}
 
-		class Dish
+		class Dish : INotifyPropertyChanged
 		{
 			public string Name { get; set; }
 			public string Source { get; set; }
+			public bool Fav { get; set; }
+
+			public event PropertyChangedEventHandler PropertyChanged;
 		}
 
 		class DishDao
@@ -72,12 +76,12 @@ namespace FoodRecipeApp
 					{
 						break;
 					}
-					result.Add(new Dish() { Name = myname[index], Source = mySource});
+					result.Add(new Dish() { Name = myname[index], Source = mySource, Fav = false});
 				}
 				return result;
 			}
 		}
-		static string mySource = "Resources/Images/Sora.jpg";
+		static string mySource = "Resources/Images/realimage.jpg";
 
 		public void setdata(int pageNumber, int itemsPerPage)
 		{
@@ -123,10 +127,36 @@ namespace FoodRecipeApp
 			return Name;
 		}
 
+		int listindex;
+		private void StackPanel_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			
+
+			//MessageBox.Show(item.ToString());
+			MessageBox.Show("You selected: " + _data[_page_number * _items_per_page + listindex].ToString());
+			_dishes_list = DishDao.GetAll();
+			_dishes_list[_page_number * _items_per_page + listindex].Fav = true;
+			Dispatcher.Invoke(() =>
+			{
+				dishesView.ItemsSource = _dishes_list;
+			});
+
+		}
+
 		private void dishes_View_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			var item = (sender as ListView).SelectedIndex;
-			MessageBox.Show("You choose: " + _data[_page_number * _items_per_page + item].ToString());
+			try
+			{
+				var item = (sender as ListView).SelectedIndex;
+				listindex = item;
+				//MessageBox.Show(item.ToString());
+				//MessageBox.Show("You choose: " + _data[_page_number * _items_per_page].ToString());
+
+			}
+			catch
+			{
+				//do noting
+			}
 		}
 	}
 }

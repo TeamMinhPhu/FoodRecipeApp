@@ -67,8 +67,8 @@ namespace FoodRecipeApp
 		private int itemsPerPage()
 		{
 			int result, row, column;
-			column = (int)_content.ActualWidth / 150;
-			row = (int)_content.ActualHeight / 140;
+			column = (int)_content.ActualWidth / 266;
+			row = (int)_content.ActualHeight / 180;
 			result =  row * column;
 			return result;
 		}
