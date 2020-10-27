@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
+using FoodRecipeApp.Classes;
 
 namespace FoodRecipeApp
 {
@@ -24,85 +25,84 @@ namespace FoodRecipeApp
 	/// </summary>
 	public partial class HomePage : Page
 	{
-		int _current_page = 0;
-		FoodPage _content = new FoodPage(0, 1);
+		int _current_page = 1;
 		private System.Timers.Timer _timer = new System.Timers.Timer(300);
 
-		int _items_per_pages;	
+
 		public HomePage()
 		{
 			InitializeComponent();
-			foodPage.Content = _content;
+		}
+		BindingList<Dish> _dishes_list;
+
+		private void Window_Loaded(object sender, RoutedEventArgs e)
+		{
+			_timer.AutoReset = false;
+			_timer.Elapsed += _timer_Elapsed;
+			this.SizeChanged += _size_changed;
+			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
+			dishesView.ItemsSource = _dishes_list;
 		}
 
+		// Delay time before auto generate items in page
 		private void _timer_Elapsed(object sender, ElapsedEventArgs e)
 		{
 			Dispatcher.Invoke(() =>
 			{
-				_items_per_pages = itemsPerPage();
-				if (_current_page > getTotalPages())
-				{
-					_current_page = getTotalPages();
-				}
-				_content.setdata(_current_page, _items_per_pages);
+				_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
+				dishesView.ItemsSource = _dishes_list;
 			});
 			_timer.Stop();
 		}
 
-		private void Window_Loaded(object sender, RoutedEventArgs e)
-		{
-			_items_per_pages = itemsPerPage();
-			_content.setdata(_current_page, _items_per_pages);
-			_timer.AutoReset = false;
-			_timer.Elapsed += _timer_Elapsed;
-			this.SizeChanged += _size_changed;
-		}
-
+		//stop time when changing size
 		private void _size_changed(object sender, SizeChangedEventArgs e)
 		{
 			_timer.Stop();
 			_timer.Start();
 		}
 
-		private int itemsPerPage()
-		{
-			int result, row, column;
-			column = (int)_content.ActualWidth / 266;
-			row = (int)_content.ActualHeight / 180;
-			result =  row * column;
-			return result;
-		}
-
-		const int _database_length = 30; //test database
-		private int getTotalPages()
-		{
-			int items = _items_per_pages;
-			if (items == 0)
-			{
-				items = 1;
-			}
-			int result;
-			result = _database_length / items;
-			if (result * items == _database_length && result > 0)
-			{
-				result--;
-			}
-			return result;
-		}
-
-
+		//Click "Next"
 		private void DEMONEXT_Click(object sender, RoutedEventArgs e)
 		{
-	
-			if (_current_page < getTotalPages())
+			if (_current_page < DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight))
 			{
 				_current_page++;
 			}
 			else
 			{
-				_current_page = 0;
+				_current_page = 1;
 			}
-			_content.setdata(_current_page, _items_per_pages);
+			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
+			dishesView.ItemsSource = _dishes_list;
+
+		}
+
+		int _selected_index;
+		private void dishesListView_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			try
+			{
+				_selected_index = dishesView.SelectedIndex;
+			}
+			catch
+			{
+				//do nothing
+			}
+		}
+
+		//Click item in page -> show detail (carousel)
+		private void dishView_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			MessageBox.Show(_dishes_list[_selected_index].Name);
+		}
+
+		//Add item to favourite | Remove item from favourite
+		private void favButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+
+			_dishes_list[_selected_index].Fav = !_dishes_list[_selected_index].Fav;
+			dishesView.Items.Refresh();
 		}
 	}
 }
