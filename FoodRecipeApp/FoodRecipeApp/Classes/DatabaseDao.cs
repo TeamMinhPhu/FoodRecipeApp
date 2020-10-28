@@ -10,36 +10,7 @@ using System.IO;
 using FoodRecipeApp.Classes;
 
 namespace FoodRecipeApp.Classes
-{    
-    class FoodTypeDao
-    {        
-        public static List<FoodType> getData()
-        {
-            string Folder = AppDomain.CurrentDomain.BaseDirectory;
-            string Path = $"{Folder}Resources\\DataFiles\\FoodType.txt";
-
-            MyFileManager.CheckFilePath(Path);
-
-            var Data = File.ReadAllLines(Path);
-            var result = new List<FoodType>();
-
-            foreach (var Line in Data)
-            {
-                var Items = Line.Split('|');
-
-                if (Items.Count() != 2)
-                {
-                    continue;
-                }
-                else { /*Do nothing*/ }
-
-                result.Add(new FoodType { typeID = Items[0], typeName = Items[1] });
-            }
-
-            return result;
-        }
-    }
-
+{       
     class DishDao
     {
         public static List<Dish> getData()
@@ -73,11 +44,40 @@ namespace FoodRecipeApp.Classes
                 }
 
                 result.Add(new Dish { dishID = Items[0], 
-                                      dishName = Items[1], 
-                                      dishDescription = Items[2], 
-                                      dishIngredient = Items[3],                                        
-                                      dishVideo = Items[4], 
-                                      dishFavorite = dishFavoriteFromData });
+                                      Name = Items[1], 
+                                      Description = Items[2], 
+                                      Ingredient = Items[3],                                        
+                                      LinkVideo = Items[4], 
+                                      Favorite = dishFavoriteFromData });
+            }
+
+            return result;
+        }
+    }
+
+    class FoodTypeDao
+    {
+        public static List<FoodType> getData()
+        {
+            string Folder = AppDomain.CurrentDomain.BaseDirectory;
+            string Path = $"{Folder}Resources\\DataFiles\\FoodType.txt";
+
+            MyFileManager.CheckFilePath(Path);
+
+            var Data = File.ReadAllLines(Path);
+            var result = new List<FoodType>();
+
+            foreach (var Line in Data)
+            {
+                var Items = Line.Split('|');
+
+                if (Items.Count() != 2)
+                {
+                    continue;
+                }
+                else { /*Do nothing*/ }
+
+                result.Add(new FoodType { typeID = Items[0], typeName = Items[1] });
             }
 
             return result;

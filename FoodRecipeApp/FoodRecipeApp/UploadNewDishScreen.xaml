@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FoodRecipeApp"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="UploadNewDishScreen" Height="720" Width="1080"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded" WindowStyle="None"
@@ -60,22 +61,15 @@
                 <StackPanel Height="680" Width="900">
                     <Border BorderThickness="1" BorderBrush="Black" Height="40" Width="400" Margin="0,20,0,30">
                         <Canvas>
-                            <TextBlock Text="Nhập tên món ăn" Name="dishNameHint" Margin="5" Foreground="Gray" FontSize="20" Panel.ZIndex="1"/>
-                            <TextBox Name="dishName" Padding="10,4,10,5" Height="40" Width="400" FontSize="20" Background="Transparent" BorderThickness="0" Panel.ZIndex="2" GotFocus="DishName_GotFocus" LostFocus="DishName_LostFocus"></TextBox>
+                            <TextBox Name="dishName" Padding="5,0,5,0" Height="40" Width="400" FontSize="20" Background="Transparent" BorderThickness="0" Panel.ZIndex="2" materialDesign:HintAssist.Hint="Tên món ăn"></TextBox>
                         </Canvas>
                     </Border>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Border BorderThickness="1" BorderBrush="Black" Height="200" Width="400" Margin="40,0,20,10" HorizontalAlignment="Left">
-                            <Canvas>
-                                <TextBlock Text="Nhập mô tả món ăn" Name="dishDesHint" Margin="5" Foreground="Gray" FontSize="20" Panel.ZIndex="1"/>
-                                <TextBox x:Name="dishDescription" Padding="5" AcceptsReturn="True" Height="200" Width="400" FontSize="14" Background="Transparent" BorderThickness="0" Panel.ZIndex="2" GotFocus="dishDescription_GotFocus" LostFocus="dishDescription_LostFocus"/>
-                            </Canvas>
+                            <TextBox Name="dishDescription" Padding="5" AcceptsReturn="True" Height="200" Width="400" FontSize="18" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Mô tả món ăn"  materialDesign:HintAssist.IsFloating="True"/>                            
                         </Border>
                         <Border BorderThickness="1" BorderBrush="Black" Height="200" Width="400" Margin="30,0,20,10" HorizontalAlignment="Left">
-                            <Canvas>
-                                <TextBlock Text="Nhập nguyên liệu" Name="dishIngHint" Margin="5" Foreground="Gray" FontSize="20" Panel.ZIndex="1"/>
-                                <TextBox x:Name="dishIngredient" Padding="5" AcceptsReturn="True" Height="200" Width="400" FontSize="14" Background="Transparent" BorderThickness="0" Panel.ZIndex="2" GotFocus="dishIngredient_GotFocus" LostFocus="dishIngredient_LostFocus"/>
-                            </Canvas>
+                            <TextBox Name="dishIngredient" Padding="5" AcceptsReturn="True" Height="200" Width="400" FontSize="18" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Nguyên liệu"  materialDesign:HintAssist.IsFloating="True"/>                            
                         </Border>
                     </StackPanel>
                     <Grid>
@@ -86,29 +80,26 @@
                         <StackPanel Margin="0,20,10,0" Grid.Column="0">
                             <Border BorderThickness="1" BorderBrush="Black" Height="250" Width="400" Margin="30,0,40,10">
                                 <Canvas>
-                                    <Image Height="248" x:Name="dishImage" Source="Resources/Images/cloneimage.png" Stretch="Fill" Width="398" AllowDrop="True" Drop="dishImage_Drop" DragEnter="dishImage_DragEnter"/>
+                                    <Image Height="248" x:Name="dishImage" Source="Resources/Images/whitebackground.png" Stretch="Fill" Width="398" AllowDrop="True" Drop="dishImage_Drop" DragEnter="dishImage_DragEnter"/>
+                                    <TextBlock x:Name="ImageHint" Text="Kéo hình vào đây" FontSize="18" Foreground="Gray" Canvas.Bottom="20" Canvas.Left="135" Canvas.Right="100"/>
                                 </Canvas>
                             </Border>
 
                         </StackPanel>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,20,30,0" HorizontalAlignment="Center">
-                            <StackPanel Width="200">
-                                <Label Content="Chọn loại món ăn:"/>
-                                <ComboBox x:Name="selectTagCB" Width="150">
+                            <StackPanel Width="200">                                
+                                <ComboBox Name="selectTagCB" Width="150" Margin="0,0,0,10" FontSize="14" materialDesign:HintAssist.Hint="Chọn tag món ăn">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding typeName}"/>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-                                <Label Content="Hoặc:"/>
+                                <Label Content="Hoặc:" Margin="0,0,0,10"/>
                                 <Border BorderThickness="0.5" BorderBrush="Black" Height="30" Width="150">
-                                    <Canvas>
-                                        <TextBlock Text="Thêm loại mới" x:Name="newTagHint" Margin="6" Foreground="Gray" FontSize="12" Panel.ZIndex="1"/>
-                                        <TextBox x:Name="newTagTextBox" Height="30" Width="150" Padding="5" FontSize="14" Background="Transparent" BorderThickness="0" Panel.ZIndex="2" GotFocus="newTagTextBox_GotFocus" LostFocus="newTagTextBox_LostFocus"/>
-                                    </Canvas>
+                                    <TextBox Name="newTagTextBox" Height="30" Width="150" Padding="5,0,5,0" FontSize="14" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Thêm loại mới"/>
                                 </Border>
-                                <ListBox x:Name="selectedTagList" Margin="0,20,0,0" Height="120" Width="150">
+                                <ListBox x:Name="selectedTagList" Margin="0,20,0,0" FontSize="14" Height="120" Width="150" BorderThickness="0.5" BorderBrush="Black">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding typeName}"/>
@@ -116,9 +107,9 @@
                                     </ListBox.ItemTemplate>
                                 </ListBox>
                             </StackPanel>
-                            <StackPanel Margin="10,35,10,20">
-                                <Button x:Name="addTagBtn" Content="Thêm" Width="50" Height="25" Background="#ff9100" Foreground="White" Click="addTagBtn_Click"/>
-                                <Button x:Name="removeTagBtn" Content="Xóa" Margin="0,80,0, 0" Width="50" Height="25" Background="#ff9100" Foreground="White" Click="removeTagBtn_Click"/>
+                            <StackPanel Margin="10,45,10,20">
+                                <Button x:Name="addTagBtn" Content="Thêm" Width="70" Height="25" Background="#ff9100" Foreground="White" Click="addTagBtn_Click"/>
+                                <Button x:Name="removeTagBtn" Content="Xóa" Margin="0,80,0, 0" Width="70" Height="25" Background="#ff9100" Foreground="White" Click="removeTagBtn_Click"/>
                             </StackPanel>
                         </StackPanel>
                     </Grid>
@@ -129,10 +120,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="30,0,0,0">
                             <Border BorderThickness="1" BorderBrush="Black" Height="40" Width="400" Margin="10,10,20,10">
-                                <Canvas>
-                                    <TextBlock Text="Nhập link video youtube" Name="dishVideoHint" Margin="5" Foreground="Gray" FontSize="20" Panel.ZIndex="1"/>
-                                    <TextBox x:Name="linkVideo" Height="40" Width="400" FontSize="20" Background="Transparent" BorderThickness="0" Panel.ZIndex="2" GotFocus="linkVideo_GotFocus" LostFocus="linkVideo_LostFocus"/>
-                                </Canvas>
+                                <TextBox Name="linkVideo" Padding="5,0,5,0" Height="40" Width="400" FontSize="20" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Link youtube"/>                                
                             </Border>
                         </StackPanel>
                         <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">

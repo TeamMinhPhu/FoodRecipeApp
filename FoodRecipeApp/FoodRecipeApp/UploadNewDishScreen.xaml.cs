@@ -77,7 +77,7 @@ namespace FoodRecipeApp
                 //Dish Name                
                 if (dishName.Text.Length > 0)
                 {
-                    newDish.dishName = dishName.Text;
+                    newDish.Name = dishName.Text;
                 }
                 else
                 {
@@ -88,7 +88,7 @@ namespace FoodRecipeApp
                 //Dish Description
                 if (dishDescription.Text.Length > 0)
                 {
-                    newDish.dishDescription = dishDescription.Text;
+                    newDish.Description = dishDescription.Text;
                 }
                 else
                 {
@@ -99,19 +99,19 @@ namespace FoodRecipeApp
                 //Dish Ingredient
                 if (dishIngredient.Text.Length > 0)
                 {
-                    newDish.dishIngredient = dishIngredient.Text;
+                    newDish.Ingredient = dishIngredient.Text;
                 }
 
 
                 //Link Video
                 if (linkVideo.Text.Length > 0)
                 {
-                    newDish.dishVideo = linkVideo.Text;
+                    newDish.LinkVideo = linkVideo.Text;
                 }
 
 
                 //Dish Favorite
-                newDish.dishFavorite = false;
+                newDish.Favorite = false;
 
 
                 //Create new dish ID
@@ -159,10 +159,10 @@ namespace FoodRecipeApp
                     var Folder = AppDomain.CurrentDomain.BaseDirectory;
                     var newFilePath = $"{Folder}Resources\\DataFiles\\Dish.txt";
 
-                    newDish.dishDescription = newDish.dishDescription.Replace(System.Environment.NewLine, @"\r\n");
-                    newDish.dishIngredient = newDish.dishIngredient.Replace(System.Environment.NewLine, @"\r\n");
+                    newDish.Description = newDish.Description.Replace(System.Environment.NewLine, @"\r\n");
+                    newDish.Ingredient = newDish.Ingredient.Replace(System.Environment.NewLine, @"\r\n");
 
-                    string newData=$"{newDish.dishID}|{newDish.dishName}|{newDish.dishDescription}|{newDish.dishIngredient}|{newDish.dishVideo}|{newDish.dishFavorite.ToString()}\n";
+                    string newData=$"{newDish.dishID}|{newDish.Name}|{newDish.Description}|{newDish.Ingredient}|{newDish.LinkVideo}|{newDish.Favorite.ToString()}\n";
                     File.AppendAllText(newFilePath, newData);
 
                     //Create list to check new Type
@@ -206,75 +206,6 @@ namespace FoodRecipeApp
             } while (breakProcess);
         }
 
-        private void DishName_GotFocus(object sender, RoutedEventArgs e)
-        {
-            dishNameHint.Visibility = Visibility.Hidden;
-        }
-
-        private void DishName_LostFocus(object sender, RoutedEventArgs e)
-        {
-            dishNameHint.Visibility = Visibility.Visible;
-            if (dishName.Text.Length > 0)
-            {
-                dishNameHint.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void dishDescription_GotFocus(object sender, RoutedEventArgs e)
-        {
-            dishDesHint.Visibility = Visibility.Hidden;
-        }
-
-        private void dishDescription_LostFocus(object sender, RoutedEventArgs e)
-        {
-            dishDesHint.Visibility = Visibility.Visible;
-            if (dishDescription.Text.Length > 0)
-            {
-                dishDesHint.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void dishIngredient_GotFocus(object sender, RoutedEventArgs e)
-        {
-            dishIngHint.Visibility = Visibility.Hidden;
-        }
-
-        private void dishIngredient_LostFocus(object sender, RoutedEventArgs e)
-        {
-            dishIngHint.Visibility = Visibility.Visible;
-            if (dishIngredient.Text.Length > 0)
-            {
-                dishIngHint.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void newTagTextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            newTagHint.Visibility = Visibility.Hidden;
-        }
-
-        private void newTagTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            newTagHint.Visibility = Visibility.Visible;
-            if (newTagTextBox.Text.Length > 0)
-            {
-                newTagHint.Visibility = Visibility.Hidden;
-            }
-        }
-
-        private void linkVideo_GotFocus(object sender, RoutedEventArgs e)
-        {
-            dishVideoHint.Visibility = Visibility.Hidden;
-        }
-
-        private void linkVideo_LostFocus(object sender, RoutedEventArgs e)
-        {
-            dishVideoHint.Visibility = Visibility.Visible;
-            if (linkVideo.Text.Length > 0)
-            {
-                dishVideoHint.Visibility = Visibility.Hidden;
-            }
-        }
 
         BindingList<FoodType> _MyTypeDB;
         BindingList<FoodType> _NewListType;
@@ -297,7 +228,10 @@ namespace FoodRecipeApp
             selectTagCB.ItemsSource = _MyTypeDB;           
 
             _NewListType = new BindingList<FoodType>();
-            selectedTagList.ItemsSource = _NewListType;            
+            selectedTagList.ItemsSource = _NewListType;
+
+            List<Dish> myDish = DishDao.getData();
+            Debug.WriteLine(myDish[0].Description);
         }
 
         public static bool IsImageFile(string fileName)
@@ -350,6 +284,7 @@ namespace FoodRecipeApp
                     {
                         var Bitmap = new BitmapImage(new Uri(_ImageLink, UriKind.Absolute));
                         dishImage.Source = Bitmap;
+                        ImageHint.Visibility = Visibility.Hidden;
                     }
                     else
                     {
