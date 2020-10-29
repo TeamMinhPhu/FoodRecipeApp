@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
@@ -26,20 +27,23 @@ namespace FoodRecipeApp.Classes
 		public static BindingList<Dish> GetAll(double width, double height, int currentPage)
 		{
 			int itemsPerPages = GetItemsPerPage(width, height);
-			//IEnumerable<Dish> dataShown = _data.Skip((currentPage - 1) * itemsPerPages).Take(itemsPerPages);
-			//BindingList<Dish> result = new BindingList<Dish>(dataShown.ToList());
-			BindingList<Dish> result = new BindingList<Dish>();
-			int beginIndex, endIndex;
-			beginIndex = (currentPage - 1) * itemsPerPages;
-			endIndex = (currentPage - 1) * itemsPerPages + itemsPerPages;
-			if (endIndex > _data.Count)
-			{
-				endIndex = _data.Count;
-			}
-			for (int i = beginIndex; i < endIndex; i++)
-			{
-				result.Add(_data[i]);
-			}
+			//var data = _data.OrderByDescending(c => c.Name).ToList();
+
+			//BindingList<Dish> result = new BindingList<Dish>();
+			//int beginIndex, endIndex;
+			//beginIndex = (currentPage - 1) * itemsPerPages;
+			//endIndex = (currentPage - 1) * itemsPerPages + itemsPerPages;
+			//if (endIndex > _data.Count)
+			//{
+			//	endIndex = _data.Count;
+			//}
+			//for (int i = beginIndex; i < endIndex; i++)
+			//{
+			//	result.Add(_data[i]);
+			//}
+			var data = _data.Skip((currentPage - 1) * itemsPerPages)
+				.Take(itemsPerPages).ToList();
+			BindingList<Dish> result = new BindingList<Dish>(data);
 			return result;
 		}
 
@@ -72,10 +76,9 @@ namespace FoodRecipeApp.Classes
 			var filepath = $"{folder}data.txt";
 			const string comma =",";
 			var separator = new string[] { comma };
+			var fileLines = File.ReadAllLines(filepath).ToList();
 
-			var fileLines = File.ReadAllLines(filepath).Skip((0)).Take(30).ToList();
 			BindingList<Dish> result = new BindingList<Dish>();
-
 			foreach (string line in fileLines)
 			{
 				string[] temp = line.Split(separator, StringSplitOptions.None);
@@ -89,7 +92,6 @@ namespace FoodRecipeApp.Classes
 					dish.Description = temp[4].Trim();
 					result.Add(dish);
 				}
-				
 			}
 			return result;
 		}
