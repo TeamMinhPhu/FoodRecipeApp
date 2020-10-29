@@ -76,11 +76,7 @@ namespace FoodRecipeApp
         private void turnOffButton_Click(object sender, RoutedEventArgs e)
         {
             var config = ConfigurationManager.OpenExeConfiguration(
-<<<<<<< HEAD
             ConfigurationUserLevel.None);
-=======
-                ConfigurationUserLevel.None);
->>>>>>> minh
             config.AppSettings.Settings["ShowSplashScreen"].Value = "false";
             config.Save(ConfigurationSaveMode.Minimal);
             var screen = new MainWindow();

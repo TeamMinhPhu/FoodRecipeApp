@@ -1,2 +1,0 @@
-DISH1|T1
-DISH1|T2
