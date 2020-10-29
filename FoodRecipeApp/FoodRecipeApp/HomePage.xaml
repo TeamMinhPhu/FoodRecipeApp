@@ -15,7 +15,7 @@
 
         </Frame>-->
 
-        <Button DockPanel.Dock="Bottom" Width="150" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="DEMONEXT_Click">
+        <Button DockPanel.Dock="Bottom" Width="150" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="nextButton_click">
             DEMO NEXT
         </Button>
 

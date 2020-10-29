@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("q.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("book1.txt")]
 
 

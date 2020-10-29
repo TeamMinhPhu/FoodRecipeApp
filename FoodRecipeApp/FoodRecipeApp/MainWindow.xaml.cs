@@ -86,24 +86,24 @@ namespace FoodRecipeApp
         private BindingList<Menu> _list_menu;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            string Folder = AppDomain.CurrentDomain.BaseDirectory;
+
+            //Check file path
+            string newFolder = $"{Folder}Resources\\Data";
+            MyFileManager.CheckDictionary(newFolder);
+
+            newFolder = $"{Folder}Resources\\Images";
+            MyFileManager.CheckDictionary(newFolder);
+
+            newFolder = $"{Folder}Resources\\Icons";
+            MyFileManager.CheckDictionary(newFolder);
+
             loadConfig();
 
             this.Background = Brushes.Bisque;
             menuPage.Content = new HomePage();
             _list_menu = MenuDao.GetAll();
-            menuList.ItemsSource = _list_menu;
-            SQL_DB.openConnection();
-
-			/*SQL_DB.sql = "SELECT [ID], [Data], [Image] FROM RecipeInfo";
-			SQL_DB.cmd.CommandType = CommandType.Text;
-			SQL_DB.cmd.CommandText = SQL_DB.sql;
-			SQL_DB.da = new SqlDataAdapter(SQL_DB.cmd);
-			SQL_DB.dt = new DataTable();
-			SQL_DB.da.Fill(SQL_DB.dt);
-
-			SQL_Demo.ItemsSource = SQL_DB.dt.DefaultView;*/
-
-			SQL_DB.closeConnection();
+            menuList.ItemsSource = _list_menu;           
         }
 
         //Close button (exit window)
@@ -126,6 +126,7 @@ namespace FoodRecipeApp
                     menuPage.Content = new SearchingPage();
                     break;
                 case 2:
+                    //
                     break;
                 case 3:
                     break;

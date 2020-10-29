@@ -61,9 +61,11 @@ namespace FoodRecipeApp.Classes
 		public static BindingList<Dish> ReadData()
 		{
 			var folder = AppDomain.CurrentDomain.BaseDirectory;
-			var filepath = $"{folder}data.txt";
+			var filepath = $"{folder}Resources\\Data\\Dish.txt";
 			const string comma =",";
 			var separator = new string[] { comma };
+
+            MyFileManager.CheckFilePath(filepath);
 			var fileLines = File.ReadAllLines(filepath).ToList();
 
 			BindingList<Dish> result = new BindingList<Dish>();
@@ -80,8 +82,9 @@ namespace FoodRecipeApp.Classes
 					dish.Description = temp[2].Trim();
 					dish.Ingredient = temp[3].Trim();
 					dish.LinkVideo = temp[4];
-					dish.Source = $"Resources/Images/{dish.Id}_Main.jpg"; //+ temp[2].Trim();
-					dish.Fav = bool.Parse(temp[5].Trim());
+                    //dish.Source = $"Resources/Images/{dish.Id}_Main.jpg"; //+ temp[2].Trim();
+                    dish.Source = "Resources/Images/realimage.jpg";
+                    dish.Fav = bool.Parse(temp[5].Trim());
 					result.Add(dish);
 				}
 				else

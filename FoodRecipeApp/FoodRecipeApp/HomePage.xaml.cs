@@ -37,6 +37,7 @@ namespace FoodRecipeApp
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
+
 			_timer.AutoReset = false;
 			_timer.Elapsed += _timer_Elapsed;
 			this.SizeChanged += _size_changed;
@@ -63,7 +64,7 @@ namespace FoodRecipeApp
 		}
 
 		//Click "Next"
-		private void DEMONEXT_Click(object sender, RoutedEventArgs e)
+		private void nextButton_click(object sender, RoutedEventArgs e)
 		{
 			if (_current_page < DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight))
 			{
@@ -95,6 +96,8 @@ namespace FoodRecipeApp
 		private void dishView_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			MessageBox.Show(_dishes_list[_selected_index].Name);
+			//detail
+			//window
 		}
 
 		//Add item to favourite | Remove item from favourite
@@ -103,6 +106,7 @@ namespace FoodRecipeApp
 
 			_dishes_list[_selected_index].Fav = !_dishes_list[_selected_index].Fav;
 			dishesView.Items.Refresh();
+			//Write
 		}
 	}
 }
