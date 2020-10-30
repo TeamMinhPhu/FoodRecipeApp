@@ -13,21 +13,30 @@ namespace FoodRecipeApp.Classes
 {
 	class DishDao
 	{
+        // Store data
 		static BindingList<Dish> _data = ReadData();
 
 		public int TotalItems { get; set; }
 
-		/// <summary>
-		/// Get data of current page
-		/// </summary>
-		/// <param name="width"></param>
-		/// <param name="height"></param>
-		/// <param name="currentPage"></param>
-		/// <returns>return BindingList<Dish></returns>
-		public static BindingList<Dish> GetAll(double width, double height, int currentPage)
+        /// <summary>
+        /// get all data
+        /// </summary>
+        /// <returns>BindingList<Dish></returns>
+        public static BindingList<Dish> GetAll()
+		{
+            return _data;
+		}
+
+        /// <summary>
+        /// Get data of current page
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="currentPage"></param>
+        /// <returns>return BindingList<Dish></returns>
+        public static BindingList<Dish> GetAll(double width, double height, int currentPage)
 		{
 			int itemsPerPages = GetItemsPerPage(width, height);
-
 			var data = _data.Skip((currentPage - 1) * itemsPerPages)
 				.Take(itemsPerPages).ToList();
 
@@ -35,10 +44,20 @@ namespace FoodRecipeApp.Classes
 			return result;
 		}
 
+        /// <summary>
+        /// get the amount of items
+        /// </summary>
+        /// <returns>int</returns>
 		public static int GetTotalItems() {
 			return _data.Count;
 		}
 
+        /// <summary>
+        /// Calculate the amount of items can be displayed on one page
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns>int</returns>
 		public static int GetItemsPerPage(double width, double height)
 		{
 			int result, row, column;
@@ -48,6 +67,12 @@ namespace FoodRecipeApp.Classes
 			return result;
 		}
 
+        /// <summary>
+        /// Calculate the total pages
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns>int</returns>
 		public static int GetTotalPages(double width, double height)
 		{
 			int result;
@@ -57,12 +82,33 @@ namespace FoodRecipeApp.Classes
 			return result;
 		}
 
+        /// <summary>
+        /// Write data to file
+        /// </summary>
+        public static void UpdateData()
+		{
+            List<string> fileLines = new List<string>();
+            foreach (var item in _data)
+			{
+                string line = item.Id + "|" + item.Name + "|" + item.Description +
+                    "|" + item.Ingredient + "|" + item.LinkVideo + "|" + item.Fav;
+                fileLines.Add(line);
+            }
 
-		public static BindingList<Dish> ReadData()
+            var folder = AppDomain.CurrentDomain.BaseDirectory;
+            var filepath = $"{folder}Resources\\Data\\Dish.txt";
+            File.WriteAllLines(filepath, fileLines);
+        }
+
+        /// <summary>
+        /// Read data from file
+        /// </summary>
+        /// <returns>BindingList</returns>
+		private static BindingList<Dish> ReadData()
 		{
 			var folder = AppDomain.CurrentDomain.BaseDirectory;
 			var filepath = $"{folder}Resources\\Data\\Dish.txt";
-			const string comma =",";
+			const string comma ="|";
 			var separator = new string[] { comma };
 
             MyFileManager.CheckFilePath(filepath);
@@ -92,6 +138,7 @@ namespace FoodRecipeApp.Classes
 					//do nothing
 				}
 			}
+            
 			return result;
 		}
     }

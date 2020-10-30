@@ -15,9 +15,68 @@
 
         </Frame>-->
 
-        <Button DockPanel.Dock="Bottom" Width="150" Height="50" HorizontalAlignment="Center" VerticalAlignment="Bottom" Click="nextButton_click">
-            DEMO NEXT
-        </Button>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Height="60" HorizontalAlignment="Center">
+            <Button  Width="40" Height="40" Background="{x:Null}" Click="previousButton_Click" Padding="0" BorderThickness="0">
+                <Grid  RenderTransformOrigin="0.5,0.5" Width="30" Height="30" HorizontalAlignment="Center" Margin="0,-1,0,0.6" Background="Transparent">
+                    <!--draw arrow-->
+                    <Rectangle Width="20" Height="5"  Margin="7,12,3,0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Rectangle.RenderTransform>
+                            <RotateTransform Angle="45">
+                            </RotateTransform>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Rectangle Width="20" Height="5" Margin="8,5,2,0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-45"/>
+                                <TranslateTransform X="-4.14213562373095" Y="10"/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                </Grid>
+            </Button>
+
+            <ComboBox Name="paging" Height="40" SelectedIndex="0" SelectionChanged="paging_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock FontSize="20" Text="{Binding PageSelection}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+                <!--<ComboBoxItem FontSize="20">
+                    <TextBlock >10</TextBlock>
+                </ComboBoxItem>-->
+            </ComboBox>
+            <TextBlock Height="30" FontSize="20" Name="viewTotalPages"></TextBlock>
+
+            <Button  Width="40" Height="40" Background="{x:Null}" Click="nextButton_Click" Padding="0" BorderThickness="0">
+                <Grid  RenderTransformOrigin="0.5,0.5" Width="30" Height="30" HorizontalAlignment="Center" Background="Transparent">
+                    <!--draw arrow-->
+                    <Rectangle Width="20" Height="5"  Margin="7,12,3,0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Rectangle.RenderTransform>
+                            <RotateTransform Angle="45">
+                            </RotateTransform>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Rectangle Width="20" Height="5" Margin="8,5,2,0" Fill="#FF515151" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-45"/>
+                                <TranslateTransform X="-4.14213562373095" Y="10"/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
+                    <Grid.RenderTransform>
+                        <ScaleTransform ScaleX="-1">
+                        </ScaleTransform>
+                    </Grid.RenderTransform>
+                </Grid>
+            </Button>
+        </StackPanel>
+
 
         <Grid>
             <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">

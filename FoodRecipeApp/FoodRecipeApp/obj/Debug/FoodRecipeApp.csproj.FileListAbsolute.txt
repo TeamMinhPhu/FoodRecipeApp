@@ -81,3 +81,6 @@ C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\dat
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\UploadNewDishScreen.g.cs
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\UploadNewDishScreen.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Data\Dish.txt
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Data\Dish.txt
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\System.Drawing.Common.dll
+C:\Users\Admin\Source\Repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\UploadNewDishScreen.baml

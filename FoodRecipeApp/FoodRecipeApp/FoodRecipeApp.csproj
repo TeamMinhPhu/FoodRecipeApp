@@ -74,6 +74,7 @@
     <Compile Include="Classes\Dish.cs" />
     <Compile Include="Classes\DishDao.cs" />
     <Compile Include="Classes\MyFileManager.cs" />
+    <Compile Include="Classes\Paging.cs" />
     <Compile Include="SearchingPage.xaml.cs">
       <DependentUpon>SearchingPage.xaml</DependentUpon>
     </Compile>

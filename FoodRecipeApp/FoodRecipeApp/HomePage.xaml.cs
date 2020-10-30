@@ -33,7 +33,10 @@ namespace FoodRecipeApp
 		{
 			InitializeComponent();
 		}
+
 		BindingList<Dish> _dishes_list;
+		BindingList<Paging> _page = new BindingList<Paging>();
+
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
@@ -43,6 +46,13 @@ namespace FoodRecipeApp
 			this.SizeChanged += _size_changed;
 			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
 			dishesView.ItemsSource = _dishes_list;
+			paging.Items.Refresh();
+
+			int totalPages = DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight);
+			viewTotalPages.Text = " / " + totalPages.ToString();
+			_page = Paging.UpdatePage(totalPages);
+			paging.ItemsSource = _page;
+			paging.Items.Refresh();
 		}
 
 		// Delay time before auto generate items in page
@@ -50,8 +60,15 @@ namespace FoodRecipeApp
 		{
 			Dispatcher.Invoke(() =>
 			{
+				//update view
 				_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
 				dishesView.ItemsSource = _dishes_list;
+
+				//update paging
+				int totalPages = DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight);
+				_page = Paging.UpdatePage(totalPages);
+				paging.ItemsSource = _page;
+				viewTotalPages.Text = " / " + totalPages.ToString();
 			});
 			_timer.Stop();
 		}
@@ -63,23 +80,9 @@ namespace FoodRecipeApp
 			_timer.Start();
 		}
 
-		//Click "Next"
-		private void nextButton_click(object sender, RoutedEventArgs e)
-		{
-			if (_current_page < DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight))
-			{
-				_current_page++;
-			}
-			else
-			{
-				_current_page = 1;
-			}
-			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
-			dishesView.ItemsSource = _dishes_list;
-
-		}
 
 		int _selected_index;
+		//ListView handle (get selected item index)
 		private void dishesListView_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			try
@@ -103,10 +106,51 @@ namespace FoodRecipeApp
 		//Add item to favourite | Remove item from favourite
 		private void favButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
-
 			_dishes_list[_selected_index].Fav = !_dishes_list[_selected_index].Fav;
 			dishesView.Items.Refresh();
-			//Write
+			DishDao.UpdateData(); //write to file
+		}
+
+		//next button handle
+		private void nextButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (_current_page < DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight))
+			{
+				_current_page++;
+			}
+			else
+			{
+				_current_page = 1;
+			}
+			paging.SelectedIndex = _current_page - 1; //update selected page
+			// update data for view
+			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
+			dishesView.ItemsSource = _dishes_list;
+		}
+
+		// prev button handle
+		private void previousButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (_current_page > 1)
+			{
+				_current_page--;
+			}
+			else
+			{
+				_current_page = DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight);
+			}
+			paging.SelectedIndex = _current_page - 1;  //update selected page
+			// update data for view
+			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
+			dishesView.ItemsSource = _dishes_list;
+		}
+
+		// select page (combobox handle)
+		private void paging_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			_current_page = paging.SelectedIndex + 1;
+			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
+			dishesView.ItemsSource = _dishes_list;
 		}
 	}
 }

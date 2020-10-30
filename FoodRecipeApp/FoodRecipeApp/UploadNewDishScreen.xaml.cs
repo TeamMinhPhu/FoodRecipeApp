@@ -58,7 +58,7 @@ namespace FoodRecipeApp
         {
             //New element
             Dish newDish = new Dish();
-            List<Dish> DishDB = DishDao.ReadData().ToList();
+            List<Dish> DishDB = DishDao.GetAll().ToList();
 
             //Get database
             //var db = getConnectionToDB();
@@ -217,7 +217,7 @@ namespace FoodRecipeApp
             _NewListType = new BindingList<FoodType>();
             selectedTagList.ItemsSource = _NewListType;
 
-            List<Dish> myDish = DishDao.ReadData().ToList();
+            List<Dish> myDish = DishDao.GetAll().ToList();
             Debug.WriteLine(myDish[0].Description);
         }
 
