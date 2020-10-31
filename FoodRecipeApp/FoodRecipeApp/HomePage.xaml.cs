@@ -27,15 +27,16 @@ namespace FoodRecipeApp
 	{
 		int _current_page = 1;
 		private System.Timers.Timer _timer = new System.Timers.Timer(300);
-
+		BindingList<Dish> _dishes_list;
+		BindingList<Paging> _page = new BindingList<Paging>();
+		bool _change_current_page = true;
 
 		public HomePage()
 		{
 			InitializeComponent();
 		}
 
-		BindingList<Dish> _dishes_list;
-		BindingList<Paging> _page = new BindingList<Paging>();
+
 
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -44,14 +45,16 @@ namespace FoodRecipeApp
 			_timer.AutoReset = false;
 			_timer.Elapsed += _timer_Elapsed;
 			this.SizeChanged += _size_changed;
+			// Get view for page content (dishes)
 			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
 			dishesView.ItemsSource = _dishes_list;
-			paging.Items.Refresh();
 
+			// Get view for page navigator
 			int totalPages = DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight);
 			viewTotalPages.Text = " / " + totalPages.ToString();
 			_page = Paging.UpdatePage(totalPages);
 			paging.ItemsSource = _page;
+			paging.SelectedIndex = _current_page - 1;
 			paging.Items.Refresh();
 		}
 
@@ -60,14 +63,26 @@ namespace FoodRecipeApp
 		{
 			Dispatcher.Invoke(() =>
 			{
+				int totalPages = DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight);
+				if (_current_page > totalPages) {
+					_current_page = totalPages;
+				}
+				else
+				{
+					//do nothing
+				}
 				//update view
 				_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
 				dishesView.ItemsSource = _dishes_list;
 
 				//update paging
-				int totalPages = DishDao.GetTotalPages(this.ActualWidth, this.ActualHeight);
+				_change_current_page = false; 
 				_page = Paging.UpdatePage(totalPages);
 				paging.ItemsSource = _page;
+				paging.SelectedIndex = _current_page - 1;  //update selected page
+				paging.Items.Refresh();
+				_change_current_page = true;
+
 				viewTotalPages.Text = " / " + totalPages.ToString();
 			});
 			_timer.Stop();
@@ -148,9 +163,12 @@ namespace FoodRecipeApp
 		// select page (combobox handle)
 		private void paging_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			_current_page = paging.SelectedIndex + 1;
-			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
-			dishesView.ItemsSource = _dishes_list;
+			if (_change_current_page == true)
+			{
+				_current_page = paging.SelectedIndex + 1;
+				_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page);
+				dishesView.ItemsSource = _dishes_list;
+			}
 		}
 	}
 }

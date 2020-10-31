@@ -38,7 +38,7 @@
                 </Grid>
             </Button>
 
-            <ComboBox Name="paging" Height="40" SelectedIndex="0" SelectionChanged="paging_SelectionChanged">
+            <ComboBox Name="paging" Height="40" SelectionChanged="paging_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="20" Text="{Binding PageSelection}"></TextBlock>
