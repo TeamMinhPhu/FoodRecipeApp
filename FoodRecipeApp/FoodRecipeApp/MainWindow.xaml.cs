@@ -50,7 +50,7 @@ namespace FoodRecipeApp
                 {
                     new Menu() { Content = "Home", Icon = "Resources/Icons/home.png" },
                     new Menu() { Content = "Search", Icon = "Resources/Icons/search.png" },
-                    new Menu() { Content = "History", Icon = "Resources/Icons/history.png" },
+                    new Menu() { Content = "New Dish", Icon = "Resources/Icons/plus.png" },
                     new Menu() { Content = "Settings", Icon = "Resources/Icons/settings.png" },
                 };
                 return list;
@@ -126,7 +126,9 @@ namespace FoodRecipeApp
                     menuPage.Content = new SearchingPage();
                     break;
                 case 2:
-                    //
+                    var newScreen = new UploadNewDishScreen();
+                    newScreen.Show();
+                    this.Close();
                     break;
                 case 3:
                     break;

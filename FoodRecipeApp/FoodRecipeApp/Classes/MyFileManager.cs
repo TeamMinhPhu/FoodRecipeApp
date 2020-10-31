@@ -25,6 +25,20 @@ namespace FoodRecipeApp.Classes
             System.IO.Directory.CreateDirectory(folder);
         }
 
+        
+        /// newcode        
+        public static bool IsDictionaryExisted(string folder)
+        {
+            bool result = false;
+            if (System.IO.Directory.Exists(folder))
+            {
+                result = true;
+            } 
+            else {/*do nothing*/}
+            return result;
+        }
+        // ////
+
         public static void CheckExistedFile(string filepath)
         {
             if (File.Exists(filepath))

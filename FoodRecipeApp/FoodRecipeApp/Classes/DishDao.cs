@@ -120,7 +120,7 @@ namespace FoodRecipeApp.Classes
 			foreach (string line in fileLines)
 			{
 				string[] temp = line.Split(separator, StringSplitOptions.None);
-				if (temp.Length == 6)
+				if (temp.Length == 7)
 				{
 					Dish dish = new Dish();
 					dish.Id = temp[0].Trim();
@@ -128,17 +128,16 @@ namespace FoodRecipeApp.Classes
 					dish.Description = temp[2].Trim();
 					dish.Ingredient = temp[3].Trim();
 					dish.LinkVideo = temp[4];
-                    //dish.Source = $"Resources/Images/{dish.Id}_Main.jpg"; //+ temp[2].Trim();
-                    dish.Source = "Resources/Images/realimage.jpg";
+                    dish.Source = $"Resources/Images/{dish.Id}.jpg";
                     dish.Fav = bool.Parse(temp[5].Trim());
-					result.Add(dish);
+                    dish.Date = temp[6];
+                    result.Add(dish);
 				}
 				else
 				{
 					//do nothing
 				}
 			}
-            
 			return result;
 		}
     }
@@ -148,7 +147,7 @@ namespace FoodRecipeApp.Classes
         public static List<FoodType> getData()
         {
             string Folder = AppDomain.CurrentDomain.BaseDirectory;
-            string Path = $"{Folder}Resources\\DataFiles\\FoodType.txt";
+            string Path = $"{Folder}Resources\\Data\\FoodType.txt";
 
             MyFileManager.CheckFilePath(Path);
 
@@ -177,7 +176,7 @@ namespace FoodRecipeApp.Classes
         public static List<Dish_Type> getData()
         {
             string Folder = AppDomain.CurrentDomain.BaseDirectory;
-            string Path = $"{Folder}Resources\\DataFiles\\Dish_Type.txt";
+            string Path = $"{Folder}Resources\\Data\\Dish_Type.txt";
 
             MyFileManager.CheckFilePath(Path);
 
@@ -203,10 +202,29 @@ namespace FoodRecipeApp.Classes
 
     class RecipeDetailDao
     {
+        public static List<RecipeDetail> getData(string Id, int Step)
+        {
+            var StepDB = getData();
+            var result = StepDB.Where(x => x.dishID == Id && x.step == Step).ToList();
+            return result;
+        }
+
+        public static List<StepImage> getStepImageData(string Id, int Step, int Quantity)
+        {
+            var result = new List<StepImage>();
+
+            for (int i = 1; i <= Quantity; i++)
+            {
+                result.Add(new StepImage() { ImageLink = $"Resources/Images/{Id}_{Step}_{i}.jpg" });
+            }
+
+            return result;
+        }
+
         public static List<RecipeDetail> getData()
         {
             string Folder = AppDomain.CurrentDomain.BaseDirectory;
-            string Path = $"{Folder}Resources\\DataFiles\\RecipeDetail.txt";
+            string Path = $"{Folder}Resources\\Data\\RecipeDetail.txt";
 
             MyFileManager.CheckFilePath(Path);
 
@@ -217,25 +235,27 @@ namespace FoodRecipeApp.Classes
             {
                 var Items = Line.Split('|');
 
-                if (Items.Count() != 3)
+                if (Items.Count() != 4)
                 {
                     continue;
                 }
                 else { /*Do nothing*/ }
 
-                result.Add(new RecipeDetail { dishID = Items[0], step = int.Parse(Items[1]), stepDetail = Items[2] });
+                result.Add(new RecipeDetail { dishID = Items[0], step = int.Parse(Items[1]), stepDetail = Items[2], quantityOfImage = int.Parse(Items[3]) });
             }
 
             return result;
         }
     }
+    ////////////
+
 
     class SearchDao
     {
         public static List<Search> getData()
         {
             string Folder = AppDomain.CurrentDomain.BaseDirectory;
-            string Path = $"{Folder}Resources\\DataFiles\\Search.txt";
+            string Path = $"{Folder}Resources\\Data\\Search.txt";
 
             MyFileManager.CheckFilePath(Path);
 

@@ -16,6 +16,7 @@ namespace FoodRecipeApp.Classes
         public string Ingredient { get; set; }
         public bool Fav { get; set; }
         public string LinkVideo { get; set; }
+        public string Date { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
@@ -36,16 +37,28 @@ namespace FoodRecipeApp.Classes
         public event PropertyChangedEventHandler PropertyChanged;
     }
 
+    /// <summary>
+    /// NewCode
+    /// </summary>
     class RecipeDetail : INotifyPropertyChanged
     {
         public string dishID { get; set; }
         public int step { get; set; }
         public string stepDetail { get; set; }
+        public int quantityOfImage { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
     }
+    
+    class StepImage : INotifyPropertyChanged
+    {
+        public string ImageLink { get; set; }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+    }
+    //////////
     class Search : INotifyPropertyChanged
     {
         public string trueName { get; set; }
