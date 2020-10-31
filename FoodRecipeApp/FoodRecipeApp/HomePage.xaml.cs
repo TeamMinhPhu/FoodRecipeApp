@@ -120,7 +120,7 @@ namespace FoodRecipeApp
 		{
 			_dishes_list[_selected_index].Fav = !_dishes_list[_selected_index].Fav;
 			dishesView.Items.Refresh();
-			DishDao.UpdateData(); //write to file
+			DishDao.WriteUpdatedData(); //write to file
 		}
 
 		//next button handle

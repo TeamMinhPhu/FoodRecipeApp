@@ -535,10 +535,16 @@ namespace FoodRecipeApp
                 newDish.Description = newDish.Description.Replace(System.Environment.NewLine, @"\r\n");
                 newDish.Ingredient = newDish.Ingredient.Replace(System.Environment.NewLine, @"\r\n");
 
-                string newData = $"{newDish.Id}|{newDish.Name}|{newDish.Description}|{newDish.Ingredient}" +
-                    $"|{newDish.LinkVideo}|{newDish.Fav.ToString()}|{newDish.Date}\n";
-                myFilePath = $"{DataFolder}Dish.txt";
-                File.AppendAllText(myFilePath, newData);
+                DishDao.Append(newDish);
+
+                /////////////
+                //string newData = $"{newDish.Id}|{newDish.Name}|{newDish.Description}|{newDish.Ingredient}" +
+                //    $"|{newDish.LinkVideo}|{newDish.Fav.ToString()}|{newDish.Date}\n";
+                //myFilePath = $"{DataFolder}Dish.txt";
+                //File.AppendAllText(myFilePath, newData);
+                //////////////////////
+
+
 
                 //Save dish_type
                 //Create list to check new Type

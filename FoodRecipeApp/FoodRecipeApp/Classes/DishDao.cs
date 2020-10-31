@@ -85,7 +85,7 @@ namespace FoodRecipeApp.Classes
         /// <summary>
         /// Write data to file
         /// </summary>
-        public static void UpdateData()
+        public static void WriteUpdatedData()
 		{
             List<string> fileLines = new List<string>();
             foreach (var item in _data)
@@ -99,6 +99,18 @@ namespace FoodRecipeApp.Classes
             var filepath = $"{folder}Resources\\Data\\Dish.txt";
             File.WriteAllLines(filepath, fileLines);
         }
+
+        public static void Append(Dish newDish)
+		{
+            _data.Add(newDish);
+            string line = newDish.Id + "|" + newDish.Name + "|" + newDish.Description +
+                "|" + newDish.Ingredient + "|" + newDish.LinkVideo + "|" + newDish.Fav;
+
+
+            var folder = AppDomain.CurrentDomain.BaseDirectory;
+            var filepath = $"{folder}Resources\\Data\\Dish.txt";
+            File.AppendAllText(filepath, line + Environment.NewLine);
+		}
 
         /// <summary>
         /// Read data from file
