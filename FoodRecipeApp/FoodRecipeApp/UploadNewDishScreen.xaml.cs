@@ -19,7 +19,7 @@ using FoodRecipeApp.Classes;
 using System.Runtime.Remoting.Channels;
 using System.IO;
 
-namespace FoodRecipeApp
+namespace FoodRecipeApp  
 {
     /// <summary>
     /// Interaction logic for UploadNewDishScreen.xaml
