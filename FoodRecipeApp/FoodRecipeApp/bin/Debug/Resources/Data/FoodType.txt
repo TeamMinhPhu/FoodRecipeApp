@@ -1,0 +1,5 @@
+T1|Heo
+T2|Ăn vặt
+T3|Món chiên
+T4|Xúc xích
+T5|Bánh
