@@ -33,14 +33,45 @@ namespace FoodRecipeApp.Classes
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <param name="currentPage"></param>
+        /// <param name="filter">0: name asc, 1: name desc, 2: date_asc 3: date desc</param>
+        /// <param name="favourite">only favorite</param>
         /// <returns>return BindingList<Dish></returns>
-        public static BindingList<Dish> GetAll(double width, double height, int currentPage)
+        public static BindingList<Dish> GetAll(double width, double height, int currentPage, int filter, bool favourite)
 		{
 			int itemsPerPages = GetItemsPerPage(width, height);
-			var data = _data.Skip((currentPage - 1) * itemsPerPages)
+
+            List<Dish> filteredData = new List<Dish>();
+            if (favourite == true)
+			{
+                filteredData = _data.Where(c => c.Fav == true).ToList();
+            }
+			else
+			{
+                filteredData = _data.ToList();
+            }
+       
+            switch (filter)
+			{
+                case 0:
+                    filteredData = filteredData.OrderBy(c => c.Name).ToList();
+                    break;
+                case 1:
+                    filteredData = filteredData.OrderByDescending(c => c.Name).ToList();
+                    break;
+                case 2:
+                    filteredData = filteredData.OrderBy(c => c.Date).ToList();
+                    break;
+                case 3:
+                    filteredData = filteredData.OrderByDescending(c => c.Date).ToList();
+                    break;
+                default:
+                    break;
+            }
+
+			var viewData = filteredData.Skip((currentPage - 1) * itemsPerPages)
 				.Take(itemsPerPages).ToList();
 
-			BindingList<Dish> result = new BindingList<Dish>(data);
+			BindingList<Dish> result = new BindingList<Dish>(viewData);
 			return result;
 		}
 
@@ -91,7 +122,7 @@ namespace FoodRecipeApp.Classes
             foreach (var item in _data)
 			{
                 string line = item.Id + "|" + item.Name + "|" + item.Description +
-                    "|" + item.Ingredient + "|" + item.LinkVideo + "|" + item.Fav;
+                    "|" + item.Ingredient + "|" + item.LinkVideo + "|" + item.Fav + "|" + item.Date;
                 fileLines.Add(line);
             }
 
@@ -104,9 +135,7 @@ namespace FoodRecipeApp.Classes
 		{
             _data.Add(newDish);
             string line = newDish.Id + "|" + newDish.Name + "|" + newDish.Description +
-                "|" + newDish.Ingredient + "|" + newDish.LinkVideo + "|" + newDish.Fav;
-
-
+                "|" + newDish.Ingredient + "|" + newDish.LinkVideo + "|" + newDish.Fav + "|" + newDish.Date;
             var folder = AppDomain.CurrentDomain.BaseDirectory;
             var filepath = $"{folder}Resources\\Data\\Dish.txt";
             File.AppendAllText(filepath, line + Environment.NewLine);
@@ -125,14 +154,15 @@ namespace FoodRecipeApp.Classes
 
             MyFileManager.CheckFilePath(filepath);
 			var fileLines = File.ReadAllLines(filepath).ToList();
-
+        
 			BindingList<Dish> result = new BindingList<Dish>();
 
 
-			foreach (string line in fileLines)
+            foreach (string line in fileLines)
 			{
 				string[] temp = line.Split(separator, StringSplitOptions.None);
-				if (temp.Length == 7)
+
+                if (temp.Length == 7)
 				{
 					Dish dish = new Dish();
 					dish.Id = temp[0].Trim();

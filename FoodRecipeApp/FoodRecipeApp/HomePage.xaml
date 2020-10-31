@@ -10,11 +10,26 @@
       
       Title="HomePage"
       Loaded="Window_Loaded">
+
     <DockPanel Background="White" LastChildFill="True">
-        <!--<Frame Name="foodPage" Margin="0 0 0 50">
 
-        </Frame>-->
-
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="60" HorizontalAlignment="Right">
+            <ToggleButton Name="favoriteToggle" Click="favoriteToggle_Click">FAV</ToggleButton>
+            <ComboBox Name="filter" SelectionChanged="filter_SelectionChanged" Width="80" Margin="30 0 30 0" SelectedIndex="0">
+                <ComboBoxItem>
+                    a - Z
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Z - a
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Cũ nhất
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    Mới nhất
+                </ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Height="60" HorizontalAlignment="Center">
             <Button  Width="40" Height="40" Background="{x:Null}" Click="previousButton_Click" Padding="0" BorderThickness="0">
                 <Grid  RenderTransformOrigin="0.5,0.5" Width="30" Height="30" HorizontalAlignment="Center" Margin="0,-1,0,0.6" Background="Transparent">
