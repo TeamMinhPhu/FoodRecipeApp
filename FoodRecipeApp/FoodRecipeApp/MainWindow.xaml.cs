@@ -21,6 +21,8 @@ using System.Data.SqlClient;
 using FoodRecipeApp.Classes;
 using System.Runtime.CompilerServices;
 using System.Configuration;
+using MaterialDesignThemes.Wpf;
+using MaterialDesignColors;
 
 namespace FoodRecipeApp
 {
@@ -29,10 +31,13 @@ namespace FoodRecipeApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly PaletteHelper _paletteHelper = new PaletteHelper();
         public MainWindow()
         {
             InitializeComponent();
             MouseDown += Window_MouseDown;
+            loadConfig();
+
         }
 
         class Menu : INotifyPropertyChanged
@@ -97,8 +102,6 @@ namespace FoodRecipeApp
 
             newFolder = $"{Folder}Resources\\Icons";
             MyFileManager.CheckDictionary(newFolder);
-
-            loadConfig();
 
             this.Background = Brushes.Bisque;
             menuPage.Content = new HomePage();

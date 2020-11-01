@@ -193,6 +193,7 @@
     <Grid>
         <DockPanel>
             <!--Title bar-->
+            <!--"=#ff9100-->
             <Grid Name="Title" Height="30" VerticalAlignment="Top" DockPanel.Dock="Top" Background="#ff9100">
                 <TextBlock Text="Food Recipes" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
                 <Button x:Name="closeProgramButton"
@@ -210,10 +211,10 @@
                 </Button>
             </Grid>
 
-            <Grid x:Name="gridMenu" HorizontalAlignment="Left" Width="60" DockPanel.Dock="Left">
-                <Grid Background="#ffb600">
+            <Grid x:Name="gridMenu" HorizontalAlignment="Left" Width="60" DockPanel.Dock="Left" Background="#ffb600">
+                <Grid >
                     <!--#ffb600-->
-                    <Grid Height="150" Background="#ffb600" VerticalAlignment="Top">
+                    <Grid Height="150" VerticalAlignment="Top">
                         <Button x:Name="MenuButton" HorizontalAlignment="Right" VerticalAlignment="Top"
                     Background="{x:Null}" BorderBrush="{x:Null}" Width="60" Height="60"
                     Click="menuButton_Click" Style="{StaticResource MenuStyle}">
@@ -258,11 +259,10 @@
                 </Grid>
             </Grid>
 
-           
-            
+
+
             <Frame Name="menuPage" NavigationUIVisibility="Hidden">
             </Frame>
         </DockPanel>
     </Grid>
-
 </Window>

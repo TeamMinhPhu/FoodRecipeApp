@@ -15,8 +15,9 @@ namespace FoodRecipeApp.Classes
 	{
         // Store data
 		static BindingList<Dish> _data = ReadData();
+        static List<Dish> filteredData = new List<Dish>();
 
-		public int TotalItems { get; set; }
+        public int TotalItems { get; set; }
 
         /// <summary>
         /// get all data
@@ -40,7 +41,6 @@ namespace FoodRecipeApp.Classes
 		{
 			int itemsPerPages = GetItemsPerPage(width, height);
 
-            List<Dish> filteredData = new List<Dish>();
             if (favourite == true)
 			{
                 filteredData = _data.Where(c => c.Fav == true).ToList();
@@ -92,7 +92,7 @@ namespace FoodRecipeApp.Classes
 		public static int GetItemsPerPage(double width, double height)
 		{
 			int result, row, column;
-			row = (int)height / 180;
+			row = (int)height / 230;
 			column = (int)width / 266;
 			result = row * column;
 			return result;
@@ -107,9 +107,9 @@ namespace FoodRecipeApp.Classes
 		public static int GetTotalPages(double width, double height)
 		{
 			int result;
-			int totalItems = _data.Count;
+			int totalItems = filteredData.Count;
 			int itemsPerPage = GetItemsPerPage(width,height);
-			result = totalItems/itemsPerPage + ((totalItems%itemsPerPage) == 0 ? 0 : 1);
+            result = totalItems / itemsPerPage + ((totalItems % itemsPerPage) == 0 ? 0 : 1);
 			return result;
 		}
 
