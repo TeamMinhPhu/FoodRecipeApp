@@ -73,26 +73,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Carousel.xaml.cs">
-      <DependentUpon>Carousel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Dish.cs" />
     <Compile Include="Classes\DishDao.cs" />
     <Compile Include="Classes\MyFileManager.cs" />
+    <Compile Include="DishDetailScreen.xaml.cs">
+      <DependentUpon>DishDetailScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SearchingPage.xaml.cs">
       <DependentUpon>SearchingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StepViewPage.xaml.cs">
-      <DependentUpon>StepViewPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="System\Drawing\Imaging.cs" />
     <Compile Include="UploadNewDishScreen.xaml.cs">
       <DependentUpon>UploadNewDishScreen.xaml</DependentUpon>
     </Compile>
-    <Page Include="Carousel.xaml">
+    <Compile Include="VideoView.xaml.cs">
+      <DependentUpon>VideoView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DishDetailScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,11 +128,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StepViewPage.xaml">
+    <Page Include="UploadNewDishScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UploadNewDishScreen.xaml">
+    <Page Include="VideoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +222,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\left-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\right-arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

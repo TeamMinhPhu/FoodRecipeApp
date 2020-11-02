@@ -14,7 +14,6 @@ D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\bin\Deb
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\bin\Debug\MaterialDesignColors.pdb
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.xml
-D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\Carousel.g.cs
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\HomePage.g.cs
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\MainWindow.g.cs
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\SearchingPage.g.cs
@@ -25,7 +24,6 @@ D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Deb
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.cache
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.lref
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\App.baml
-D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\Carousel.baml
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\HomePage.baml
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\MainWindow.baml
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\SearchingPage.baml
@@ -39,26 +37,12 @@ D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Deb
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
-D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\StepViewPage.g.cs
-D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\StepViewPage.baml
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\bin\Debug\Resources\Icons\plus.png
-D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\carouselTest.g.cs
-D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\carouselTest.baml
 D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\Resources\CustomView.baml
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Carousel.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SplashScreen.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\StepViewPage.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\UploadNewDishScreen.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.cache
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.lref
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\DishDetailScreen.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\DishDetailScreen.baml
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\VideoView.g.cs
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\VideoView.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Images\sora.jpg
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\history.png
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Icons\home.png
@@ -76,17 +60,31 @@ C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Sys
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignColors.pdb
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\DishDetailScreen.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SplashScreen.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\UploadNewDishScreen.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\VideoView.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.cache
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp_MarkupCompile.lref
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.baml
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Carousel.baml
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\DishDetailScreen.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Resources\CustomView.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SplashScreen.baml
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\StepViewPage.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\UploadNewDishScreen.baml
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\VideoView.baml
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.g.resources
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.Properties.Resources.resources
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.GenerateResource.cache
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CoreCompileInputs.cache
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CopyComplete
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
+C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb

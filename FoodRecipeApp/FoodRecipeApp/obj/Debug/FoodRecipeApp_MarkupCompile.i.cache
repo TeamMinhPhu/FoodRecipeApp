@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\obj\Debug\
 FoodRecipeApp
 none
 false
 DEBUG;TRACE
-C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\App.xaml
-8-1643033138
+D:\Minh\This Week\Window\Project1\FoodRecipeApp-main\Other\FoodRecipeApp\App.xaml
+81055732782
 
-17-231770075
-19-93826913
-Carousel.xaml;HomePage.xaml;MainWindow.xaml;Resources\CustomView.xaml;SearchingPage.xaml;SplashScreen.xaml;StepViewPage.xaml;UploadNewDishScreen.xaml;
+171532498161
+191255641459
+DishDetailScreen.xaml;HomePage.xaml;MainWindow.xaml;Resources\CustomView.xaml;SearchingPage.xaml;SplashScreen.xaml;UploadNewDishScreen.xaml;VideoView.xaml;
 
-True
+False
 

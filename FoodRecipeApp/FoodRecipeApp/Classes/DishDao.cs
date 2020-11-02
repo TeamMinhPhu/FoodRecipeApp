@@ -79,8 +79,13 @@ namespace FoodRecipeApp.Classes
 					Dish dish = new Dish();
 					dish.Id = temp[0].Trim();
 					dish.Name = temp[1].Trim();
-					dish.Description = temp[2].Trim();
-					dish.Ingredient = temp[3].Trim();
+
+                    var Des = temp[2].Replace("\\r\\n", System.Environment.NewLine);
+                    dish.Description = Des;
+
+                    var Ing = temp[3].Replace("\\r\\n", System.Environment.NewLine);
+                    dish.Ingredient = Ing;
+
 					dish.LinkVideo = temp[4];
                     dish.Source = $"Resources/Images/{dish.Id}.jpg";
                     dish.Fav = bool.Parse(temp[5].Trim());
@@ -198,7 +203,9 @@ namespace FoodRecipeApp.Classes
                 }
                 else { /*Do nothing*/ }
 
-                result.Add(new RecipeDetail { dishID = Items[0], step = int.Parse(Items[1]), stepDetail = Items[2], quantityOfImage = int.Parse(Items[3]) });
+                var Des = Items[2].Replace("\\r\\n", System.Environment.NewLine);
+
+                result.Add(new RecipeDetail { dishID = Items[0], step = int.Parse(Items[1]), stepDetail = Des, quantityOfImage = int.Parse(Items[3]) });
             }
 
             return result;

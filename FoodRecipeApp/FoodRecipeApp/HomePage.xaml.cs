@@ -95,9 +95,8 @@ namespace FoodRecipeApp
 		//Click item in page -> show detail (carousel)
 		private void dishView_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			MessageBox.Show(_dishes_list[_selected_index].Name);
-			//detail
-			//window
+			var newScreen = new DishDetailScreen(_dishes_list[_selected_index].Id);
+			newScreen.Show();
 		}
 
 		//Add item to favourite | Remove item from favourite
