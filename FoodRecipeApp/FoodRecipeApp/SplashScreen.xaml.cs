@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,21 +17,21 @@ using System.Windows.Shapes;
 
 namespace FoodRecipeApp
 {
-	/// <summary>
-	/// Interaction logic for SplashScreen.xaml
-	/// </summary>
-	public partial class SplashScreen : Window
-	{
-		public SplashScreen()
-		{
-			InitializeComponent();
-		}
+    /// <summary>
+    /// Interaction logic for SplashScreen.xaml
+    /// </summary>
+    public partial class SplashScreen : Window
+    {
+        public SplashScreen()
+        {
+            InitializeComponent();
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
             var showSplash = bool.Parse(value);
-            int n = 0;
-            if (n == 1)
+            Debug.WriteLine(showSplash.ToString());
+            if (showSplash == false)
             {
                 var screen = new MainWindow();
                 screen.Show();
@@ -38,6 +40,15 @@ namespace FoodRecipeApp
             }
             else
             {
+                var folder = AppDomain.CurrentDomain.BaseDirectory;
+                var filepath = $"{folder}Resources\\Data\\facts.txt";
+                var quotes = File.ReadAllLines(filepath).ToList();
+
+                Random rng = new Random();
+                int index = rng.Next(0, quotes.Count);
+                string quote = quotes[index];
+                randomQuote.Text = quote;
+
                 timer = new System.Timers.Timer();
                 timer.Elapsed += Timer_Elapsed;
                 timer.Interval = 10;

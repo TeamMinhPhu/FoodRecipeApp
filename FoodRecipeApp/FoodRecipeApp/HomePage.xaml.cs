@@ -26,11 +26,14 @@ namespace FoodRecipeApp
 	public partial class HomePage : Page
 	{
 		int _current_page = 1;
+		bool _selecting_page = true;
+		bool _is_only_fav = false;
+		string _search = "";
+
 		private System.Timers.Timer _timer = new System.Timers.Timer(300);
 		BindingList<Dish> _dishes_list;
 		BindingList<Paging> _page = new BindingList<Paging>();
-		bool _selecting_page = true;
-		bool _is_only_fav = false;
+
 
 		public HomePage()
 		{
@@ -167,7 +170,7 @@ namespace FoodRecipeApp
 
 		private void UpdateView()
 		{
-			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page, filter.SelectedIndex, _is_only_fav);
+			_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page, filter.SelectedIndex, _is_only_fav, _search);
 			dishesView.ItemsSource = _dishes_list;
 		}
 
@@ -183,6 +186,38 @@ namespace FoodRecipeApp
 			paging.SelectedIndex = _current_page - 1;  //update selected page
 			paging.Items.Refresh();
 			_selecting_page = true;
+		}
+
+		private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+		{
+			keywordPlaceholderTextBlock.Visibility = Visibility.Hidden;
+		}
+
+		private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			if (keywordTextBox.Text.Length == 0)
+			{
+				keywordPlaceholderTextBlock.Visibility = Visibility.Visible;
+			}
+		}
+
+		private void keywordTextBox_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Return)
+			{
+				_current_page = 1;
+				_search = keywordTextBox.Text;
+				UpdateView();
+				UpdatePage();
+			}
+		}
+
+		private void searchButton_Click(object sender, RoutedEventArgs e)
+		{
+			_current_page = 1;
+			_search = keywordTextBox.Text;
+			UpdateView();
+			UpdatePage();
 		}
 	}
 }

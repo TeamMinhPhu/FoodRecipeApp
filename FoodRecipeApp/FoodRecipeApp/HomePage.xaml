@@ -20,20 +20,43 @@
                         <Border Background="{TemplateBinding Background}" CornerRadius="30">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFB7B7B7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
+            <!--<Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#FFB7B7B7"/>
+                    <Setter Prop Value="{DynamicResource PrimaryHueMidBrush}"/>
                 </Trigger>
-            </Style.Triggers>
+            </Style.Triggers>-->
         </Style>
     </Page.Resources>
-    <DockPanel Background="White" LastChildFill="True">
+    <DockPanel Background="Transparent" LastChildFill="True">
 
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Height="60" HorizontalAlignment="Right">
-            <ToggleButton Name="favoriteToggle" Click="favoriteToggle_Click" Margin="0,0,0,20">
+        <Grid DockPanel.Dock="Top" Height="60">
+      
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="160"/>
+                </Grid.ColumnDefinitions>
+                <Button Width="16" Height="16" Padding="0" Margin="20 0" Background="Transparent" Name="searchButton"
+                        BorderThickness="0" HorizontalAlignment="Left" Cursor="Hand" Click="searchButton_Click" Panel.ZIndex="10">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/Icons/search (1).png" Width="16" Height="16"
+                           HorizontalAlignment="Left"/>
+                </Button>
+                
+            <TextBlock  Grid.Column="0" Padding="25 0 0 0" Text="Enter keyword" Foreground="#FF9D9D9D" Name="keywordPlaceholderTextBlock" 
+                        FontStyle="Italic" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            <TextBox  Grid.Column="0" Padding="12 0 0 0" x:Name="keywordTextBox" Margin="20 0 0 0" VerticalAlignment="Center" 
+                      GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" KeyDown="keywordTextBox_KeyDown"/>
+        
+            <ToggleButton Grid.Column="1" Name="favoriteToggle" Click="favoriteToggle_Click" Margin="20,0,0,20">
                 FAV
                 <ToggleButton.RenderTransform>
                     <ScaleTransform ScaleX="1.5" ScaleY="1.5">
@@ -41,7 +64,7 @@
                 </ToggleButton.RenderTransform>
             </ToggleButton>
 
-            <ComboBox Name="filter" SelectionChanged="filter_SelectionChanged" Width="80" Margin="30 0 50 0">
+            <ComboBox Grid.Column="2" Name="filter" SelectionChanged="filter_SelectionChanged" Width="80" Margin="30 0 50 0" Foreground="{DynamicResource PrimaryHueMidBrush}">
                 <ComboBoxItem>
                     a - Z
                 </ComboBoxItem>
@@ -55,7 +78,7 @@
                     Mới nhất
                 </ComboBoxItem>
             </ComboBox>
-        </StackPanel>
+        </Grid>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Height="60" HorizontalAlignment="Center">
             <Button  Width="40" Height="40" Click="previousButton_Click" Padding="0" BorderThickness="0" Style="{StaticResource arrowButton}">
                 <Grid  RenderTransformOrigin="0.5,0.5" Width="30" Height="30" HorizontalAlignment="Center" Margin="0,-1,0,0.6" Background="Transparent">
@@ -79,7 +102,7 @@
                 </Grid>
             </Button>
 
-            <ComboBox Margin="10 0 0 0" Name="paging" Height="40" SelectionChanged="paging_SelectionChanged">
+            <ComboBox Margin="10 0 0 0" Name="paging" Height="40" SelectionChanged="paging_SelectionChanged" Foreground="{DynamicResource PrimaryHueMidBrush}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="20" Text="{Binding PageSelection}"></TextBlock>
@@ -89,7 +112,7 @@
                     <TextBlock >10</TextBlock>
                 </ComboBoxItem>-->
             </ComboBox>
-            <TextBlock Height="30" FontSize="20" Name="viewTotalPages" Margin="0 0 10 0"></TextBlock>
+            <TextBlock Height="30" FontSize="20" Name="viewTotalPages" Margin="0 0 10 0" Foreground="{DynamicResource PrimaryHueMidBrush}"></TextBlock>
 
             <Button  Width="40" Height="40" Click="nextButton_Click" Padding="0" Style="{StaticResource arrowButton}">
                 <Grid  RenderTransformOrigin="0.5,0.5" Width="30" Height="30" HorizontalAlignment="Center" Background="Transparent">
@@ -120,7 +143,7 @@
 
 
         <Grid>
-            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <ListView HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden"
                   Name="dishesView" PreviewMouseLeftButtonUp="dishesListView_PreviewMouseLeftButtonUp">
                     <ListView.ItemsPanel>
@@ -148,7 +171,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </WrapPanel>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Page>

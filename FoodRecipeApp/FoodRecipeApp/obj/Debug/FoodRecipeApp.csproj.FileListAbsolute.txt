@@ -91,7 +91,6 @@ C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Foo
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CoreCompileInputs.cache
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CopyComplete
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csprojAssemblyReference.cache
-C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Carousel.g.cs
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.g.cs
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.g.cs
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.g.cs
@@ -122,7 +121,6 @@ C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\De
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\App.baml
-C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Carousel.baml
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\HomePage.baml
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\MainWindow.baml
 C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\SearchingPage.baml
@@ -176,3 +174,10 @@ C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CopyComplete
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
 C:\Users\Admin\source\repos\dophu1402\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
+C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\DishDetailScreen.g.cs
+C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\DishDetailScreen.baml
+C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\Resources\Data\facts.txt
+C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Settings.g.cs
+C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Settings.baml
+C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\AppSetting.g.cs
+C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\AppSetting.baml

@@ -87,7 +87,6 @@ namespace FoodRecipeApp
             _menu_state_closed = !_menu_state_closed;
         }
 
-
         private BindingList<Menu> _list_menu;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -103,7 +102,6 @@ namespace FoodRecipeApp
             newFolder = $"{Folder}Resources\\Icons";
             MyFileManager.CheckDictionary(newFolder);
 
-            this.Background = Brushes.Bisque;
             menuPage.Content = new HomePage();
             _list_menu = MenuDao.GetAll();
             menuList.ItemsSource = _list_menu;           
@@ -134,11 +132,32 @@ namespace FoodRecipeApp
                     this.Close();
                     break;
                 case 3:
+                    //App.Current.Resources.MergedDictionaries[0].Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml");
+                    var oldColor = (SolidColorBrush)this.Background;
+
+                    var settingScreen = new AppSetting(oldColor);
+                    settingScreen.ConfigChanged += Screen_ConfigChanged;
+					if(settingScreen.ShowDialog() == true)
+					{
+                        var newPrimaryColor = settingScreen.NewColor;
+                        this.Background = newPrimaryColor;
+					}
+                    else
+					{
+                        this.Background = oldColor;
+                    }
+
                     break;
 			}
 		}
 
-		private void loadConfig()
+        private void Screen_ConfigChanged(SolidColorBrush color)
+		{
+            this.Background = color;
+		}
+
+
+        private void loadConfig()
 		{
 			var configWidth = ConfigurationManager.AppSettings["Width"];
 			this.Width = double.Parse(configWidth);

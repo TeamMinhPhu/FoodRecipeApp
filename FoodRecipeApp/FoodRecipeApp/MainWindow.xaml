@@ -189,9 +189,11 @@
             </Setter>
         </Style>
     </Window.Resources>
-
     <Grid>
+
+
         <DockPanel>
+
             <!--Title bar-->
             <!--"=#ff9100-->
             <Grid Name="Title" Height="30" VerticalAlignment="Top" DockPanel.Dock="Top" Background="#ff9100">
@@ -258,8 +260,6 @@
                     </ListView>
                 </Grid>
             </Grid>
-
-
 
             <Frame Name="menuPage" NavigationUIVisibility="Hidden">
             </Frame>

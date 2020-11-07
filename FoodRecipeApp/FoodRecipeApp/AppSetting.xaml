@@ -1,0 +1,48 @@
+﻿<Window x:Class="FoodRecipeApp.AppSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FoodRecipeApp"
+        mc:Ignorable="d"
+        Title="AppSetting" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 30 0 0">
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="{DynamicResource  PrimaryHueMidBrush}">
+                    Dark theme
+                </Label>
+                <ToggleButton Name="darkTheme" Click="darkTheme_Click">
+                    <ToggleButton.RenderTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5">
+                        </ScaleTransform>
+                    </ToggleButton.RenderTransform>
+                </ToggleButton>
+
+            </StackPanel>
+            <StackPanel>
+                <Label Foreground="{DynamicResource  PrimaryHueMidBrush}">
+                    Chọn màu chủ đề
+                </Label>
+                <GroupBox x:Name="color" Padding="0 0 0 0" BorderThickness="0">
+                    <StackPanel>
+                        <RadioButton GroupName="accentColor" Name="red" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="red_Checked">
+                            Đỏ
+                        </RadioButton>
+                        <RadioButton GroupName="accentColor" Name="yellow" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="yellow_Checked">
+                            Vàng
+                        </RadioButton>
+                        <RadioButton GroupName="accentColor" Name="orange" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="orange_Checked">
+                            Cam
+                        </RadioButton>
+                        <RadioButton GroupName="accentColor" Name="blue" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="blue_Checked">
+                            Xanh Dương
+                        </RadioButton>
+                    </StackPanel>
+                </GroupBox>
+                
+            </StackPanel>
+            <Button Name="apply" Click="apply_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

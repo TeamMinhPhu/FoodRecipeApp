@@ -65,12 +65,13 @@
         </Style>
     </Window.Resources>
     <Grid Background="Orange">
-        <Grid Width="300" Height="100">
-            <Label Name="quote" Foreground="White" HorizontalContentAlignment="Center" VerticalAlignment="Center"
+        <StackPanel Width="300" Height="100">
+            <Label Foreground="White" HorizontalContentAlignment="Center" VerticalAlignment="Center"
                    FontSize="20" FontWeight="ExtraBlack">Welcome</Label>
-        </Grid>
+            <TextBlock Name="randomQuote" FontSize="14" HorizontalAlignment="Center" Foreground="White"></TextBlock>
+        </StackPanel>
         <ProgressBar x:Name="progress" Width="200"  Minimum="0" Maximum="500" Value="0" Height="15" Canvas.Left="333" Canvas.Top="359"
-                     VerticalAlignment="Bottom" Margin="0 0 0 30" BorderThickness="0" Background="LightYellow" Foreground="OrangeRed"/>
+                     VerticalAlignment="Bottom" Margin="0 0 0 30" BorderThickness="0"/>
         <Button Name="turnOffButton" Background="Transparent" FontWeight="Light" BorderThickness="0"
                 Foreground="White" Content="turn off splashscreen on application startup"
                 Click="turnOffButton_Click" HorizontalAlignment="Right" Padding="5 1 5 1"

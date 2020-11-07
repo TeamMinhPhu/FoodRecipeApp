@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -75,6 +76,57 @@ namespace FoodRecipeApp.Classes
 			return result;
 		}
 
+        public static BindingList<Dish> GetAll(double width, double height, int currentPage, int filter, bool favourite, string search)
+        {
+            int itemsPerPages = GetItemsPerPage(width, height);
+
+            BindingList<Dish> searchedResult = new BindingList<Dish>();
+            if (search == "")
+			{
+                searchedResult = _data;
+			}
+            else
+			{
+                searchedResult = new BindingList<Dish>(_data.Where(c => c.Name.ToLower().Normalize(NormalizationForm.FormKD)
+                                                                    .Contains(search.ToLower().Normalize(NormalizationForm.FormKD) )
+                                                                     )
+                                                                    .ToList()) ;
+			}
+
+            if (favourite == true)
+            {
+                filteredData = searchedResult.Where(c => c.Fav == true).ToList();
+            }
+            else
+            {
+                filteredData = searchedResult.ToList();
+            }
+
+            switch (filter)
+            {
+                case 0:
+                    filteredData = filteredData.OrderBy(c => c.Name).ToList();
+                    break;
+                case 1:
+                    filteredData = filteredData.OrderByDescending(c => c.Name).ToList();
+                    break;
+                case 2:
+                    filteredData = filteredData.OrderBy(c => c.Date).ToList();
+                    break;
+                case 3:
+                    filteredData = filteredData.OrderByDescending(c => c.Date).ToList();
+                    break;
+                default:
+                    break;
+            }
+
+            var viewData = filteredData.Skip((currentPage - 1) * itemsPerPages)
+                .Take(itemsPerPages).ToList();
+
+            BindingList<Dish> result = new BindingList<Dish>(viewData);
+            return result;
+        }
+
         /// <summary>
         /// get the amount of items
         /// </summary>
@@ -131,6 +183,10 @@ namespace FoodRecipeApp.Classes
             File.WriteAllLines(filepath, fileLines);
         }
 
+        /// <summary>
+        /// Add new dish to database
+        /// </summary>
+        /// <param name="newDish"></param>
         public static void Append(Dish newDish)
 		{
             _data.Add(newDish);
@@ -157,7 +213,7 @@ namespace FoodRecipeApp.Classes
         
 			BindingList<Dish> result = new BindingList<Dish>();
 
-
+            
             foreach (string line in fileLines)
 			{
 				string[] temp = line.Split(separator, StringSplitOptions.None);

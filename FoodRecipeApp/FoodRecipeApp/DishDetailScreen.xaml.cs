@@ -75,7 +75,7 @@ namespace FoodRecipeApp
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //Dish
-            var DishDB = new List<Dish>(DishDao.ReadData());
+            var DishDB = new List<Dish>(DishDao.GetAll());
             myDish = DishDB.Where(x => x.Id == myDishId).FirstOrDefault();
 
             myListStep = new ListViewData();             
