@@ -49,7 +49,6 @@ namespace FoodRecipeApp
 			//// Get view for page content (dishes)
 			//_dishes_list = DishDao.GetAll(this.ActualWidth, this.ActualHeight, _current_page, filter.SelectedIndex, _is_only_fav);
 			//dishesView.ItemsSource = _dishes_list;
-
 			filter.SelectedIndex = 0;
 			UpdatePage();
 		}
@@ -98,8 +97,15 @@ namespace FoodRecipeApp
 		//Click item in page -> show detail (carousel)
 		private void dishView_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			var newScreen = new DishDetailScreen(_dishes_list[_selected_index].Id);
-			newScreen.Show();
+			try
+			{
+				var newScreen = new DishDetailScreen(_dishes_list[_selected_index].Id);
+				newScreen.Show();
+			}
+			catch
+			{
+				//do nothing
+			}
 		}
 
 		//Add item to favourite | Remove item from favourite

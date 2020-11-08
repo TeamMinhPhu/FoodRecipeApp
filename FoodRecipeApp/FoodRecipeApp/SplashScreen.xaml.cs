@@ -25,12 +25,13 @@ namespace FoodRecipeApp
         public SplashScreen()
         {
             InitializeComponent();
+            loadConfig();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var value = ConfigurationManager.AppSettings["ShowSplashScreen"];
             var showSplash = bool.Parse(value);
-            Debug.WriteLine(showSplash.ToString());
+
             if (showSplash == false)
             {
                 var screen = new MainWindow();
@@ -92,8 +93,45 @@ namespace FoodRecipeApp
             config.Save(ConfigurationSaveMode.Minimal);
             var screen = new MainWindow();
             screen.Show();
-
+            timer.Stop();
             this.Close();
+        }
+
+        private void loadConfig()
+		{
+            const int RED = 1;
+            const int ORANGE = 2;
+            const int YELLOW = 3;
+            const int BLUE = 4;
+            const int GREEN = 5;
+
+            var configColor = ConfigurationManager.AppSettings["Color"];
+            int color = int.Parse(configColor);
+            
+            if (color == RED)
+            {
+                App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml");
+            }
+            else if (color == ORANGE)
+            {
+                App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml");
+            }
+            else if (color == YELLOW)
+            {
+                App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
+            }
+            else if (color == BLUE)
+            {
+                App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml");
+            }
+            else if (color == GREEN)
+            {
+                App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
+            }
+            else
+            {
+                //do nothing
+            }
         }
     }
 }

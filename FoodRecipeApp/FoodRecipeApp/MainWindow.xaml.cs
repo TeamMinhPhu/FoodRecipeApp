@@ -37,7 +37,6 @@ namespace FoodRecipeApp
             InitializeComponent();
             MouseDown += Window_MouseDown;
             loadConfig();
-
         }
 
         class Menu : INotifyPropertyChanged
@@ -132,31 +131,53 @@ namespace FoodRecipeApp
                     this.Close();
                     break;
                 case 3:
-                    //App.Current.Resources.MergedDictionaries[0].Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml");
-                    var oldColor = (SolidColorBrush)this.Background;
+                    var oldBackGroundColor = (SolidColorBrush)this.Background;
+                    var oldMenuColor = (SolidColorBrush)this.MenuBar.Background;
+                    var oldTitleBarColor = (SolidColorBrush)this.TitleBar.Background;
+				    var oldBackGroundTheme = App.Current.Resources.MergedDictionaries[0].Source;
+                    var oldForeGroundTheme = App.Current.Resources.MergedDictionaries[2].Source;
 
-                    var settingScreen = new AppSetting(oldColor);
-                    settingScreen.ConfigChanged += Screen_ConfigChanged;
+                    var settingScreen = new AppSetting();
+                    settingScreen.BackGroundThemeChanged += BackGround_ColorChanged;
+                    settingScreen.PrimaryColorChanged += Menu_ColorChanged;
+                    settingScreen.SecondaryColorChanged += Title_ColorChanged;
 					if(settingScreen.ShowDialog() == true)
 					{
-                        var newPrimaryColor = settingScreen.NewColor;
-                        this.Background = newPrimaryColor;
+                        this.Background = settingScreen.NewBackGroundColor;
+                        this.MenuBar.Background = settingScreen.NewMenuColor;
+                        this.TitleBar.Background = settingScreen.NewTitleBarColor;
 					}
                     else
 					{
-                        this.Background = oldColor;
+                        this.Background = oldBackGroundColor;
+                        this.MenuBar.Background = oldMenuColor;
+                        this.TitleBar.Background = oldTitleBarColor;
+                        App.Current.Resources.MergedDictionaries[0].Source = oldBackGroundTheme;
+                        App.Current.Resources.MergedDictionaries[2].Source = oldForeGroundTheme;
                     }
-
+                    
                     break;
 			}
 		}
 
-        private void Screen_ConfigChanged(SolidColorBrush color)
+        private void BackGround_ColorChanged(SolidColorBrush color)
 		{
             this.Background = color;
 		}
 
+        private void Menu_ColorChanged(SolidColorBrush color)
+        {
+            this.MenuBar.Background = color;
+        }
 
+        private void Title_ColorChanged(SolidColorBrush color)
+		{
+            this.TitleBar.Background = color;
+		}
+
+		#region "Config"
+		bool _is_dark_theme;
+        int _color;
         private void loadConfig()
 		{
 			var configWidth = ConfigurationManager.AppSettings["Width"];
@@ -168,13 +189,20 @@ namespace FoodRecipeApp
 			_menu_state_closed = bool.Parse(configMenu);
 			if (_menu_state_closed)
 			{
-				gridMenu.Width = 60;
+				MenuBar.Width = 60;
 			}
 			else
 			{
-				gridMenu.Width = 250;
+				MenuBar.Width = 250;
 			}
-		}
+
+            var configDarkTheme = ConfigurationManager.AppSettings["DarkTheme"];
+            _is_dark_theme = bool.Parse(configDarkTheme);
+
+            var configColor = ConfigurationManager.AppSettings["Color"];
+            _color = int.Parse(configColor);
+            setColor();
+        }
 
 		private void saveConfig()
 		{
@@ -184,5 +212,95 @@ namespace FoodRecipeApp
 			config.AppSettings.Settings["HiddenMenu"].Value = _menu_state_closed.ToString();
 			config.Save(ConfigurationSaveMode.Minimal);
 		}
+
+        private void setColor()
+        {
+            const int RED = 1;
+            const int ORANGE = 2;
+            const int YELLOW = 3;
+            const int BLUE = 4;
+            const int GREEN = 5;
+
+            SolidColorBrush backGroundColor = new SolidColorBrush();
+            SolidColorBrush newPrimaryColor = new SolidColorBrush();
+            SolidColorBrush newDarkPrimaryColor = new SolidColorBrush();
+
+            if (_is_dark_theme == false)
+            {
+                backGroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ffffff"));
+                App.Current.Resources.MergedDictionaries[0].Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml");
+
+                if (_color == RED)
+                {
+                    newPrimaryColor = new BrushConverter().ConvertFromString("#ff1717") as SolidColorBrush;
+                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#de0000") as SolidColorBrush;
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml");
+                }
+                else if (_color == ORANGE)
+                {
+                    newPrimaryColor = new BrushConverter().ConvertFromString("#ff6d17") as SolidColorBrush;
+                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#de5200") as SolidColorBrush;
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml");
+                }
+                else if (_color == YELLOW)
+                {
+                    newPrimaryColor = new BrushConverter().ConvertFromString("#ffe817") as SolidColorBrush;
+                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#dec800") as SolidColorBrush;
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
+                }
+                else if (_color == BLUE)
+                {
+                    newPrimaryColor = new BrushConverter().ConvertFromString("#1776ff") as SolidColorBrush;
+                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#005bde") as SolidColorBrush;
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml");
+                }
+                else if (_color == GREEN)
+                {
+                    newPrimaryColor = new BrushConverter().ConvertFromString("#00d900") as SolidColorBrush;
+                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#00ad00") as SolidColorBrush;
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
+                }
+                else
+                {
+                    //do nothing
+                }
+            }
+            else
+            {
+                backGroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#212121"));
+                newPrimaryColor = new BrushConverter().ConvertFromString("#3b3b3b") as SolidColorBrush;
+                newDarkPrimaryColor = new BrushConverter().ConvertFromString("#323232") as SolidColorBrush;
+                App.Current.Resources.MergedDictionaries[0].Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml");
+                if (_color == RED)
+                {
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml");
+                }
+                else if (_color == ORANGE)
+                {
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml");
+                }
+                else if (_color == YELLOW)
+                {
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
+                }
+                else if (_color == BLUE)
+                {
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml");
+                }
+                else if (_color == GREEN)
+                {
+                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
+                }
+                else
+                {
+                    //do nothing
+                }
+            }
+
+            this.MenuBar.Background = newPrimaryColor;
+            this.TitleBar.Background = newDarkPrimaryColor;
+            this.Background = backGroundColor;
+        }
+		#endregion
 	}
 }

@@ -173,6 +173,9 @@ namespace FoodRecipeApp.Classes
             List<string> fileLines = new List<string>();
             foreach (var item in _data)
 			{
+                item.Description = item.Description.Replace(System.Environment.NewLine, @"\r\n");
+                item.Ingredient = item.Ingredient.Replace(System.Environment.NewLine, @"\r\n");
+
                 string line = item.Id + "|" + item.Name + "|" + item.Description +
                     "|" + item.Ingredient + "|" + item.LinkVideo + "|" + item.Fav + "|" + item.Date;
                 fileLines.Add(line);
@@ -216,7 +219,7 @@ namespace FoodRecipeApp.Classes
             
             foreach (string line in fileLines)
 			{
-				string[] temp = line.Split(separator, StringSplitOptions.None);
+                string[] temp = line.Split(separator, StringSplitOptions.None);
 
                 if (temp.Length == 7)
 				{

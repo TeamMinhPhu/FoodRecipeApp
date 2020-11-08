@@ -5,44 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FoodRecipeApp"
         mc:Ignorable="d"
-        Title="AppSetting" Height="450" Width="800">
+        Title="AppSetting" Height="350" Width="300">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 30 0 0">
-            <StackPanel Orientation="Horizontal">
-                <Label Foreground="{DynamicResource  PrimaryHueMidBrush}">
-                    Dark theme
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" FontSize="15" Foreground="{DynamicResource  PrimaryHueMidBrush}">
+                    Hiển thị fact khi khởi động
                 </Label>
-                <ToggleButton Name="darkTheme" Click="darkTheme_Click">
+                <ToggleButton Grid.Column="1" Name="splashScreen" Click="splashScreen_Click">
                     <ToggleButton.RenderTransform>
-                        <ScaleTransform ScaleX="1.5" ScaleY="1.5">
+                        <ScaleTransform ScaleX="1.2" ScaleY="1.2">
                         </ScaleTransform>
                     </ToggleButton.RenderTransform>
                 </ToggleButton>
-
-            </StackPanel>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" FontSize="15" Foreground="{DynamicResource  PrimaryHueMidBrush}">
+                    Dark theme
+                </Label>
+                <ToggleButton Grid.Column="1" Name="darkTheme" Click="darkTheme_Click" HorizontalContentAlignment="Right">
+                    <ToggleButton.RenderTransform>
+                        <ScaleTransform ScaleX="1.2" ScaleY="1.2">
+                        </ScaleTransform>
+                    </ToggleButton.RenderTransform>
+                </ToggleButton>
+            </Grid>
             <StackPanel>
-                <Label Foreground="{DynamicResource  PrimaryHueMidBrush}">
-                    Chọn màu chủ đề
+                <Label  FontSize="15" Foreground="{DynamicResource  PrimaryHueMidBrush}">
+                    Chọn màu chủ đề:
                 </Label>
                 <GroupBox x:Name="color" Padding="0 0 0 0" BorderThickness="0">
-                    <StackPanel>
+                    <StackPanel Margin="20 0">
                         <RadioButton GroupName="accentColor" Name="red" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="red_Checked">
                             Đỏ
-                        </RadioButton>
-                        <RadioButton GroupName="accentColor" Name="yellow" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="yellow_Checked">
-                            Vàng
                         </RadioButton>
                         <RadioButton GroupName="accentColor" Name="orange" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="orange_Checked">
                             Cam
                         </RadioButton>
+                        <RadioButton GroupName="accentColor" Name="yellow" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="yellow_Checked">
+                            Vàng
+                        </RadioButton>
                         <RadioButton GroupName="accentColor" Name="blue" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="blue_Checked">
-                            Xanh Dương
+                            Xanh dương
+                        </RadioButton>
+                        <RadioButton GroupName="accentColor" Name="green" Foreground="{DynamicResource  PrimaryHueMidBrush}" Checked="green_Checked">
+                            Xanh lá
                         </RadioButton>
                     </StackPanel>
                 </GroupBox>
-                
+
             </StackPanel>
-            <Button Name="apply" Click="apply_Click"></Button>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Width="70" Height="25" Padding="0" Name="cancelButton" Foreground="White" Margin="5" Click="cancelButton_Click">Cancel</Button>
+                <Button Width="70" Height="25" Padding="0" Name="applyButton" Click="applyButton_Click" Foreground="White" Margin="5 5 20 5">Apply</Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
