@@ -38,7 +38,7 @@ namespace FoodRecipeApp {
     /// <summary>
     /// SearchingPage
     /// </summary>
-    public partial class SearchingPage : System.Windows.Controls.Page, System.Windows.Markup.IComponentConnector {
+    public partial class InfoPage : System.Windows.Controls.Page, System.Windows.Markup.IComponentConnector {
         
         private bool _contentLoaded;
         

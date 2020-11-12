@@ -52,10 +52,10 @@ namespace FoodRecipeApp
             {
                 var list = new BindingList<Menu>()
                 {
-                    new Menu() { Content = "Home", Icon = "Resources/Icons/home.png" },
-                    new Menu() { Content = "Search", Icon = "Resources/Icons/search.png" },
-                    new Menu() { Content = "New Dish", Icon = "Resources/Icons/plus.png" },
-                    new Menu() { Content = "Settings", Icon = "Resources/Icons/settings.png" },
+                    new Menu() { Content = "Trang chủ", Icon = "Resources/Icons/home.png" },
+                    new Menu() { Content = "Thêm món ăn", Icon = "Resources/Icons/plus.png" },
+                    new Menu() { Content = "Thông tin", Icon = "Resources/Icons/info.png" },
+                    new Menu() { Content = "Cài đặt", Icon = "Resources/Icons/settings.png" },
                 };
                 return list;
             }
@@ -110,7 +110,7 @@ namespace FoodRecipeApp
 		private void closeProgramButton_Click(object sender, RoutedEventArgs e)
 		{
             saveConfig();
-            this.Close();
+            Application.Current.Shutdown();
 		}
 
 		private void selectedTab(object sender, MouseButtonEventArgs e)
@@ -123,12 +123,12 @@ namespace FoodRecipeApp
                     
                     break;
                 case 1:
-                    menuPage.Content = new SearchingPage();
-                    break;
-                case 2:
-                    var newScreen = new UploadNewDishScreen();
+                    var newScreen = new UploadNewDishScreen( (SolidColorBrush)this.Background, (SolidColorBrush)this.TitleBar.Background);
                     newScreen.Show();
                     this.Close();
+                    break;
+                case 2:
+                    menuPage.Content = new InfoPage();
                     break;
                 case 3:
                     var oldBackGroundColor = (SolidColorBrush)this.Background;
@@ -155,7 +155,7 @@ namespace FoodRecipeApp
                         App.Current.Resources.MergedDictionaries[0].Source = oldBackGroundTheme;
                         App.Current.Resources.MergedDictionaries[2].Source = oldForeGroundTheme;
                     }
-                    
+
                     break;
 			}
 		}
@@ -215,91 +215,11 @@ namespace FoodRecipeApp
 
         private void setColor()
         {
-            const int RED = 1;
-            const int ORANGE = 2;
-            const int YELLOW = 3;
-            const int BLUE = 4;
-            const int GREEN = 5;
+            AppColorPalette palette = new AppColorPalette(_is_dark_theme, _color);
 
-            SolidColorBrush backGroundColor = new SolidColorBrush();
-            SolidColorBrush newPrimaryColor = new SolidColorBrush();
-            SolidColorBrush newDarkPrimaryColor = new SolidColorBrush();
-
-            if (_is_dark_theme == false)
-            {
-                backGroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ffffff"));
-                App.Current.Resources.MergedDictionaries[0].Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml");
-
-                if (_color == RED)
-                {
-                    newPrimaryColor = new BrushConverter().ConvertFromString("#ff1717") as SolidColorBrush;
-                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#de0000") as SolidColorBrush;
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml");
-                }
-                else if (_color == ORANGE)
-                {
-                    newPrimaryColor = new BrushConverter().ConvertFromString("#ff6d17") as SolidColorBrush;
-                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#de5200") as SolidColorBrush;
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml");
-                }
-                else if (_color == YELLOW)
-                {
-                    newPrimaryColor = new BrushConverter().ConvertFromString("#ffe817") as SolidColorBrush;
-                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#dec800") as SolidColorBrush;
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
-                }
-                else if (_color == BLUE)
-                {
-                    newPrimaryColor = new BrushConverter().ConvertFromString("#1776ff") as SolidColorBrush;
-                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#005bde") as SolidColorBrush;
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml");
-                }
-                else if (_color == GREEN)
-                {
-                    newPrimaryColor = new BrushConverter().ConvertFromString("#00d900") as SolidColorBrush;
-                    newDarkPrimaryColor = new BrushConverter().ConvertFromString("#00ad00") as SolidColorBrush;
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
-                }
-                else
-                {
-                    //do nothing
-                }
-            }
-            else
-            {
-                backGroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#212121"));
-                newPrimaryColor = new BrushConverter().ConvertFromString("#3b3b3b") as SolidColorBrush;
-                newDarkPrimaryColor = new BrushConverter().ConvertFromString("#323232") as SolidColorBrush;
-                App.Current.Resources.MergedDictionaries[0].Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml");
-                if (_color == RED)
-                {
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml");
-                }
-                else if (_color == ORANGE)
-                {
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml");
-                }
-                else if (_color == YELLOW)
-                {
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
-                }
-                else if (_color == BLUE)
-                {
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml");
-                }
-                else if (_color == GREEN)
-                {
-                    App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
-                }
-                else
-                {
-                    //do nothing
-                }
-            }
-
-            this.MenuBar.Background = newPrimaryColor;
-            this.TitleBar.Background = newDarkPrimaryColor;
-            this.Background = backGroundColor;
+            this.MenuBar.Background = palette.newPrimaryColor;
+            this.TitleBar.Background = palette.newDarkPrimaryColor;
+            this.Background = palette.backGroundColor;
         }
 		#endregion
 	}

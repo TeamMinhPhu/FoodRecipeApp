@@ -21,8 +21,8 @@
     </Window.Resources>
 
     <Canvas>
-        
-            <Grid Height="40" Width="700" VerticalAlignment="Top" Background="#ff9100">
+
+        <Grid x:Name="TitleBar" Height="40" Width="700" VerticalAlignment="Top" Background="{DynamicResource PrimaryHueMidBrush}">
                 <Button Name="Back" Content="Back" HorizontalAlignment="Left" Foreground="White" Background="Transparent" BorderBrush="Transparent" Width="100" Height="40" Click="Back_Click"/>
                 <Label Content="Recipe" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalContentAlignment="Center"></Label>
             </Grid>
@@ -39,14 +39,14 @@
                         <StackPanel Height="180" Width="300" Margin="30,10,20,0">
                             <Label Content="Mô tả món ăn" FontWeight="Bold"/>
                             <ScrollViewer MaxHeight="155" VerticalScrollBarVisibility="Auto">
-                                <TextBlock x:Name="dishDesTextBlock" Width="Auto" TextWrapping="Wrap" FontSize="15"/>
+                                <TextBlock x:Name="dishDesTextBlock" Width="Auto" TextWrapping="Wrap" FontSize="15" Foreground="{DynamicResource PrimaryHueMidBrush}" />
                             </ScrollViewer>
                         </StackPanel>
 
                         <StackPanel Height="180" Width="300" Margin="20,10,40,0">
                             <Label Content="Nguyên liệu" FontWeight="Bold"/>
                             <ScrollViewer MaxHeight="155" Width="250" VerticalScrollBarVisibility="Auto" Margin="-40,0,0,0">
-                                <TextBlock x:Name="dishIngTextBlock" Width="250" TextWrapping="Wrap" FontSize="15" Background="Transparent"/>
+                                <TextBlock x:Name="dishIngTextBlock" Width="250" TextWrapping="Wrap" FontSize="15" Background="Transparent" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
                             </ScrollViewer>
                         </StackPanel>
                     </StackPanel>
@@ -70,7 +70,7 @@
                                     </ListView.ItemContainerStyle>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding typeName}" FontSize="15" Margin="0,0,0,5"/>
+                                            <TextBlock Text="{Binding typeName}" Foreground="{DynamicResource PrimaryHueMidBrush}" FontSize="15" Margin="0,0,0,5"/>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
@@ -182,7 +182,7 @@
 
             </Grid>
 
-        <Grid Height="55" Width="700" VerticalAlignment="Top" Background="#ff9100" Canvas.Bottom="0">
+        <Grid x:Name="NavigatorBar" Height="55" Width="700" VerticalAlignment="Top" Background="{DynamicResource PrimaryHueMidBrush}" Canvas.Bottom="0">
             <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
                 <ListView Name="CarouselBtnSkip">
                     <ListView.ItemsPanel>

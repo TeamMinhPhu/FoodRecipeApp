@@ -1,4 +1,5 @@
-﻿using MaterialDesignColors;
+﻿using FoodRecipeApp.Classes;
+using MaterialDesignColors;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -45,6 +46,13 @@ namespace FoodRecipeApp
 		{
 			InitializeComponent();
 			loadConfig();
+			MouseDown += Window_MouseDown;
+		}
+
+		private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if (e.ChangedButton == MouseButton.Left)
+				DragMove();
 		}
 
 		private void darkTheme_Click(object sender, RoutedEventArgs e)
@@ -104,87 +112,15 @@ namespace FoodRecipeApp
 
 		private void setColor()
 		{
-			SolidColorBrush backGroundColor = new SolidColorBrush();
-			SolidColorBrush newPrimaryColor = new SolidColorBrush();
-			SolidColorBrush newDarkPrimaryColor = new SolidColorBrush();
+			AppColorPalette palette = new AppColorPalette(_is_dark_theme, _color);
 
-			if (_is_dark_theme == false)
-			{
-				backGroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#ffffff"));
-				App.Current.Resources.MergedDictionaries[0].Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml");
-
-				if (_color == RED)
-				{
-					newPrimaryColor = new BrushConverter().ConvertFromString("#ff1717") as SolidColorBrush;
-					newDarkPrimaryColor = new BrushConverter().ConvertFromString("#de0000") as SolidColorBrush;
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml");
-				}
-				else if (_color == ORANGE)
-				{
-					newPrimaryColor = new BrushConverter().ConvertFromString("#ff6d17") as SolidColorBrush;
-					newDarkPrimaryColor = new BrushConverter().ConvertFromString("#de5200") as SolidColorBrush;
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml");
-				}
-				else if (_color == YELLOW)
-				{
-					newPrimaryColor = new BrushConverter().ConvertFromString("#ffe817") as SolidColorBrush;
-					newDarkPrimaryColor = new BrushConverter().ConvertFromString("#dec800") as SolidColorBrush;
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
-				}
-				else if (_color == BLUE)
-				{
-					newPrimaryColor = new BrushConverter().ConvertFromString("#1776ff") as SolidColorBrush;
-					newDarkPrimaryColor = new BrushConverter().ConvertFromString("#005bde") as SolidColorBrush;
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml");
-				}
-				else if (_color == GREEN)
-				{
-					newPrimaryColor = new BrushConverter().ConvertFromString("#00d900") as SolidColorBrush;
-					newDarkPrimaryColor = new BrushConverter().ConvertFromString("#00ad00") as SolidColorBrush;
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
-				}
-				else
-				{
-					//do nothing
-				}
-			}
-			else
-			{
-				backGroundColor = (SolidColorBrush)(new BrushConverter().ConvertFrom("#212121"));
-				newPrimaryColor = new BrushConverter().ConvertFromString("#3b3b3b") as SolidColorBrush;
-				newDarkPrimaryColor = new BrushConverter().ConvertFromString("#323232") as SolidColorBrush;
-				App.Current.Resources.MergedDictionaries[0].Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml");
-				if (_color == RED)
-				{
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Red.xaml");
-				}
-				else if (_color == ORANGE)
-				{
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Orange.xaml");
-				}
-				else if (_color == YELLOW)
-				{
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
-				}
-				else if (_color == BLUE)
-				{
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml");
-				}
-				else if (_color == GREEN)
-				{
-					App.Current.Resources.MergedDictionaries[2].Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
-				}
-				else
-				{
-					//do nothing
-				}
-			}
-
-			NewBackGroundColor = backGroundColor;
-			NewMenuColor = newPrimaryColor;
-			NewTitleBarColor = newDarkPrimaryColor;
+			NewBackGroundColor = palette.backGroundColor;
+			NewMenuColor = palette.newPrimaryColor;
+			NewTitleBarColor = palette.newDarkPrimaryColor;
 
 			this.Background = NewBackGroundColor;
+			this.Border.BorderBrush = NewTitleBarColor;
+			this.TitleBar.Background = NewTitleBarColor;
 
 			PrimaryColorChanged?.Invoke(NewMenuColor);
 			BackGroundThemeChanged?.Invoke(NewBackGroundColor);
@@ -198,19 +134,21 @@ namespace FoodRecipeApp
 			config.AppSettings.Settings["ShowSplashScreen"].Value = _show_splashScreen.ToString();
 			config.AppSettings.Settings["Color"].Value = _color.ToString();
 			config.AppSettings.Settings["DarkTheme"].Value = _is_dark_theme.ToString();
-
 			config.Save(ConfigurationSaveMode.Minimal);
+
+
 		}
 
 		private void loadConfig()
 		{
-			var configSplashScreen = ConfigurationManager.AppSettings["ShowSplashScreen"];
+			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			var configSplashScreen = config.AppSettings.Settings["ShowSplashScreen"].Value;
 			_show_splashScreen = bool.Parse(configSplashScreen);
 
-			var configDarkTheme = ConfigurationManager.AppSettings["DarkTheme"];
+			var configDarkTheme = config.AppSettings.Settings["DarkTheme"].Value;
 			_is_dark_theme = bool.Parse(configDarkTheme);
 
-			var configColor = ConfigurationManager.AppSettings["Color"];
+			var configColor = config.AppSettings.Settings["Color"].Value;
 			_color = int.Parse(configColor);
 			
 			if (_show_splashScreen == true)
@@ -265,6 +203,11 @@ namespace FoodRecipeApp
 			{
 				_show_splashScreen = false;
 			}
+		}
+
+		private void closeButton_Click(object sender, RoutedEventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

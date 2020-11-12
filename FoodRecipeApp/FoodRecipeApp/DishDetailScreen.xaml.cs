@@ -55,10 +55,17 @@ namespace FoodRecipeApp
         public DishDetailScreen(string dishId)
         {
             InitializeComponent();
+
+            var targetWindow = Application.Current.Windows.Cast<Window>().FirstOrDefault(window => window is MainWindow) as MainWindow;
+            this.Background = targetWindow.Background;
+            this.TitleBar.Background = targetWindow.TitleBar.Background;
+            this.NavigatorBar.Background = targetWindow.TitleBar.Background;
+
             myDishId = dishId;
             MouseDown += Window_MouseDown;
             CarouselBtnSkip.PreviewMouseLeftButtonDown += ListViewItem_MouseLeftButtonDown;
             CarouselBtnSkip.PreviewMouseLeftButtonUp += ListViewItem_MouseLeftButtonDown;
+            
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

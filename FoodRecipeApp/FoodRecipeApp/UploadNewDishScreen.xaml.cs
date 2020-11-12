@@ -37,10 +37,16 @@ namespace FoodRecipeApp
         BindingList<FoodType> _NewListType;
 
 
-        public UploadNewDishScreen()
+        public UploadNewDishScreen(SolidColorBrush backgroundColor, SolidColorBrush titleColor)
         {
             InitializeComponent();
             MouseDown += Window_MouseDown;
+            this.Background = backgroundColor;
+            this.TitleBar.Background = titleColor;
+
+            string Folder = AppDomain.CurrentDomain.BaseDirectory;
+            var Bitmap = new BitmapImage(new Uri($"{Folder}Resources\\Icons\\picture.png", UriKind.Absolute));
+            dishImage.Source = Bitmap;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

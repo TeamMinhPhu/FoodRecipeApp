@@ -55,7 +55,7 @@
     </Window.Resources>
     <Grid>
         <StackPanel>
-            <Grid Height="40" VerticalAlignment="Top" Background="#ff9100">
+            <Grid Name ="TitleBar"  Height="40" VerticalAlignment="Top" Background="#ff9100">
                 <Button Name="Back" Content="Back" HorizontalAlignment="Left" Foreground="White" Background="Transparent" BorderBrush="Transparent" Width="100" Height="40" Click="Back_Click"/>
                 <Label Content="New Dish" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalContentAlignment="Center"></Label>
             </Grid>
@@ -63,15 +63,16 @@
                 <StackPanel Height="680" Width="650">
                     <Border BorderThickness="1" BorderBrush="Black" Height="40" Width="400" Margin="0,30,0,30">
                         <Canvas>
-                            <TextBox Name="dishName" Padding="5,0,5,0" Height="40" Width="400" FontSize="20" Background="Transparent" BorderThickness="0" Panel.ZIndex="2" materialDesign:HintAssist.Hint="Tên món ăn"></TextBox>
+                            <TextBox Foreground="{DynamicResource PrimaryHueMidBrush}" Name="dishName" Padding="5,0,5,0" Height="40" Width="400" FontSize="20" Background="Transparent" BorderThickness="0" Panel.ZIndex="2" materialDesign:HintAssist.Hint="Tên món ăn"></TextBox>
                         </Canvas>
                     </Border>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
                         <Border BorderThickness="1" BorderBrush="Black" Height="200" Width="280" Margin="0,0,20,10" HorizontalAlignment="Left">
-                            <TextBox Name="dishDescription" Padding="5" AcceptsReturn="True" TextWrapping="Wrap" Height="200" Width="280" FontSize="18" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Mô tả món ăn"  materialDesign:HintAssist.IsFloating="True"/>
+                            <TextBox Name="dishDescription" Padding="5" AcceptsReturn="True" TextWrapping="Wrap" Height="200" Width="280" FontSize="18" Background="Transparent" Foreground="{DynamicResource PrimaryHueMidBrush}"
+                                     BorderThickness="0" materialDesign:HintAssist.Hint="Mô tả món ăn" materialDesign:HintAssist.IsFloating="True"/>
                         </Border>
                         <Border BorderThickness="1" BorderBrush="Black" Height="200" Width="280" Margin="10,0,0,10" HorizontalAlignment="Left">
-                            <TextBox Name="dishIngredient" Padding="5" AcceptsReturn="True" TextWrapping="Wrap" Height="200" Width="280" FontSize="18" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Nguyên liệu"  materialDesign:HintAssist.IsFloating="True"/>
+                            <TextBox Foreground="{DynamicResource PrimaryHueMidBrush}" Name="dishIngredient" Padding="5" AcceptsReturn="True" TextWrapping="Wrap" Height="200" Width="280" FontSize="18" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Nguyên liệu"  materialDesign:HintAssist.IsFloating="True"/>
                         </Border>
                     </StackPanel>
                     <Grid>
@@ -81,29 +82,29 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Margin="0,20,10.8,30.2" Grid.Column="0">
                             <Border BorderThickness="1" BorderBrush="Black" Height="180" Width="280" Margin="0,10,10,0">
-                                <Canvas>
+                                <Canvas Background="Transparent">
                                     <Image Height="177" x:Name="dishImage" Source="Resources/Images/whitebackground.png" Stretch="Fill" Width="277" AllowDrop="True" Drop="dishImage_Drop" DragEnter="dishImage_DragEnter"/>
-                                    <TextBlock x:Name="ImageHint" Text="Kéo hình vào đây" FontSize="18" Foreground="Gray" Canvas.Bottom="20" Canvas.Left="72" Canvas.Right="100"/>
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="ImageHint" Text="Kéo hình vào đây" FontSize="18" Canvas.Bottom="20" Canvas.Left="72" Canvas.Right="100"/>
                                 </Canvas>
                             </Border>
                             <Border BorderThickness="1" BorderBrush="Black" Height="40" Width="280" Margin="10,30,20,10">
-                                <TextBox Name="linkVideo" Padding="5,0,5,0" Height="40" Width="280" FontSize="20" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Link youtube"/>
+                                <TextBox Foreground="{DynamicResource PrimaryHueMidBrush}" Name="linkVideo" Padding="5,0,5,0" Height="40" Width="280" FontSize="20" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Link youtube"/>
                             </Border>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="348,30,11.6,0.2" HorizontalAlignment="Center" Grid.ColumnSpan="2" Width="290">
                             <StackPanel Width="200">
-                                <ComboBox Name="selectTagCB" Width="150" Margin="0,0,0,10" FontSize="14" materialDesign:HintAssist.Hint="Chọn tag món ăn">
+                                <ComboBox Foreground="{DynamicResource PrimaryHueMidBrush}" Name="selectTagCB" Width="150" Margin="0,0,0,10" FontSize="14" materialDesign:HintAssist.Hint="Chọn tag món ăn">
                                     <ComboBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding typeName}"/>
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-                                <Label Content="Hoặc:" Margin="0,0,0,10"/>
+                                <Label Content="Hoặc:" Margin="0,0,0,10" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
                                 <Border BorderThickness="0.5" BorderBrush="Black" Height="30" Width="150">
-                                    <TextBox Name="newTagTextBox" Height="30" Width="150" Padding="5,0,5,0" FontSize="14" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Thêm loại mới"/>
+                                    <TextBox Foreground="{DynamicResource PrimaryHueMidBrush}" Name="newTagTextBox" Height="30" Width="150" Padding="5,0,5,0" FontSize="14" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Thêm loại mới"/>
                                 </Border>
-                                <ListBox x:Name="selectedTagList" Margin="0,20,0,0" FontSize="14" Height="120" Width="150" BorderThickness="0.5" BorderBrush="Black">
+                                <ListBox Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="selectedTagList" Margin="0,20,0,0" FontSize="14" Height="120" Width="150" BorderThickness="0.5" BorderBrush="Black">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <TextBlock Text="{Binding typeName}"/>
@@ -112,8 +113,8 @@
                                 </ListBox>
                             </StackPanel>
                             <StackPanel Margin="0,45,10,20">
-                                <Button x:Name="addTagBtn" Content="Add" Width="75" Height="25" Background="#ff9100" Foreground="White" Click="addTagBtn_Click"/>
-                                <Button x:Name="removeTagBtn" Content="Delete" Margin="0,80,0, 0" Width="75" Height="25" Background="#ff9100" Foreground="White" Click="removeTagBtn_Click"/>
+                                <Button x:Name="addTagBtn" Content="Add" Width="75" Height="25" Foreground="White" Click="addTagBtn_Click"/>
+                                <Button x:Name="removeTagBtn" Content="Delete" Margin="0,80,0, 0" Width="75" Height="25" Foreground="White" Click="removeTagBtn_Click"/>
                             </StackPanel>
                         </StackPanel>
                     </Grid>   
@@ -121,12 +122,12 @@
                 <StackPanel Height="680" Width="430">
                     <Label Name="stepName" FontSize="30" FontWeight="Bold" Margin="30,30,10,0" Content="Demo Step"/>
                     <Border BorderThickness="1" BorderBrush="Black" Height="200" Width="370" Margin="0,32,0,20">
-                        <TextBox Name="StepDescriptionTextBox" Padding="5" AcceptsReturn="True" TextWrapping="Wrap" Height="200" Width="370" FontSize="18" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Mô tả bước làm"  materialDesign:HintAssist.IsFloating="True"/>
+                        <TextBox Foreground="{DynamicResource PrimaryHueMidBrush}" Name="StepDescriptionTextBox" Padding="5" AcceptsReturn="True" TextWrapping="Wrap" Height="200" Width="370" FontSize="18" Background="Transparent" BorderThickness="0" materialDesign:HintAssist.Hint="Mô tả bước làm"  materialDesign:HintAssist.IsFloating="True"/>
                     </Border>
                     <Border BorderThickness="1" BorderBrush="Black" Height="190" Width="370" Margin="0,20,0,20">
                         <Canvas>
-                            <TextBlock x:Name="imageInput" Drop="imageInput_Drop" AllowDrop="True" Height="190" Width="368" Panel.ZIndex="5"></TextBlock>
-                            <TextBlock x:Name="StepImageHint" Text="Kéo hình hoặc thư mục vào đây" Style="{StaticResource VisibleAnimation}" FontSize="18" Foreground="Gray" Canvas.Bottom="20" Canvas.Left="60" Canvas.Right="100"/>
+                            <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="imageInput" Drop="imageInput_Drop" AllowDrop="True" Height="190" Width="368" Panel.ZIndex="5"></TextBlock>
+                            <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="StepImageHint" Text="Kéo hình hoặc thư mục vào đây" Style="{StaticResource VisibleAnimation}" FontSize="18" Canvas.Bottom="20" Canvas.Left="60" Canvas.Right="100"/>
                             <ListView Name="imagePreview" Height="188" Width="368"  HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -144,9 +145,9 @@
 
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Name="removeStepBtn" Content="Del Step" Margin="0,30,10,0" Width="100" Height="40" Background="#ff9100" Foreground="White" Click="removeStepBtn_Click"/>
-                        <Button Name="addStepBtn" Content="Add Step" Margin="10,30,10,0" Width="100" Height="40" Background="#ff9100" Foreground="White" Click="addStepBtn_Click"/>
-                        <Button Name="doneBtn" Content="Done" Margin="10,30,0,0" Width="100" Height="40" Background="#ff9100" Foreground="White" Click="doneBtn_Click"/>
+                        <Button Name="removeStepBtn" Content="Del Step" Margin="0,30,10,0" Width="100" Height="40" Foreground="White" Click="removeStepBtn_Click"/>
+                        <Button Name="addStepBtn" Content="Add Step" Margin="10,30,10,0" Width="100" Height="40" Foreground="White" Click="addStepBtn_Click"/>
+                        <Button Name="doneBtn" Content="Done" Margin="10,30,0,0" Width="100" Height="40" Foreground="White" Click="doneBtn_Click"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>

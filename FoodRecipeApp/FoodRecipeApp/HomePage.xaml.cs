@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FoodRecipeApp.Classes;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media.Animation;
 
 namespace FoodRecipeApp
 {
@@ -100,7 +101,7 @@ namespace FoodRecipeApp
 			try
 			{
 				var newScreen = new DishDetailScreen(_dishes_list[_selected_index].Id);
-				newScreen.Show();
+				newScreen.ShowDialog();
 			}
 			catch
 			{
@@ -111,9 +112,30 @@ namespace FoodRecipeApp
 		//Add item to favourite | Remove item from favourite
 		private void favButton_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
-			_dishes_list[_selected_index].Fav = !_dishes_list[_selected_index].Fav;
-			dishesView.Items.Refresh();
-			DishDao.WriteUpdatedData(); //write to file
+			//_dishes_list[_selected_index].Fav = !_dishes_list[_selected_index].Fav;
+			if( _dishes_list[_selected_index].Fav == false)
+			{
+				_dishes_list[_selected_index].Fav = true;
+				dishesView.Items.Refresh();
+				DishDao.WriteUpdatedData(); //write to file
+			}
+			else
+			{
+				var Result = MessageBox.Show("Bạn có chắc chắn muốn xóa món ăn này khỏi danh sách yêu thích?", "Xóa khỏi danh sánh", MessageBoxButton.YesNo, MessageBoxImage.Question);
+				if (Result == MessageBoxResult.Yes)
+				{
+					_dishes_list[_selected_index].Fav = false;
+					dishesView.Items.Refresh();
+					UpdateView();
+					UpdatePage();
+					DishDao.WriteUpdatedData(); //write to file
+				}
+				else
+				{
+					//do nothing
+				}
+			}
+
 		}
 
 		//next button handle
@@ -224,6 +246,20 @@ namespace FoodRecipeApp
 			_search = keywordTextBox.Text;
 			UpdateView();
 			UpdatePage();
+		}
+
+		private void Image_MouseEnter(object sender, MouseEventArgs e)
+		{
+			Storyboard story = (Storyboard)FindResource("expandImage");
+			Image image = sender as Image;
+			image.BeginStoryboard(story);
+		}
+
+		private void Image_MouseLeave(object sender, MouseEventArgs e)
+		{
+			Storyboard story = (Storyboard)FindResource("shrinkImage");
+			Image image = sender as Image;
+			image.BeginStoryboard(story);
 		}
 	}
 }

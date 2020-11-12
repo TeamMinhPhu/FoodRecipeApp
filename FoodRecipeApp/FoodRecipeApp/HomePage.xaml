@@ -36,6 +36,20 @@
                 </Trigger>
             </Style.Triggers>-->
         </Style>
+
+        <!-- Image animation hover -->
+        <Storyboard x:Key="expandImage">
+            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+        To="1.2" Duration="0:0:0.25" />
+            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+        To="1.2" Duration="0:0:0.3" />
+        </Storyboard>
+        <Storyboard x:Key="shrinkImage">
+            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleX"
+        To="1" Duration="0:0:0.3" />
+            <DoubleAnimation Storyboard.TargetProperty="RenderTransform.ScaleY"
+        To="1" Duration="0:0:0.3" />
+        </Storyboard>
     </Page.Resources>
     <DockPanel Background="Transparent" LastChildFill="True">
 
@@ -43,31 +57,33 @@
       
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="160"/>
                     <ColumnDefinition Width="160"/>
                 </Grid.ColumnDefinitions>
-                <Button Width="16" Height="16" Padding="0" Margin="20 0" Background="Transparent" Name="searchButton"
+                <Button Width="20" Height="20" Padding="0" Margin="20 0" Background="Transparent" Name="searchButton"
                         BorderThickness="0" HorizontalAlignment="Left" Cursor="Hand" Click="searchButton_Click" Panel.ZIndex="10">
                     <!--<Image RenderOptions.BitmapScalingMode="HighQuality" Source="/Resources/Icons/search (1).png" Width="16" Height="16"
                            HorizontalAlignment="Left"/>-->
-                <materialDesign:PackIcon Kind="Search" Foreground="{DynamicResource PrimaryHueMidBrush}">
+                <materialDesign:PackIcon Width="20" Height="20" Kind="Search" Foreground="{DynamicResource PrimaryHueMidBrush}">
                 </materialDesign:PackIcon>
                 </Button>
                 
-            <TextBlock  Grid.Column="0" Padding="25 0 0 0" Text="Enter keyword" Foreground="#FF9D9D9D" Name="keywordPlaceholderTextBlock" 
+            <TextBlock FontSize="14" Grid.Column="0" Padding="25 0 0 0" Text="Enter keyword" Foreground="#FF9D9D9D" Name="keywordPlaceholderTextBlock" 
                         FontStyle="Italic" VerticalAlignment="Center" Margin="20 0 0 0"/>
-            <TextBox  Grid.Column="0" Padding="12 0 0 0" x:Name="keywordTextBox" Margin="20 0 0 0" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"
+            <TextBox FontSize="14" Grid.Column="0" Padding="12 0 0 0" x:Name="keywordTextBox" Margin="20 0 0 0" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryHueMidBrush}"
                       GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" KeyDown="keywordTextBox_KeyDown"/>
-        
-            <ToggleButton Grid.Column="1" Name="favoriteToggle" Click="favoriteToggle_Click" Margin="20,0,0,20">
-                FAV
-                <ToggleButton.RenderTransform>
-                    <ScaleTransform ScaleX="1.5" ScaleY="1.5">
-                    </ScaleTransform>
-                </ToggleButton.RenderTransform>
-            </ToggleButton>
 
-            <ComboBox Grid.Column="2" Name="filter" SelectionChanged="filter_SelectionChanged" Width="80" Margin="30 0 50 0" Foreground="{DynamicResource PrimaryHueMidBrush}">
+            <StackPanel Grid.Column="1" Margin="60,0,0,20" Orientation="Horizontal">
+                <Label FontSize="14" Foreground="{DynamicResource PrimaryHueMidBrush}" Padding="0 20 0 0" Margin="0 0 5 0">Yêu thích</Label>
+                <ToggleButton Name="favoriteToggle" Click="favoriteToggle_Click">
+                    FAV
+                    <ToggleButton.RenderTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5">
+                        </ScaleTransform>
+                    </ToggleButton.RenderTransform>
+                </ToggleButton>
+            </StackPanel>
+            <ComboBox Cursor="Hand" Grid.Column="2" Name="filter" SelectionChanged="filter_SelectionChanged" Width="80" Margin="30 0 50 0" Foreground="{DynamicResource PrimaryHueMidBrush}">
                 <ComboBoxItem>
                     a - Z
                 </ComboBoxItem>
@@ -105,7 +121,7 @@
                 </Grid>
             </Button>
 
-            <ComboBox Margin="10 0 0 0" Name="paging" Height="40" SelectionChanged="paging_SelectionChanged" Foreground="{DynamicResource PrimaryHueMidBrush}">
+            <ComboBox Cursor="Hand" Margin="10 0 0 0" Name="paging" Height="40" SelectionChanged="paging_SelectionChanged" Foreground="{DynamicResource PrimaryHueMidBrush}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock FontSize="20" Text="{Binding PageSelection}"></TextBlock>
@@ -169,7 +185,16 @@
                                     <Grid PreviewMouseLeftButtonUp="dishView_PreviewMouseLeftButtonUp" Cursor="Hand">
                                         <TextBlock Width="250" Height="30" Text="{Binding Name}" Panel.ZIndex="1" TextTrimming="WordEllipsis" TextAlignment="Center"
                                                    Foreground="Black" Background="White" Opacity="0.8" FontSize="18" VerticalAlignment="Bottom" Padding="5 0 5 0"/>
-                                        <Image Width="250" Height="170" Stretch="Fill" Source="{Binding Source, Converter={StaticResource converter}}"/>
+                                        <Image Width="250" Height="170" Stretch="Fill" Source="{Binding Source, Converter={StaticResource converter}}"
+                                               MouseEnter="Image_MouseEnter" MouseLeave="Image_MouseLeave" RenderTransformOrigin="0.5, 0.5" RenderOptions.BitmapScalingMode="HighQuality">
+                                            <Image.RenderTransform>
+                                                <!--<TransformGroup>-->
+
+                                                    <!--<TranslateTransform X="0.5" Y="0.5"></TranslateTransform>-->
+                                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                                <!--</TransformGroup>-->
+                                            </Image.RenderTransform>
+                                        </Image>
                                     </Grid>
                                 </Grid>
                             </DataTemplate>
