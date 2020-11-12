@@ -41,20 +41,20 @@ namespace FoodRecipeApp
             }
             else
             {
-                var folder = AppDomain.CurrentDomain.BaseDirectory;
-                var filepath = $"{folder}Resources\\Data\\facts.txt";
-                var quotes = File.ReadAllLines(filepath).ToList();
+				var folder = AppDomain.CurrentDomain.BaseDirectory;
+				var filepath = $"{folder}Resources\\Data\\facts.txt";
+				var quotes = File.ReadAllLines(filepath).ToList();
 
-                Random rng = new Random();
-                int index = rng.Next(0, quotes.Count);
-                string quote = quotes[index];
-                randomQuote.Text = quote;
+				Random rng = new Random();
+				int index = rng.Next(0, quotes.Count);
+				string quote = quotes[index];
+				randomQuote.Text = quote;
 
-                timer = new System.Timers.Timer();
-                timer.Elapsed += Timer_Elapsed;
-                timer.Interval = 10;
-                timer.Start();
-            }
+				timer = new System.Timers.Timer();
+				timer.Elapsed += Timer_Elapsed;
+				timer.Interval = 10;
+				timer.Start();
+			}
         }
 
         System.Timers.Timer timer;
