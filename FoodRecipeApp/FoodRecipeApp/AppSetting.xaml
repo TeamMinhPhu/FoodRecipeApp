@@ -30,7 +30,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Border x:Name="Border" BorderThickness="2 0 2 2">
+    <Border x:Name="Border" BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueDarkBrush}">
         <StackPanel>
             <Grid Height="30" Name="TitleBar">
                 <TextBlock Text="Settings" VerticalAlignment="Center" FontWeight="Bold" Foreground="#fff" Margin="10 0 0 0"/>

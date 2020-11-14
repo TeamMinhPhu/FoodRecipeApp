@@ -10,7 +10,8 @@
         WindowStartupLocation="CenterScreen" 
         Loaded="Window_Loaded" WindowStyle="None"
         AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip">
+        ResizeMode="CanResizeWithGrip"
+        Background="#fff">
     <Window.Resources>
         <!--menu animation-->
         <Storyboard x:Key="openMenu">
@@ -183,16 +184,45 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
-
-
+    <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueDarkBrush}" Padding="0 2 0 0">
         <DockPanel>
 
             <!--Title bar-->
             <!--"=#ff9100-->
             <Grid Name="TitleBar" Height="30" VerticalAlignment="Top" DockPanel.Dock="Top" Background="#ff9100" Margin="0 -2 0 0">
                 <TextBlock Text="Food Recipes" VerticalAlignment="Center" FontWeight="Bold" Foreground="#fff" Margin="10 0 0 0"/>
-                <Button x:Name="closeProgramButton"
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="minimizeProgramButton"
+                    Panel.ZIndex="10"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right"
+                    Margin="0"
+                    Height="30" Width="40"
+                    BorderThickness="0"
+                    Style="{StaticResource closeButton}" Click="minimizeProgramButton_Click">
+
+                        <Grid Width="12" Height="12">
+                            <Image Source="Resources/Icons/minimize.png" RenderOptions.BitmapScalingMode="HighQuality"
+                                Stretch="Fill"/>
+                        </Grid>
+                    </Button>
+                    
+                    <Button x:Name="maximizeProgramButton"
+                    Panel.ZIndex="10"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right"
+                    Margin="0"
+                    Height="30" Width="40"
+                    BorderThickness="0"
+                    Style="{StaticResource closeButton}" Click="maximizeProgramButton_Click">
+
+                        <Grid Width="12" Height="12">
+                            <Image Name="maximizeButtonImage" Source="Resources/Icons/maximize.png" RenderOptions.BitmapScalingMode="HighQuality"
+                                Stretch="Fill"/>
+                        </Grid>
+                    </Button>
+                    
+                    <Button x:Name="closeProgramButton"
                     Panel.ZIndex="10"
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Right"
@@ -201,11 +231,12 @@
                     BorderThickness="0"
                     Style="{StaticResource closeButton}" Click="closeProgramButton_Click">
 
-                    <Grid Width="12" Height="12">
-                        <Image Source="Resources/Icons/close.png" RenderOptions.BitmapScalingMode="HighQuality"
+                        <Grid Width="12" Height="12">
+                            <Image Source="Resources/Icons/close.png" RenderOptions.BitmapScalingMode="HighQuality"
                                 Stretch="Fill"/>
-                    </Grid>
-                </Button>
+                        </Grid>
+                    </Button>
+                </StackPanel>
             </Grid>
 
             <Grid x:Name="MenuBar" HorizontalAlignment="Left" Width="60" DockPanel.Dock="Left" Background="#ffb600">
@@ -255,11 +286,10 @@
                     </ListView>
                 </Grid>
             </Grid>
-
+            <!--<ScrollViewer x:Name="aboutUsPageScrollViewer" Visibility="Collapsed" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MaxHeight="1500">-->
             <Frame Name="menuPage" Visibility="Collapsed" NavigationUIVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-            <ScrollViewer x:Name="aboutUsPageScrollViewer" Visibility="Collapsed" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" MaxHeight="1500">
-                <Frame Name="aboutUsPage" Visibility="Collapsed" NavigationUIVisibility="Hidden"/>
-            </ScrollViewer>
+                <!--<Frame Name="aboutUsPage" Visibility="Collapsed" NavigationUIVisibility="Hidden"/>-->
+            <!--</ScrollViewer>-->
         </DockPanel>
-    </Grid>
+    </Border>
 </Window>

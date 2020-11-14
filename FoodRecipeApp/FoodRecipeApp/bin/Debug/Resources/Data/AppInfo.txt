@@ -1,1 +1,0 @@
-Phần mềm hỗ trợ người dùng xem những công thức nấu ăn được chúng tôi thu thập trên mạng, đồng thời có thể thêm những công thức nấu ăn mới do mình tìm kiếm được. Người dùng có thể tìm kiếm món ăn dễ dàng nhờ những công cụ như sort, tìm kiếm theo tên hay loại món ăn và thêm những món ăn vào danh sách yêu thích của mình.

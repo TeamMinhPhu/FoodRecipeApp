@@ -9,7 +9,7 @@
       Title="InfoPage"
       Loaded="Page_Loaded">
 
-    <DockPanel Background="White" LastChildFill="True">
+    <ScrollViewer>
         <WrapPanel HorizontalAlignment="Center" Orientation="Vertical">
             <StackPanel HorizontalAlignment="Center">
                 <Label Content="Thông tin thành viên" FontSize="30" FontWeight="Bold" Margin="0,20,0,20" HorizontalContentAlignment="Center"/>
@@ -40,7 +40,7 @@
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <ScrollViewer MaxHeight="500" VerticalScrollBarVisibility="Hidden" Margin="0,30,0,0">
-                                    <TextBlock Text="{Binding Info}" MaxWidth="300" TextWrapping="Wrap" FontSize="18" Background="Transparent"/>
+                                    <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" Text="{Binding Info}" MaxWidth="300" TextWrapping="Wrap" FontSize="18" Background="Transparent"/>
                                 </ScrollViewer>
                             </WrapPanel>
                         </DataTemplate>
@@ -50,8 +50,8 @@
 
             <StackPanel HorizontalAlignment="Center">
                 <Label Content="Thông tin sản phẩm" FontSize="30" FontWeight="Bold" Margin="0,40,0,20" HorizontalContentAlignment="Center"/>
-                <TextBlock x:Name="AppInfo" MaxWidth="700" FontSize="18" TextWrapping="Wrap" TextAlignment="Justify" MaxHeight="500" Margin="0,0,0,40"/>
+                <TextBlock x:Name="AppInfo" Foreground="{DynamicResource PrimaryHueMidBrush}" MaxWidth="700" FontSize="18" TextWrapping="Wrap" TextAlignment="Justify" MaxHeight="500" Margin="0,0,0,40"/>
             </StackPanel>
         </WrapPanel>        
-    </DockPanel>
+    </ScrollViewer>
 </Page>

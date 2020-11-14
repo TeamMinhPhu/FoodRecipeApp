@@ -51,7 +51,7 @@
         To="1" Duration="0:0:0.3" />
         </Storyboard>
     </Page.Resources>
-    <DockPanel Background="Transparent" LastChildFill="True">
+    <DockPanel LastChildFill="True">
 
         <Grid DockPanel.Dock="Top" Height="60">
       
@@ -161,7 +161,7 @@
         </StackPanel>
 
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center">
             <Grid>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <ListView HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"

@@ -31,7 +31,10 @@ namespace FoodRecipeApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly PaletteHelper _paletteHelper = new PaletteHelper();
+        private BindingList<Menu> _list_menu;
+        bool _menu_state_closed = true;
+        Page _content;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -60,7 +63,7 @@ namespace FoodRecipeApp
                 return list;
             }
         }
-        
+
         //drag window
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -69,7 +72,6 @@ namespace FoodRecipeApp
         }
 
         //Menu Open - Collapse
-        bool _menu_state_closed = true;
         private void menuButton_Click(object sender, RoutedEventArgs e)
         {
             if (_menu_state_closed)
@@ -86,7 +88,6 @@ namespace FoodRecipeApp
             _menu_state_closed = !_menu_state_closed;
         }
 
-        private BindingList<Menu> _list_menu;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             string Folder = AppDomain.CurrentDomain.BaseDirectory;
@@ -105,57 +106,55 @@ namespace FoodRecipeApp
             _list_menu = MenuDao.GetAll();
             menuList.ItemsSource = _list_menu;
 
-            menuPage.Content = new HomePage();
+            _content = new HomePage();
+            menuPage.Content = _content;
             menuPage.Visibility = Visibility.Visible;
-            aboutUsPage.Content = new InfoPage();
         }
 
         //Close button (exit window)
-		private void closeProgramButton_Click(object sender, RoutedEventArgs e)
-		{
+        private void closeProgramButton_Click(object sender, RoutedEventArgs e)
+        {
             saveConfig();
             Application.Current.Shutdown();
-		}
+        }
 
-		private void selectedTab(object sender, MouseButtonEventArgs e)
-		{
+        private void selectedTab(object sender, MouseButtonEventArgs e)
+        {
             var item = (sender as ListView).SelectedIndex;
             switch (item)
-			{
+            {
                 case 0:
-                    aboutUsPage.Visibility = Visibility.Collapsed;
-                    aboutUsPageScrollViewer.Visibility = Visibility.Collapsed;
-                    menuPage.Visibility = Visibility.Visible;                                       
+                    _content = new HomePage();
+                    menuPage.Content = _content;
                     break;
                 case 1:
-                    var newScreen = new UploadNewDishScreen( (SolidColorBrush)this.Background, (SolidColorBrush)this.TitleBar.Background);
+                    var newScreen = new UploadNewDishScreen((SolidColorBrush)this.Background, (SolidColorBrush)this.TitleBar.Background);
                     newScreen.Show();
                     this.Close();
                     break;
                 case 2:
-                    menuPage.Visibility = Visibility.Collapsed;
-                    aboutUsPage.Visibility = Visibility.Visible;
-                    aboutUsPageScrollViewer.Visibility = Visibility.Visible;
+                    _content = new InfoPage();
+                    menuPage.Content = _content;
                     break;
                 case 3:
                     var oldBackGroundColor = (SolidColorBrush)this.Background;
                     var oldMenuColor = (SolidColorBrush)this.MenuBar.Background;
                     var oldTitleBarColor = (SolidColorBrush)this.TitleBar.Background;
-				    var oldBackGroundTheme = App.Current.Resources.MergedDictionaries[0].Source;
+                    var oldBackGroundTheme = App.Current.Resources.MergedDictionaries[0].Source;
                     var oldForeGroundTheme = App.Current.Resources.MergedDictionaries[2].Source;
 
                     var settingScreen = new AppSetting();
                     settingScreen.BackGroundThemeChanged += BackGround_ColorChanged;
                     settingScreen.PrimaryColorChanged += Menu_ColorChanged;
                     settingScreen.SecondaryColorChanged += Title_ColorChanged;
-					if(settingScreen.ShowDialog() == true)
-					{
+                    if (settingScreen.ShowDialog() == true)
+                    {
                         this.Background = settingScreen.NewBackGroundColor;
                         this.MenuBar.Background = settingScreen.NewMenuColor;
                         this.TitleBar.Background = settingScreen.NewTitleBarColor;
-					}
+                    }
                     else
-					{
+                    {
                         this.Background = oldBackGroundColor;
                         this.MenuBar.Background = oldMenuColor;
                         this.TitleBar.Background = oldTitleBarColor;
@@ -164,13 +163,13 @@ namespace FoodRecipeApp
                     }
 
                     break;
-			}
-		}
+            }
+        }
 
         private void BackGround_ColorChanged(SolidColorBrush color)
-		{
+        {
             this.Background = color;
-		}
+        }
 
         private void Menu_ColorChanged(SolidColorBrush color)
         {
@@ -178,30 +177,31 @@ namespace FoodRecipeApp
         }
 
         private void Title_ColorChanged(SolidColorBrush color)
-		{
+        {
             this.TitleBar.Background = color;
-		}
+        }
 
-		#region "Config"
-		bool _is_dark_theme;
+        #region "Config"
+        bool _is_dark_theme;
         int _color;
         private void loadConfig()
-		{
-			var configWidth = ConfigurationManager.AppSettings["Width"];
-			this.Width = double.Parse(configWidth);
-			var configHeight = ConfigurationManager.AppSettings["Height"];
-			this.Height = double.Parse(configHeight);
+        {
+            ConfigurationManager.RefreshSection("appSettings");
+            var configWidth = ConfigurationManager.AppSettings["Width"];
+            this.Width = double.Parse(configWidth);
+            var configHeight = ConfigurationManager.AppSettings["Height"];
+            this.Height = double.Parse(configHeight);
 
-			var configMenu = ConfigurationManager.AppSettings["HiddenMenu"];
-			_menu_state_closed = bool.Parse(configMenu);
-			if (_menu_state_closed)
-			{
-				MenuBar.Width = 60;
-			}
-			else
-			{
-				MenuBar.Width = 250;
-			}
+            var configMenu = ConfigurationManager.AppSettings["HiddenMenu"];
+            _menu_state_closed = bool.Parse(configMenu);
+            if (_menu_state_closed)
+            {
+                MenuBar.Width = 60;
+            }
+            else
+            {
+                MenuBar.Width = 250;
+            }
 
             var configDarkTheme = ConfigurationManager.AppSettings["DarkTheme"];
             _is_dark_theme = bool.Parse(configDarkTheme);
@@ -211,14 +211,15 @@ namespace FoodRecipeApp
             setColor();
         }
 
-		private void saveConfig()
-		{
-			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-			config.AppSettings.Settings["Width"].Value = this.Width.ToString();
-			config.AppSettings.Settings["Height"].Value = this.Height.ToString();
-			config.AppSettings.Settings["HiddenMenu"].Value = _menu_state_closed.ToString();
-			config.Save(ConfigurationSaveMode.Minimal);
-		}
+        private void saveConfig()
+        {
+            WindowState = WindowState.Normal;
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["Width"].Value = this.Width.ToString();
+            config.AppSettings.Settings["Height"].Value = this.Height.ToString();
+            config.AppSettings.Settings["HiddenMenu"].Value = _menu_state_closed.ToString();
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
 
         private void setColor()
         {
@@ -228,6 +229,27 @@ namespace FoodRecipeApp
             this.TitleBar.Background = palette.newDarkPrimaryColor;
             this.Background = palette.backGroundColor;
         }
-		#endregion
+        #endregion
+
+        private void maximizeProgramButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState != WindowState.Maximized)
+			{
+                WindowState = WindowState.Maximized;
+                var Bitmap = new BitmapImage(new Uri("Resources/Icons/unmaximize.png", UriKind.Relative));
+                maximizeButtonImage.Source = Bitmap;
+            }
+            else
+			{
+                WindowState = WindowState.Normal;
+                var Bitmap = new BitmapImage(new Uri("Resources/Icons/maximize.png", UriKind.Relative));
+                maximizeButtonImage.Source = Bitmap;
+            }
+        }
+
+		private void minimizeProgramButton_Click(object sender, RoutedEventArgs e)
+		{
+            WindowState = WindowState.Minimized;
+		}
 	}
 }

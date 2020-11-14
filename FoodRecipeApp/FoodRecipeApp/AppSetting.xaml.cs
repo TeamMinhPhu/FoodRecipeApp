@@ -119,7 +119,6 @@ namespace FoodRecipeApp
 			NewTitleBarColor = palette.newDarkPrimaryColor;
 
 			this.Background = NewBackGroundColor;
-			this.Border.BorderBrush = NewTitleBarColor;
 			this.TitleBar.Background = NewTitleBarColor;
 
 			PrimaryColorChanged?.Invoke(NewMenuColor);

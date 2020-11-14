@@ -20,195 +20,194 @@
         </Storyboard>
 
     </Window.Resources>
+    <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueDarkBrush}">
+        <Canvas>
 
-    <Canvas>
-
-        <Grid x:Name="TitleBar" Height="40" Width="700" VerticalAlignment="Top" Background="{DynamicResource PrimaryHueMidBrush}">
-            <Button Name="Back" HorizontalAlignment="Left" Foreground="White" BorderBrush="Transparent" Width="50" Height="20" Click="Back_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="Resources/Icons/left-arrow-screen.png" RenderOptions.BitmapScalingMode="HighQuality"
+            <Grid x:Name="TitleBar" Height="40" Width="700" VerticalAlignment="Top" Background="{DynamicResource PrimaryHueMidBrush}">
+                <Button Name="Back" HorizontalAlignment="Left" Foreground="White" BorderBrush="Transparent" Width="50" Height="20" Click="Back_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/Icons/left-arrow-screen.png" RenderOptions.BitmapScalingMode="HighQuality"
                                 Stretch="Uniform"/>
-                </Button.Background>
-            </Button>
-            <Label Content="Recipe" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalContentAlignment="Center"></Label>
-        </Grid>
+                    </Button.Background>
+                </Button>
+                <Label Content="Recipe" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalContentAlignment="Center"></Label>
+            </Grid>
 
-        <Grid Margin="0,40,0,0">
-            <StackPanel Name="Carousel" Orientation="Horizontal" Height="480">
-                <StackPanel.RenderTransform>
-                    <TranslateTransform x:Name="CarouselTransform" />
-                </StackPanel.RenderTransform>
+            <Grid Margin="0,40,0,0">
+                <StackPanel Name="Carousel" Orientation="Horizontal" Height="480">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform x:Name="CarouselTransform" />
+                    </StackPanel.RenderTransform>
 
-                <StackPanel Height="480" Width="700">
-                    <Label Name="DishNameLabel" Content="Name" FontSize="25" FontWeight="Bold" Margin="40,20,40,0"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="700">
-                        <StackPanel Height="180" Width="300" Margin="30,10,20,0">
-                            <Label Content="Mô tả món ăn" FontWeight="Bold"/>
-                            <ScrollViewer MaxHeight="155" VerticalScrollBarVisibility="Hidden">
-                                <TextBlock x:Name="dishDesTextBlock" Width="Auto" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15" Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                            </ScrollViewer>
+                    <StackPanel Height="480" Width="700">
+                        <Label Name="DishNameLabel" Content="Name" FontSize="25" FontWeight="Bold" Margin="40,20,40,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="700">
+                            <StackPanel Height="180" Width="300" Margin="30,10,20,0">
+                                <Label Content="Mô tả món ăn" FontWeight="Bold"/>
+                                <ScrollViewer MaxHeight="155" VerticalScrollBarVisibility="Hidden">
+                                    <TextBlock x:Name="dishDesTextBlock" Width="Auto" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15" Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                                </ScrollViewer>
+                            </StackPanel>
+
+                            <StackPanel Height="180" Width="300" Margin="20,10,40,0">
+                                <Label Content="Nguyên liệu" FontWeight="Bold"/>
+                                <ScrollViewer MaxHeight="155" Width="250" VerticalScrollBarVisibility="Hidden" Margin="-40,0,0,0">
+                                    <TextBlock x:Name="dishIngTextBlock" Width="250" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15" Background="Transparent" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
+                                </ScrollViewer>
+                            </StackPanel>
                         </StackPanel>
-
-                        <StackPanel Height="180" Width="300" Margin="20,10,40,0">
-                            <Label Content="Nguyên liệu" FontWeight="Bold"/>
-                            <ScrollViewer MaxHeight="155" Width="250" VerticalScrollBarVisibility="Hidden" Margin="-40,0,0,0">
-                                <TextBlock x:Name="dishIngTextBlock" Width="250" TextWrapping="Wrap" TextAlignment="Justify" FontSize="15" Background="Transparent" Foreground="{DynamicResource PrimaryHueMidBrush}"/>
-                            </ScrollViewer>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="700">
-                        <Image Margin="30,20,20,0" Height="190" x:Name="dishImage" Source="Resources/Images/whitebackground.png" Stretch="Fill" Width="300"/>
-                        <StackPanel Height="190" Width="300" Margin="20,20,40,0">
-                            <Label Content="Tag món ăn" FontWeight="Bold"/>
-                            <ScrollViewer MaxHeight="135" Width="250" VerticalScrollBarVisibility="Auto" Margin="-40,0,0,0">
-                                <ListView x:Name="tagList" FontSize="14" Width="250" BorderBrush="Transparent">
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="{x:Type ListViewItem}">
-                                            <Setter Property="Background" Value="Transparent" />
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                        <ContentPresenter />
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding typeName}" Foreground="{DynamicResource PrimaryHueMidBrush}" FontSize="15" Margin="0,0,0,5"/>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                            </ScrollViewer>
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-
-                <Grid x:Name="videoGrid" Height="480" Width="700" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
-                    <StackPanel x:Name="videoSP" Visibility="Collapsed">
-                        <Label Name="videolabel" Content="Video" FontSize="25" FontWeight="Bold" Margin="60,20,40,10" Visibility="Hidden"></Label>
-                        <cef:ChromiumWebBrowser x:Name="videocef" Height="396" Width="648" Visibility="Hidden"></cef:ChromiumWebBrowser>
-                    </StackPanel>
-                </Grid>
-
-                <StackPanel>
-                    <ListView Name="stepDetailView" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                            <ContentPresenter />
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="0,0,20,20" Height="250" VerticalAlignment="Top"/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Height="300" Width="700" Margin="0,10,0,0" VerticalAlignment="Top">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="Bước" FontSize="25" FontWeight="Bold" Margin="20,10,0,0"/>
-                                        <Label Name="StepNameLabel" Content="{Binding step}" Margin="0,10,0,0" FontSize="25" FontWeight="Bold"/>
-                                    </StackPanel>
-                                    <ScrollViewer MaxHeight="150" VerticalScrollBarVisibility="Hidden" Margin="20,10,20,0">
-                                        <TextBlock x:Name="stepDesTextBlock" Text="{Binding stepDetail}" MaxWidth="650" TextWrapping="Wrap" TextAlignment="Justify" FontSize="18" Background="Transparent"/>
-                                    </ScrollViewer>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-
-                    <ListView ItemsSource="{Binding ImageList}" Margin="0,-30,0,0">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                            <ContentPresenter />
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal"/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ScrollViewer Margin="30,0,30,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" MaxHeight="170" Width="640">
-                                    <ListView ItemsSource="{Binding}" PreviewMouseDoubleClick="ListView_OnClick">
-                                        <ListView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal"/>
-                                            </ItemsPanelTemplate>
-                                        </ListView.ItemsPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="700">
+                            <Image Margin="30,20,20,0" Height="190" x:Name="dishImage" Source="Resources/Images/whitebackground.png" Stretch="Fill" Width="300"/>
+                            <StackPanel Height="190" Width="300" Margin="20,20,40,0">
+                                <Label Content="Tag món ăn" FontWeight="Bold"/>
+                                <ScrollViewer MaxHeight="135" Width="250" VerticalScrollBarVisibility="Auto" Margin="-40,0,0,0">
+                                    <ListView x:Name="tagList" FontSize="14" Width="250" BorderBrush="Transparent">
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="{x:Type ListViewItem}">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                            <ContentPresenter />
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                <Image Width="140" Height="90" Stretch="Fill" Source="{Binding ImageLink, Converter={StaticResource converter}}"/>
+                                                <TextBlock Text="{Binding typeName}" Foreground="{DynamicResource PrimaryHueMidBrush}" FontSize="15" Margin="0,0,0,5"/>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
                                 </ScrollViewer>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Grid x:Name="videoGrid" Height="480" Width="700" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                        <StackPanel x:Name="videoSP" Visibility="Collapsed">
+                            <Label Name="videolabel" Content="Video" FontSize="25" FontWeight="Bold" Margin="60,20,40,10" Visibility="Hidden"></Label>
+                            <cef:ChromiumWebBrowser x:Name="videocef" Height="396" Width="648" Visibility="Hidden"></cef:ChromiumWebBrowser>
+                        </StackPanel>
+                    </Grid>
+
+                    <StackPanel>
+                        <ListView Name="stepDetailView" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,20,20" Height="250" VerticalAlignment="Top"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Height="300" Width="700" Margin="0,10,0,0" VerticalAlignment="Top">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Bước" FontSize="25" FontWeight="Bold" Margin="20,10,0,0"/>
+                                            <Label Name="StepNameLabel" Content="{Binding step}" Margin="0,10,0,0" FontSize="25" FontWeight="Bold"/>
+                                        </StackPanel>
+                                        <ScrollViewer MaxHeight="150" VerticalScrollBarVisibility="Hidden" Margin="20,10,20,0">
+                                            <TextBlock x:Name="stepDesTextBlock" Text="{Binding stepDetail}" MaxWidth="650" TextWrapping="Wrap" TextAlignment="Justify" FontSize="18" Background="Transparent"/>
+                                        </ScrollViewer>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
+                        <ListView ItemsSource="{Binding ImageList}" Margin="0,-30,0,0">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ScrollViewer Margin="30,0,30,0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden" MaxHeight="170" Width="640">
+                                        <ListView ItemsSource="{Binding}" PreviewMouseDoubleClick="ListView_OnClick">
+                                            <ListView.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Orientation="Horizontal"/>
+                                                </ItemsPanelTemplate>
+                                            </ListView.ItemsPanel>
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Image Width="140" Height="90" Stretch="Fill" Source="{Binding ImageLink, Converter={StaticResource converter}}"/>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </ScrollViewer>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+
+                <Button Name="leftBtn" Click="leftBtn_Click" HorizontalAlignment="Left" BorderBrush="Transparent"             
+                    MaxHeight="40"
+                    MaxWidth="40"
+                    MinHeight="20"                    
+                    MinWidth="20">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/Icons/left-arrow.png" RenderOptions.BitmapScalingMode="HighQuality"
+                                Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+
+                <Button Name="RightBtn" Click="RightBtn_Click" HorizontalAlignment="Left" Margin="670,0,0,0" BorderBrush="Transparent"               
+                    MaxHeight="40"
+                    MaxWidth="40"
+                    MinHeight="20"                    
+                    MinWidth="20">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/Icons/right-arrow.png" RenderOptions.BitmapScalingMode="HighQuality"
+                                Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+
+            </Grid>
+
+            <Grid x:Name="NavigatorBar" Height="55" Width="700" VerticalAlignment="Top" Background="{DynamicResource PrimaryHueMidBrush}" Canvas.Bottom="0">
+                <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
+                    <ListView Name="CarouselBtnSkip">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding buttonName}" Height="36" Width="60" FontSize="15" FontWeight="Bold" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                </StackPanel>
-            </StackPanel>
-
-            <Button Name="leftBtn" Click="leftBtn_Click" HorizontalAlignment="Left" BorderBrush="Transparent"             
-                    MaxHeight="40"
-                    MaxWidth="40"
-                    MinHeight="20"                    
-                    MinWidth="20">
-                <Button.Background>
-                    <ImageBrush ImageSource="Resources/Icons/left-arrow.png" RenderOptions.BitmapScalingMode="HighQuality"
-                                Stretch="Uniform"/>
-                </Button.Background>
-            </Button>
-
-            <Button Name="RightBtn" Click="RightBtn_Click" HorizontalAlignment="Left" Margin="670,0,0,0" BorderBrush="Transparent"               
-                    MaxHeight="40"
-                    MaxWidth="40"
-                    MinHeight="20"                    
-                    MinWidth="20">
-                <Button.Background>
-                    <ImageBrush ImageSource="Resources/Icons/right-arrow.png" RenderOptions.BitmapScalingMode="HighQuality"
-                                Stretch="Uniform"/>
-                </Button.Background>
-            </Button>
-
-        </Grid>
-
-        <Grid x:Name="NavigatorBar" Height="55" Width="700" VerticalAlignment="Top" Background="{DynamicResource PrimaryHueMidBrush}" Canvas.Bottom="0">
-            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
-                <ListView Name="CarouselBtnSkip">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Label Content="{Binding buttonName}" Height="36" Width="60" FontSize="15" FontWeight="Bold" Foreground="White" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
-        </Grid>
-
-
-    </Canvas>
+                </ScrollViewer>
+            </Grid>
+        </Canvas>
+    </Border>
 </Window>
