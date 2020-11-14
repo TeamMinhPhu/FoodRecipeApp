@@ -76,9 +76,43 @@ namespace FoodRecipeApp.Classes
 			return result;
 		}
 
+        private static readonly string[] VietNamChar = new string[]
+{
+            "aAeEoOuUiIdDyY",
+            "áàạảãâấầậẩẫăắằặẳẵ",
+            "ÁÀẠẢÃÂẤẦẬẨẪĂẮẰẶẲẴ",
+            "éèẹẻẽêếềệểễ",
+            "ÉÈẸẺẼÊẾỀỆỂỄ",
+            "óòọỏõôốồộổỗơớờợởỡ",
+            "ÓÒỌỎÕÔỐỒỘỔỖƠỚỜỢỞỠ",
+            "úùụủũưứừựửữ",
+            "ÚÙỤỦŨƯỨỪỰỬỮ",
+            "íìịỉĩ",
+            "ÍÌỊỈĨ",
+            "đ",
+            "Đ",
+            "ýỳỵỷỹ",
+            "ÝỲỴỶỸ"
+};
+        public static string RemoveSign(string str)
+        {
+            str = str.Normalize(NormalizationForm.FormC);
+            //replace unicode char      
+            for (int i = 1; i < VietNamChar.Length; i++)
+            {
+                for (int j = 0; j < VietNamChar[i].Length; j++)
+                {
+                    str = str.Replace(VietNamChar[i][j], VietNamChar[0][i - 1]);
+                }
+            }
+            return str;
+        }
+
         public static BindingList<Dish> GetAll(double width, double height, int currentPage, int filter, bool favourite, string search)
         {
             int itemsPerPages = GetItemsPerPage(width, height);
+
+
 
             BindingList<Dish> searchedResult = new BindingList<Dish>();
             if (search == "")
@@ -87,8 +121,9 @@ namespace FoodRecipeApp.Classes
 			}
             else
 			{
-                searchedResult = new BindingList<Dish>(_data.Where(c => c.Name.ToLower().Normalize(NormalizationForm.FormKD)
-                                                                    .Contains(search.ToLower().Normalize(NormalizationForm.FormKD) )
+                search = RemoveSign(search);
+                searchedResult = new BindingList<Dish>(_data.Where(c => RemoveSign(c.Name).ToLower().Normalize(NormalizationForm.FormC)
+                                                                    .Contains(RemoveSign(search).ToLower().Normalize(NormalizationForm.FormC) )
                                                                      )
                                                                     .ToList()) ;
 			}
@@ -385,5 +420,9 @@ namespace FoodRecipeApp.Classes
 
             return result;
         }
+
+
     }
+
+
 }
