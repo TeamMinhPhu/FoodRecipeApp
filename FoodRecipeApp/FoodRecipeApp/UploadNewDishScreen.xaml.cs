@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using FoodRecipeApp.Classes;
 using System.Runtime.Remoting.Channels;
 using System.IO;
+using Microsoft.Win32;
 
 namespace FoodRecipeApp  
 {
@@ -631,6 +632,50 @@ namespace FoodRecipeApp
                 else { /*do nothing*/ }
             }
             else { /*do nothing*/ }
+        }
+
+        private void dishImage_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            if (dlg.ShowDialog() == true)
+            {
+                _ImageLink = dlg.FileName;
+                if (IsImageFile(_ImageLink))
+                {
+                    var Bitmap = new BitmapImage(new Uri(_ImageLink, UriKind.Absolute));
+                    dishImage.Source = Bitmap;
+                    ImageHint.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    MessageBox.Show("Không mở được ảnh");
+                    _ImageLink = "";
+                }
+            }
+        }
+
+        private void imageInput_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var dlg = new OpenFileDialog();
+            var Temp = new BindingList<StepImage>();
+            if (dlg.ShowDialog() == true)
+            {
+                var ImageFile = dlg.FileName;
+                if (IsImageFile(ImageFile))
+                {
+                    Temp.Add(new StepImage() { ImageLink = ImageFile });
+
+                    StepImageHint.Visibility = Visibility.Hidden;
+                    imagePreview.Visibility = Visibility.Visible;
+
+                    myViewImgList = Temp;
+                    imagePreview.ItemsSource = myViewImgList;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy file ảnh");
+                }
+            }
         }
     }
 }
