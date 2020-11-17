@@ -227,6 +227,7 @@ namespace FoodRecipeApp.Classes
         /// <param name="newDish"></param>
         public static void Append(Dish newDish)
 		{
+            newDish.Source = $"Resources/Images/{newDish.Id}.jpg";
             _data.Add(newDish);
             string line = newDish.Id + "|" + newDish.Name + "|" + newDish.Description +
                 "|" + newDish.Ingredient + "|" + newDish.LinkVideo + "|" + newDish.Fav + "|" + newDish.Date;

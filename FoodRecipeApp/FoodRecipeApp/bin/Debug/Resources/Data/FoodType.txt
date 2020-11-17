@@ -3,3 +3,5 @@ T2|Ăn vặt
 T3|Món chiên
 T4|Xúc xích
 T5|Bánh
+T6|Bò
+T7|Mắm

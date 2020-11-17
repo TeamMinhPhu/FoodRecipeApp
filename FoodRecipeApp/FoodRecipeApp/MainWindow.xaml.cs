@@ -102,7 +102,6 @@ namespace FoodRecipeApp
             newFolder = $"{Folder}Resources\\Icons";
             MyFileManager.CheckDictionary(newFolder);
 
-            menuPage.Content = new HomePage();
             _list_menu = MenuDao.GetAll();
             menuList.ItemsSource = _list_menu;
 

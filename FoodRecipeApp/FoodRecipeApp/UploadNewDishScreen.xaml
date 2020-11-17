@@ -89,8 +89,8 @@
                             <StackPanel Margin="0,20,10.8,30.2" Grid.Column="0">
                                 <Border BorderThickness="1" BorderBrush="Black" Height="180" Width="280" Margin="0,10,10,0">
                                     <Canvas Background="Transparent">
-                                        <Image Height="177" x:Name="dishImage" Source="Resources/Images/whitebackground.png" Stretch="Fill" Width="277" AllowDrop="True" Drop="dishImage_Drop" DragEnter="dishImage_DragEnter"/>
-                                        <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="ImageHint" Text="Kéo hình vào đây" FontSize="18" Canvas.Bottom="20" Canvas.Left="72" Canvas.Right="100"/>
+                                        <Image Height="178" x:Name="dishImage" Source="Resources/Images/whitebackground.png" Stretch="Fill" Width="278" PreviewMouseLeftButtonDown="dishImage_PreviewMouseLeftButtonDown" AllowDrop="True" Drop="dishImage_Drop" DragEnter="dishImage_DragEnter"/>
+                                        <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="ImageHint" Text="Kéo hình vào đây" FontSize="18" PreviewMouseLeftButtonDown="dishImage_PreviewMouseLeftButtonDown" Canvas.Bottom="20" Canvas.Left="72" Canvas.Right="100"/>
                                     </Canvas>
                                 </Border>
                                 <Border BorderThickness="1" BorderBrush="Black" Height="40" Width="280" Margin="10,30,20,10">
@@ -132,7 +132,7 @@
                         </Border>
                         <Border BorderThickness="1" BorderBrush="Black" Height="190" Width="370" Margin="0,20,0,20">
                             <Canvas>
-                                <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="imageInput" Drop="imageInput_Drop" AllowDrop="True" Height="190" Width="368" Panel.ZIndex="5"></TextBlock>
+                                <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="imageInput" Drop="imageInput_Drop" AllowDrop="True" PreviewMouseLeftButtonDown="imageInput_PreviewMouseLeftButtonDown" Height="190" Width="368" Panel.ZIndex="5"></TextBlock>
                                 <TextBlock Foreground="{DynamicResource PrimaryHueMidBrush}" x:Name="StepImageHint" Text="Kéo hình hoặc thư mục vào đây" Style="{StaticResource VisibleAnimation}" FontSize="18" Canvas.Bottom="20" Canvas.Left="60" Canvas.Right="100"/>
                                 <ListView Name="imagePreview" Height="188" Width="368"  HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                                     <ListView.ItemsPanel>
