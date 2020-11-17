@@ -543,9 +543,6 @@ namespace FoodRecipeApp
 
 
                 //Save dish
-                newDish.Description = newDish.Description.Replace(System.Environment.NewLine, @"\r\n");
-                newDish.Ingredient = newDish.Ingredient.Replace(System.Environment.NewLine, @"\r\n");
-
                 DishDao.Append(newDish);
 
                 /////////////

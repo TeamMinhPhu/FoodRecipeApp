@@ -5,3 +5,6 @@ T4|Xúc xích
 T5|Bánh
 T6|Bò
 T7|Mắm
+T8|Gà
+T9|Xôi
+T10|Xốt

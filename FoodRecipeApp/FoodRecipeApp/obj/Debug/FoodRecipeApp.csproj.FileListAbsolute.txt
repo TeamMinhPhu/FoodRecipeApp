@@ -481,4 +481,3 @@ C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\Foo
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.csproj.CopyComplete
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.exe
 C:\Users\vuanh\Documents\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\obj\Debug\FoodRecipeApp.pdb
-C:\Users\Admin\Documents\GitHub\FoodRecipeApp\FoodRecipeApp\FoodRecipeApp\bin\Debug\x86\libcef.dll

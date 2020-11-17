@@ -229,12 +229,17 @@ namespace FoodRecipeApp.Classes
 		{
             newDish.Source = $"Resources/Images/{newDish.Id}.jpg";
             _data.Add(newDish);
+            newDish.Description = newDish.Description.Replace(System.Environment.NewLine, @"\r\n");
+            newDish.Ingredient = newDish.Ingredient.Replace(System.Environment.NewLine, @"\r\n");
             string line = newDish.Id + "|" + newDish.Name + "|" + newDish.Description +
                 "|" + newDish.Ingredient + "|" + newDish.LinkVideo + "|" + newDish.Fav + "|" + newDish.Date;
             var folder = AppDomain.CurrentDomain.BaseDirectory;
             var filepath = $"{folder}Resources\\Data\\Dish.txt";
             File.AppendAllText(filepath, line + Environment.NewLine);
-		}
+
+            newDish.Description = newDish.Description.Replace("\\r\\n", System.Environment.NewLine);
+            newDish.Ingredient = newDish.Ingredient.Replace("\\r\\n", System.Environment.NewLine);
+        }
 
         /// <summary>
         /// Read data from file
